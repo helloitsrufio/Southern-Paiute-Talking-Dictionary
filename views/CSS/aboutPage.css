@@ -20,3 +20,50 @@ body{
     display: block;
     padding-bottom: 1em;
 }
+
+/* Navigation bar */
+.blue-sections{
+    background-color: #2184AA;
+    color:white;
+    width:101%;
+}
+
+nav{
+    display: flex;
+    align-items:center;
+    height:3em;
+    margin:-.5em;
+    justify-content: space-between;
+}
+
+.nav-container{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
+nav h1{
+    margin:.05em 0em 0em 1.09em;
+}
+
+
+nav ul{
+    list-style:none;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1em;
+}
+
+nav li{
+    padding:0em 3em 0em 3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+nav a{
+    text-decoration: none;
+}
+
+nav li:hover{
+    color:#e3e4e8;
+}
