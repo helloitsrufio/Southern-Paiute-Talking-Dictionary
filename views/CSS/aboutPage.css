@@ -67,3 +67,104 @@ nav a{
 nav li:hover{
     color:#e3e4e8;
 }
+
+/* Body */
+
+    /* First half of body */
+    .first-half{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 3vh; 
+    }
+    
+    .first-half-h2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+    .first-half h2 {
+        color:#545454;
+    }
+
+    .first-half h2 + h2{
+        align-self: flex-end;
+        justify-content: flex-end;
+        margin-bottom: 5vh;
+        color: rgb(132, 131, 131);
+    }
+
+    img{
+        width:60%;
+        max-height: 45vh;
+    }
+
+    .first-half section{
+        margin-top: 5vh;
+        width:58%;
+        color:black;
+    }
+
+    #here-link{
+        color:blue;
+    }
+
+    .team-data{
+        display:flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        height:50vh;
+        margin: 0vh 40vh;
+
+        /* display: grid;
+        grid-template-columns: 40% 40%;
+        grid-template-rows: 50% 50%;
+        height:60vh;
+        justify-self: center;
+        margin-left:70vh; */
+    }
+
+    .second-half h2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .team-member-first-row, .team-member-second-row{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        /* margin-bottom: 10vh;
+        width: 20vh; */
+    }
+
+    .team-member{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width:50vh;
+        margin: 5vh 0vh;
+    }
+    
+    i{
+        font-size:18vh;
+        color:#2184AA;
+        margin-bottom: 5vh;
+    }
+
+    .member-name {
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+
+    .first-row-second-member{
+        padding-bottom: 4.5vh;
+    }
+
+    .second-row-second-member{
+        padding-top: 1.9vh;
+    }
