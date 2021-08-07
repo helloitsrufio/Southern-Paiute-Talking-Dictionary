@@ -167,3 +167,64 @@ nav li:hover{
     .second-row-second-member{
         padding-top: 1.9vh;
     }
+
+    footer{
+        position:relative;
+        bottom:0;
+        width:102.5%;
+        height:1em;   /* Height of the footer */
+        margin-left:-1em;
+        margin-top: 40vh;
+        background:#545454;
+        padding: 1em;
+        border-top: 10px solid #2184AA;
+    }
+    
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        margin: -1em 0em 0em -5em;
+        color:white; 
+        background-color: #545454;
+    }
+    
+    .footer-container h3{
+        color:white;
+        /* padding-left: 97vh; */
+        font-weight: 110px;
+        font-size: 1em;
+        font-family: 'Roboto', sans-serif;
+        margin: .5em 0em -.1em 0em;
+    }
+    
+    .footer-container > h3{
+        display:flex;
+        justify-content: center;
+        margin-left:5em;
+    }
+    
+    #attribution{
+        display:flex;
+        justify-content: center;
+        font-size: .8em;
+        padding-left: 98vh;
+        margin: .2em 0em .5em -65em;
+    }
+    
+    a:link { 
+        text-decoration: none;
+        color:white;
+        font-family: 'Ubuntu', sans-serif; }
+    
+    a:visited { 
+        text-decoration: none;
+        color:white; }
+    
+    a:hover { 
+        text-decoration: none;
+        color: #e3e4e8}
+    
+    footer a {
+        margin-left:.4em
+    }
