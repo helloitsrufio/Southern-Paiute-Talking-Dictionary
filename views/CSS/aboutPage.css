@@ -228,3 +228,38 @@ nav li:hover{
     footer a {
         margin-left:.4em
     }
+
+        /* Media queries */
+
+        @media screen and (max-width:2424) {
+            .first-half h2 {
+                align-self: center;
+                margin-right: 0vh;
+            }
+        
+            .first-half h2 + h2{
+                margin: 2vh 0vh 5vh 85vh;
+                color: rgb(132, 131, 131);
+            }
+        }
+    
+        @media screen and (max-width:1570px){
+            /* nav */
+                nav h1{ margin-right:20em; }
+                nav li{ padding:0em 2em 0em 3em; }
+            /* footer */
+                footer{ width:102%; }
+                .footer-container { margin: -1em -3em 0em -5em; }
+                #attribution{ margin: .2em 0em .5em -60em; }
+            }
+            
+            @media screen and (max-width:1470px){
+                .blue-sections{ width:102%; }
+                nav h1{ margin-right:15em; }
+            }
+        
+            
+            @media screen and (max-width:1364px) {
+                 nav h1{ margin-right:8em; }
+            }
+            
