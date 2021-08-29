@@ -263,3 +263,20 @@ nav li:hover{
                  nav h1{ margin-right:8em; }
             }
             
+            @media screen and (max-width:1194px) {
+                nav h1{ 
+                    margin-right:0em;
+                    margin-left:1em; }
+                    /* Footer */
+                footer{ width:103%; }
+            }
+            
+            @media screen and (max-width:992px){
+                nav li{ padding:0em 1em 0em 2em; }
+            }
+            
+            @media screen and (max-width:858px){
+                nav li{ padding:0em 1em 0em 1em; }
+                .fas{ font-size:15vh; } 
+                .member-name{ font-size: 1em; }
+            }
