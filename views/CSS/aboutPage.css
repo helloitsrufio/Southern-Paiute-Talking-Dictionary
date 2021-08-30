@@ -280,3 +280,20 @@ nav li:hover{
                 .fas{ font-size:15vh; } 
                 .member-name{ font-size: 1em; }
             }
+
+              
+        @media screen and (max-width:794px){
+            nav li{ padding:0em 1em 0em 0em; }
+            footer{ width:105%; }
+            .team-member{ 
+                width: 35vh; 
+                margin-right: 10vh;}
+            .first-row-second-member{ padding-bottom: 3.1vh; }
+        }
+        
+        @media screen and (max-width:732px){
+            .blue-sections{ width: 103%;}
+            nav li{ padding:0em 0em 0em .5em; }
+            .team-data{  }
+        }
+        
