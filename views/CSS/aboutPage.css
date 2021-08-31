@@ -297,3 +297,15 @@ nav li:hover{
             .team-data{  }
         }
         
+        @media screen and (max-width:698px){
+            .blue-sections{ width: 104%; }
+            nav{ margin:-1em; }
+            .fas{ font-size:10vh; } 
+            .team-member{ width: 25vh;}
+        }
+
+        @media screen and (max-width:676px) {
+            .team-member{ width: 20vh;}
+            .first-row-second-member{ padding-bottom: 1.5vh; }
+            #attribution{ margin: .2em 0em .5em -72em;  }
+        }
