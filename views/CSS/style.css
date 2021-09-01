@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif; 
+}
+
+html{
+    height:98.1%;
+}
+
+body{
+    position:relative;
+    height:100%;
+}
+
+title{
+    display:none;
+}
