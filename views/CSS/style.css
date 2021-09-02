@@ -15,3 +15,46 @@ body{
 title{
     display:none;
 }
+
+
+/* Navigation bar */
+.blue-sections{
+    background-color: #2184AA;
+    color:white;
+}
+
+nav{
+    display: flex;
+    align-items:center;
+    height:3em;
+    margin:-.5em;
+    justify-content: space-between;
+}
+
+.nav-container{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
+nav h1{
+    margin-right:33em;
+}
+
+
+nav ul{
+    list-style:none;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1em;
+}
+
+nav li{
+    padding:0em 3em 0em 3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+nav li:hover{
+    color:#e3e4e8;
+}
