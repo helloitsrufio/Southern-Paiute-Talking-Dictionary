@@ -58,3 +58,29 @@ nav li{
 nav li:hover{
     color:#e3e4e8;
 }
+
+
+/* Body */
+.middle-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:10em;
+    height:57vh;
+}
+
+
+input{
+    height:4vh;
+    width:30vh;
+    color: lightgray;
+    border:1px solid #E5E5E5;
+    padding-left:12vh;
+    font-weight:800px;
+}
+
+img{
+    height:15vh;
+    margin: -10em 0em 3em 0em;
+}
