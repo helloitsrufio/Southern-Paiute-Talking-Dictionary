@@ -133,3 +133,21 @@ footer{
     margin: .2em 0em .5em -65em;
     font-family: 'Ubuntu', sans-serif;
 }
+
+a:before{
+    content: "\00a0 ";;
+}
+
+a:link { 
+    text-decoration: none;
+    color:white;
+    font-family: 'Ubuntu', sans-serif; }
+
+a:visited { 
+    text-decoration: none;
+    color:white; }
+
+a:hover { 
+    text-decoration: none;
+    color: #e3e4e8}
+
