@@ -151,3 +151,18 @@ a:hover {
     text-decoration: none;
     color: #e3e4e8}
 
+/* Media queries */
+
+@media screen and (max-width:1570px){
+    /* nav */
+        nav h1{ margin-right:20em; }
+        nav li{ padding:0em 2em 0em 3em; }
+    /* footer */
+        .footer-container { margin: -1em -3em 0em -5em; }
+        #attribution{ margin: .2em 0em .5em -91em; }
+    }
+    
+    @media screen and (max-width:1442px){
+        nav h1{ margin-right:15em; }
+    }
+    
