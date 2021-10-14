@@ -181,4 +181,14 @@ a:hover {
 @media screen and (max-width:986px){
    nav li{ padding:0em 1em 0em 2em; }
 }
+
+@media screen and (max-width:858px){
+    nav li{ padding:0em 1em 0em 1em; }
+}
+
+@media screen and (max-width:794px){
+    nav li{ padding:0em 1em 0em 0em; }
+    footer{ width:105%; }
+}
+
   
