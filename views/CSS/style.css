@@ -191,4 +191,17 @@ a:hover {
     footer{ width:105%; }
 }
 
+@media screen and (max-width:730px){
+    nav li{ padding:0em 0em 0em .5em; }
+}
+
+@media screen and (max-width:698px){
+    nav{ margin:-1em; }
+}
+
+/* Hamburger menu here */
+@media screen and (max-width:682px){
+    
+}
+
   
