@@ -14,16 +14,47 @@
 </head>
 <!-- Body -->
 <body>
-    <!-- Nav bar -->
-<nav class='blue-sections'>
-    <h1>Southern Paiute Dictionary</h1>
-    <ul>
-        <li><a href='index.html'>Home</a></li>
-        <li><a href='aboutPage.html'>About Us</a></li>
-        <li><a href="alphabet.html">Alphabet</a></li>
-        <li><a href="contactPage.html">Contact</a></li>
-    </ul>
-</nav>
+<!-- Nav bar -->
+    <nav class='blue-sections'>
+        <h1>Southern Paiute Dictionary</h1>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='aboutPage.html'>About Us</a></li>
+            <li><a href="alphabet.html">Alphabet</a></li>
+            <li><a href="contactPage.html">Contact</a></li>
+        </ul>
+    </nav>
+
+<!-- Form -->
+    <section class="form">
+        <h1>Contact Us</h1>
+        <form id='contact-form' method="POST" action="send" enctype="multipart/form-data">
+            <section class='top-line'>
+                <section>
+                    <span>Name</span>
+                    <input type='text' placeholder="Enter your first and last name" name='userName' required>
+                </section>
+                <section>
+                    <span>Email</span>
+                    <input type="text" placeholder="Enter your email" name='userEmail'>
+                </section>
+            </section>
+            <section class="message">
+                <span>Message</span>
+                <input type="text" placeholder="Enter your message here." name='userMessage'>
+            </section>
+            <section class="submit">
+                <button type="submit" value="submit">
+                    <span>Submit</span>
+                    <i class="fas fa-arrow-circle-right"></i>
+                </button>
+            </section>
+        </form>
+        <section class="email-option">
+            <span>Email Us</span>
+            <span><a href="mailto:speakpaiute@gmail.com">speakpaiute@gmail.com</a></span>
+        </section>
+    </section>
 
  <!-- Footer -->
     <footer>
