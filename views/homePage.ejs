@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Home Page</title>
+    <!--external CSS link -->
+    <link rel='stylesheet' href='/CSS/style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav class='blue-sections nav-container'>
+        <h1>Southern Paiute Dictionary</h1>
+        <ul>
+            <li><a href='homePage.ejs'>Home</a></li>
+            <li><a href='aboutPage.ejs'>About Us</a></li>
+            <li><a href="alphabet.ejs">Alphabet</a></li>
+            <li><a href="contactPage.ejs">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mid section -->
+    <section class='middle-section'>
+        <img src='../CSS/Images/LogoImg.png' alt='Symbol of the Cedar Band of Paiutes.'>
+        <section class='search'>
+            <form action='#'>
+                <input type = 'text' placeholder='Search dictionary...' name='search'>
+            </form>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <section class='footer-container'>
+            <h3>© 2021 - Cedar Band of Paiutes</h3>
+            <h3 id='attribution'>Created By<a href='https://ruthreed.dev'>Ruth Reed</a></h3>
+        </section>
+    </footer>
+</body>
+</html>
