@@ -30,7 +30,19 @@ app.get('/', (req, res) =>{
 
 //Search Results Page
 app.get('/search', (req, res) =>  {
-  db.collection('SouthernPaiute').find().toArray()
+//   getResult: async (req,res) => {
+//       try {
+//           const results = await Result.findbyId({req.params.id})
+//           .then((data) => {
+//               if (!data) {
+//                   return res.status(404).send({
+//                       message: "Sorry, that result can't be found."
+//                   })
+//               }
+//           })
+//       }
+//   }
+  db.collection('SouthernPaiute').find({}, { projection: {_id:}}).toArray()
   .then(data => {
       console.log(data)
       res.render('searchResults.ejs', { info: data })
