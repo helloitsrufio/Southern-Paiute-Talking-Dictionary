@@ -32,10 +32,13 @@
         <h1>Search results for <%= %></h1>
         <section>
             <section class="wordData">
-                <span><%= %></span>
-                <span><%= %></span>
+                <h4><%= `${searchQueryResults.wordInput}`%></h4>
+                <!-- result -->
+                <span><%= `${searchQueryResults.grammaticalInput}`%></span>
+                <!-- type of result (word) -->
             </section>
-            <span><%= %></span>
+            <span><%= `${searchQueryResults.translationInput}%></span>
+            <!-- translation -->
         </section>
         <p>No more search results could be found.</p>
     </section>

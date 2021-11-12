@@ -13,6 +13,9 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
+    .catch((err) =>{
+      console.error("Failutre to connect: ", err.message, err.stack)
+    })
 
 //Using EJS for views
 app.set("view engine", "ejs");
@@ -24,12 +27,30 @@ app.use(express.json())//method inbuilt in express to recognize the incoming Req
 app.use(express.static('views'));
 
 //Home Page
-app.get('/', (req, res) =>{
-    res.render('homePage.ejs')
-})
 
 //Search Results Page
-app.get('/search', (req, res) =>  {
+app.get("/", async (req, res) => {
+    res.render('homePage.ejs')
+
+    let { searchResult } = await req.query;
+    const regex = new RegExp(searchResult, "gi");
+    try {
+      const dictionaryDB = await db
+        .collection("SouthernPaiute")
+        .find({
+           result: { $regex: regex } 
+        })
+        .toArray();
+      console.log(dictionaryDB);
+      if (dictionaryDB.length) {
+        return res.render("searchResults.ejs", { searchQueryResults: dictionaryDB });
+      }
+      return res.render("searchResults.ejs", { searchQueryResults: null });
+    } catch (err) {
+      console.error(err);
+    }
+  });
+// app.get('/search', (req, res) =>  {
 //   getResult: async (req,res) => {
 //       try {
 //           const results = await Result.findbyId({req.params.id})
@@ -42,23 +63,24 @@ app.get('/search', (req, res) =>  {
 //           })
 //       }
 //   }
-  db.collection('SouthernPaiute').find({}, { projection: {_id:}}).toArray()
-  .then(data => {
-      console.log(data)
-      res.render('searchResults.ejs', { info: data })
-  })
-  .catch(error => console.error(error))
-})
+//   db.collection('SouthernPaiute').find({}, { projection: {_id:}}).toArray()
+//   .then(data => {
+//       console.log(data)
+//       res.render('searchResults.ejs', { info: data })
+// //   })
+//   .catch(error => console.error(error))
+// })
 
 // Specific Results Page
-// app.get('/:id', (req,res) =>{
-//     db.collection('SouthernPaiute').find().toArray()
-//     .then(data => {
-//         console.log(data)
-//         res.render('wordPage.ejs', { info: data })
-//     })
-//     .catch(error => console.error(error))
-//   })
+app.get('/:id', (req,res) =>{
+    db.collection('SouthernPaiute').find().toArray()
+    .then(data => {
+        console.log(data)
+        res.render('wordPage.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+  })
+
 
 //About Page
 app.get('/about', (req,res) =>{
@@ -79,6 +101,10 @@ app.get('/alphabet', (req,res)=>{
 app.get('/input', (req,res)=>{
     res.render('inputPage.ejs')
 })
+
+// app.post('/input', (req,res) =>{
+
+// })
 
 
 
