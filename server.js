@@ -1,27 +1,38 @@
 //Brings express into the app
 const express = require('express')
 const app = express()
-const MongoClient = require('mongodb').MongoClient
+const mongoose = require('mongoose')
+// const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 
-let db,
-    dbConnectionStr = process.env.DB_STRING,
-    dbName = 'SouthernPaiute'
+// let db,
+    // dbConnectionStr = process.env.DB_STRING,
+    let dbName = 'SouthernPaiute',
+        username = process.env.username,
+        password = process.env.password
+        cluster = process.env.cluster
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
+
+mongoose.connect(
+`mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbName}?retryWrites=true&w=majority`)
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
-    })
-    .catch((err) =>{
-      console.error("Failutre to connect: ", err.message, err.stack)
-    })
+  })
+// MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
+//     .then(client => {
+//         console.log(`Connected to ${dbName} Database`)
+//         db = client.db(dbName)
+//     })
+//     .catch((err) =>{
+//       console.error("Failutre to connect: ", err.message, err.stack)
+//     })
 
 //Using EJS for views
 app.set("view engine", "ejs");
 
 //Body Parsing
-app.use(express.static('public'))//lets you use files in your public folder
+app.use(express.static('views'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(express.static('views'));
