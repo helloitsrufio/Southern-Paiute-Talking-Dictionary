@@ -1,32 +1,35 @@
 //Brings express into the app
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
-// const MongoClient = require('mongodb').MongoClient
+// const mongoose = require('mongoose')
+const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
+const cloudinary = require('cloudinary').v2
 
-// let db,
-    // dbConnectionStr = process.env.DB_STRING,
-    let dbName = 'SouthernPaiute',
-        username = process.env.username,
-        password = process.env.password
-        cluster = process.env.cluster
+let db,
+      dbConnectionStr = process.env.DB_STRING,
+      dbName = 'SouthernPaiute'
+      // databaseName = process.env.databaseName
+      // username = process.env.username
+      // password = process.env.password
+      // cluster = process.env.cluster
 
 
-mongoose.connect(
-`mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbName}?retryWrites=true&w=majority`)
-    .then(client => {
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
-  })
-// MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
+// mongoose.connect(
+// `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${databaseName}?retryWrites=true&w=majority`, {useNewUrlParser: true})
 //     .then(client => {
 //         console.log(`Connected to ${dbName} Database`)
 //         db = client.db(dbName)
-//     })
-//     .catch((err) =>{
-//       console.error("Failutre to connect: ", err.message, err.stack)
-//     })
+//   })
+
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
+    .then(client => {
+        console.log(`Connected to ${dbName} Database`)
+        db = client.db(dbName)
+    })
+    // .catch((err) =>{
+    //   console.error("Failure to connect: ", err.message, err.stack)
+    // })
 
 //Using EJS for views
 app.set("view engine", "ejs");
@@ -36,6 +39,13 @@ app.use(express.static('views'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(express.static('views'));
+
+//Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+})
 
 //Home Page
 
@@ -83,19 +93,20 @@ app.get("/", async (req, res) => {
 // })
 
 // Specific Results Page
-app.get('/:id', (req,res) =>{
-    db.collection('SouthernPaiute').find().toArray()
-    .then(data => {
-        console.log(data)
-        res.render('wordPage.ejs', { info: data })
-    })
-    .catch(error => console.error(error))
-  })
+// app.get('/:id', (req,res) =>{
+//     db.collection('SouthernPaiute').find().toArray()
+//     .then(data => {
+//         console.log(data)
+//         res.render('wordPage.ejs', { info: data })
+//     })
+//     .catch(error => console.error(error))
+//   })
 
 
 //About Page
 app.get('/about', (req,res) =>{
     res.render('aboutPage.ejs')
+    if(err){console.log(error)}
 })
 
 //Contact Page
@@ -105,7 +116,9 @@ app.get('/contact', (req,res) =>{
 
 //Alphabet Page
 app.get('/alphabet', (req,res)=>{
-    res.render('alphabetPage.ejs')
+    try {res.render('alphabetPage.ejs')
+  }catch (err) {
+    console.error(err);}
 })
 
 //Input Page
@@ -113,10 +126,19 @@ app.get('/input', (req,res)=>{
     res.render('inputPage.ejs')
 })
 
-// app.post('/input', (req,res) =>{
-
-// })
-
+app.post('/addEntry', async (req,res) =>{
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path)
+    await db.collection("SouthernPaiute").insertOne(
+      {wordInput: req.body.wordInput, audioInput: req.body.audioInput, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
+      .then(result => {
+        console.log(result)
+        res.redirect('/')
+      })
+//need to fix this bit
+  }catch(error => console.error(error)))
+  
+  }
 
 
 
