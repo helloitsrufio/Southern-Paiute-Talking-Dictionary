@@ -7,8 +7,9 @@ require('dotenv').config()
 const cloudinary = require('cloudinary').v2
 
 let db,
-      dbConnectionStr = process.env.DB_STRING,
-      dbName = 'SouthernPaiute'
+    dbConnectionStr = process.env.DB_STRING,
+    dbName = 'SouthernPaiute'
+    PORT = process.env.PORT || 8000
       // databaseName = process.env.databaseName
       // username = process.env.username
       // password = process.env.password
@@ -135,14 +136,15 @@ app.post('/addEntry', async (req,res) =>{
         console.log(result)
         res.redirect('/')
       })
-//need to fix this bit
-  }catch(error => console.error(error)))
-  
+  }catch (err) {
+    console.log(err)
   }
+  
+  })
 
 
 
-const PORT = process.env.PORT || 8000
+
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
