@@ -45,7 +45,8 @@ app.use(express.static('views'));
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET
+  api_secret: process.env.API_SECRET,
+  secure: true
 })
 
 //Home Page
@@ -71,6 +72,10 @@ app.get("/", async (req, res) => {
     } catch (err) {
       console.error(err);
     }
+    //POST /:resource_type/explicit
+    //explicit used for already uploaded media
+    //cloudinary.v2.uploader.explicit(public_id, options, callback);
+
   });
 // app.get('/search', (req, res) =>  {
 //   getResult: async (req,res) => {
@@ -132,6 +137,9 @@ app.post('/addEntry', async (req,res) =>{
     const result = await cloudinary.uploader.upload(req.file.path)
     await db.collection("SouthernPaiute").insertOne(
       {wordInput: req.body.wordInput, audioInput: req.body.audioInput, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
+      //to be fixed
+      cloudinary.v2.uploader.upload("/home/sample.jpg", 
+        function(error, result) {console.log(result, error); });
       .then(result => {
         console.log(result)
         res.redirect('/')
