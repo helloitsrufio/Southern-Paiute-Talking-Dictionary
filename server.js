@@ -136,18 +136,16 @@ app.post('/addEntry', async (req,res) =>{
   try {
     const result = await cloudinary.uploader.upload(req.file.path)
     await db.collection("SouthernPaiute").insertOne(
-      {wordInput: req.body.wordInput, audioInput: req.body.audioInput, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
-      //to be fixed
-      cloudinary.v2.uploader.upload("/home/sample.jpg", 
-        function(error, result) {console.log(result, error); });
+      {wordInput: req.body.wordInput, audioInput: result, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
+      ///for the audio input, changed req.body.audioInput to 'result' to implement the 'result' var. Not sure if that's how it works or not.
       .then(result => {
         console.log(result)
         res.redirect('/')
       })
+      //added the .then because the async (res) param wasn't being used, and with this code it is. Not sure if it works or not. 
   }catch (err) {
     console.log(err)
   }
-  
   })
 
 
@@ -156,3 +154,13 @@ app.post('/addEntry', async (req,res) =>{
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
+
+
+      //to be fixed
+      // cloudinary.v2.uploader.upload(req.file.path, 
+      //   function(error, result) {console.log(result, error); });
+      // .then(result => {
+      //   console.log(result)
+      //   res.redirect('/')
+      // })
+      //this comes from the documentation, but I kind of already have this under the 'result' var. So how do I implement 'result'?
