@@ -5,6 +5,8 @@ const app = express()
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 const cloudinary = require('cloudinary').v2
+const multer = require('multer')
+const path = require("path")
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -133,8 +135,22 @@ app.get('/input', (req,res)=>{
 })
 
 app.post('/addEntry', async (req,res) =>{
+  
+  multer({
+    storage: multer.diskStorage({}),
+    fileFilter: (req, file, cb) => {
+      let ext = path.extname(file.originalname);
+      if (ext !== ".mp3" && ext !== ".mp4" && ext !== ".wav") {
+        cb(new Error("File type is not supported"), false);
+        return;
+      }
+      cb(null, true);
+    },
+  });
+
   try {
-    const result = await cloudinary.uploader.upload(req.file.path)
+    console.log(req.file)
+    const result = await cloudinary.uploader.upload(req.files.path)
     await db.collection("SouthernPaiute").insertOne(
       {wordInput: req.body.wordInput, audioInput: result, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
       ///for the audio input, changed req.body.audioInput to 'result' to implement the 'result' var. Not sure if that's how it works or not.

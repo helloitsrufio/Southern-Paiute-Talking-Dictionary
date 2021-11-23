@@ -1,10 +1,10 @@
 const form = document.querySelector('#submitButton')
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("click", (e) => {
     e.preventDefault();
 })
 
-const files = document.querySelector('[type=file]').files
+const files = document.querySelector('form').files
 const formData = new FormData()
 
 for(let i = 0; i < files.length; i++) {
