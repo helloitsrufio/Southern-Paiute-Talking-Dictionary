@@ -1,12 +1,13 @@
+require('dotenv').config()
+
 //Brings express into the app
 const express = require('express')
+const fs = require('fs')
 const app = express()
-// const mongoose = require('mongoose')
 const MongoClient = require('mongodb').MongoClient
-require('dotenv').config()
 const cloudinary = require('cloudinary').v2
 const multer = require('multer')
-const path = require("path")
+const upload = multer()
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -41,15 +42,6 @@ app.set("view engine", "ejs");
 app.use(express.static('views'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
-app.use(express.static('views'));
-
-//Cloudinary
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
-  secure: true
-})
 
 //Home Page
 
@@ -134,37 +126,117 @@ app.get('/input', (req,res)=>{
     res.render('inputPage.ejs')
 })
 
-app.post('/addEntry', async (req,res) =>{
+app.post('/profile', upload.array(), function (req, res, next) {
+  console.log(req.body)
+  res.json(req.body)
+})
+
+// app.post('/addEntry', upload.array(), (req,res) =>{
+
+  // multer({
+  //   storage: multer.diskStorage({}),
+  //   fileFilter: (req, file, cb) => {
+  //     let ext = path.extname(file.originalname);
+  //     if (ext !== ".mp3" && ext !== ".mp4" && ext !== ".wav") {
+  //       cb(new Error("File type is not supported"), false);
+  //       return;
+  //     }
+  //     cb(null, true);
+  //   },
+  // });
+   
   
-  multer({
-    storage: multer.diskStorage({}),
-    fileFilter: (req, file, cb) => {
-      let ext = path.extname(file.originalname);
-      if (ext !== ".mp3" && ext !== ".mp4" && ext !== ".wav") {
-        cb(new Error("File type is not supported"), false);
-        return;
+  
+
+  // try {
+  //   console.log(req.body)
+  //   const result = await cloudinary.uploader.upload(req.files.path)
+  //   await db.collection("SouthernPaiute").insertOne(
+  //     {wordInput: req.body.wordInput, audioInput: result, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
+  //     ///for the audio input, changed req.body.audioInput to 'result' to implement the 'result' var. Not sure if that's how it works or not.
+  //     .then(result => {
+  //       console.log(result)
+  //       res.redirect('/')
+  //     })
+  //     //added the .then because the async (res) param wasn't being used, and with this code it is. Not sure if it works or not. 
+  // }catch (err) {
+  //   console.log(err)
+  // }
+  // })
+
+  app.post("/addEntry", async (req, res) => {
+    // Get the file name and extension with multer
+    const storage = multer.diskStorage({
+      filename: (req, file, cb) => {
+        const fileExt = file.originalname.split(".").pop();
+        const filename = `${new Date().getTime()}.${fileExt}`;
+        cb(null, filename);
+      },
+    });
+  
+    // Filter the file to validate if it meets the required audio extension
+    const fileFilter = (req, file, cb) => {
+      if (file.mimetype === "audio/mp3" || file.mimetype === "audio/mpeg") {
+        cb(null, true);
+      } else {
+        cb(
+          {
+            message: "Unsupported File Format",
+          },
+          false
+        );
       }
-      cb(null, true);
-    },
+    };
+  
+    // Set the storage, file filter and file size with multer
+    const upload = multer({
+      storage,
+     
+      fileFilter,
+    }).single("audio");
+  
+    // upload to cloudinary
+    upload(req, res, (err) => {
+      if (err) {
+        return res.send(err);
+      }
+  
+      // SEND FILE TO CLOUDINARY
+      cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+      });
+
+      const { path } = req.file; // file becomes available in req at this point
+  
+      const fName = req.file.originalname.split(".")[0];
+      let result = cloudinary.uploader.upload(
+        path,
+        {
+          resource_type: "raw",
+          public_id: `AudioUploads/${fName}`,
+        },
+  
+        // Send cloudinary response or catch error
+        (err, audio) => {
+          if (err) return res.send(err);
+
+          db.collection("SouthernPaiute").insertOne(
+            {wordInput: req.body.wordInput, audioInput: audio, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
+            ///for the audio input, changed req.body.audioInput to 'result' to implement the 'result' var. Not sure if that's how it works or not.
+            .then(audio => {
+              console.log(audio)
+              
+            })
+  
+          fs.unlinkSync(path);
+          res.redirect('/');
+        }
+      );
+      
+    });
   });
-
-  try {
-    console.log(req.file)
-    const result = await cloudinary.uploader.upload(req.files.path)
-    await db.collection("SouthernPaiute").insertOne(
-      {wordInput: req.body.wordInput, audioInput: result, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
-      ///for the audio input, changed req.body.audioInput to 'result' to implement the 'result' var. Not sure if that's how it works or not.
-      .then(result => {
-        console.log(result)
-        res.redirect('/')
-      })
-      //added the .then because the async (res) param wasn't being used, and with this code it is. Not sure if it works or not. 
-  }catch (err) {
-    console.log(err)
-  }
-  })
-
-
 
 
 app.listen(PORT, ()=>{
