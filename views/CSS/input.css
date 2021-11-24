@@ -61,10 +61,24 @@ nav li:hover{
 
 
 /* Body */
-.body {
+p {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:75vh;
+}
+
+input {
+    padding:1.2vh;
+    margin:1.5vh;
 }
 
 /* Footer */
