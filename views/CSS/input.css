@@ -94,6 +94,25 @@ input {
     width: 54vh;
 }
 
+
+
+.inputSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputSection span {
+    margin-left: 1.5vh;
+}
+
+#audioSection span {
+    margin-left: 3vh;
+}
+
+#audioButton {
+    border:none;
+}
+
 /* Footer */
 
 footer{

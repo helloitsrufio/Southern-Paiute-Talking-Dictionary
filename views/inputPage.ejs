@@ -33,18 +33,30 @@
             <!-- Form -->
             <section>
                 <form action="/addEntry" method="POST" enctype='multipart/form-data'>
-                    <span>Word, phrase, or sentence</span>
-                    <input type='text' placeholder="Input word, phrase, or sentence." name='wordInput'>
-                    <span>IPA spelling</span>
-                    <input type='text' placeholder="Input IPA version of input." name='phoneticInput'>
-                    <span>Grammatical Structure</span>
-                    <input type='text' placeholder="Put type of grammatical structure." name='grammaticalInput'>
-                    <span>Translation</span>
-                    <input type='text' placeholder="Input translation." name='translationInput'>
-                    <span>Example</span>
-                    <input type='text' placeholder="Input example." name='exampleInput'>
-                    <span>Audio</span>
-                    <input type='file' placeholder="Upload audio file." name='file'>
+                    <section class='inputSection'>
+                        <span>Word, phrase, or sentence</span>
+                        <input type='text' placeholder="Input word, phrase, or sentence." name='wordInput'>
+                    </section>
+                    <section class='inputSection'>
+                        <span>IPA spelling</span>
+                        <input type='text' placeholder="Input IPA version of input." name='phoneticInput'>
+                    </section>
+                    <section class='inputSection'>
+                        <span>Grammatical Structure</span>
+                        <input type='text' placeholder="Put type of grammatical structure." name='grammaticalInput'>
+                    </section>
+                    <section class='inputSection'>
+                        <span>Translation</span>
+                        <input type='text' placeholder="Input translation." name='translationInput'>
+                    </section>
+                    <section class='inputSection'>
+                        <span>Example</span>
+                        <input type='text' placeholder="Input example." name='exampleInput'>
+                    </section>
+                    <section id='audioSection' class='inputSection'>
+                        <span>Audio</span>
+                        <input type='file' placeholder="Upload audio file." name='file' id='audioButton'>
+                    </section>
                     <input type='submit' id='submitButton' placeholder="Enter in parrot">
                 </form>
                 <a href ='#'>More</a>
