@@ -29,40 +29,38 @@
         <section>
             <p>Input the following for a Paiute word, sentence, or phrase.</p>
         </section>
-        <section class='form'>
-            <!-- Form -->
+        <!-- Form -->
             <section>
-                <form action="/addEntry" method="POST" enctype='multipart/form-data'>
-                    <section class='inputSection'>
-                        <span>Word, phrase, or sentence</span>
-                        <input type='text' placeholder="Input word, phrase, or sentence." name='wordInput'>
-                    </section>
-                    <section class='inputSection'>
-                        <span>IPA spelling</span>
-                        <input type='text' placeholder="Input IPA version of input." name='phoneticInput'>
-                    </section>
-                    <section class='inputSection'>
-                        <span>Grammatical Structure</span>
-                        <input type='text' placeholder="Put type of grammatical structure." name='grammaticalInput'>
-                    </section>
-                    <section class='inputSection'>
-                        <span>Translation</span>
-                        <input type='text' placeholder="Input translation." name='translationInput'>
-                    </section>
-                    <section class='inputSection'>
-                        <span>Example</span>
-                        <input type='text' placeholder="Input example." name='exampleInput'>
-                    </section>
-                    <section id='audioSection' class='inputSection'>
-                        <span>Audio</span>
-                        <input type='file' placeholder="Upload audio file." name='file' id='audioButton'>
-                    </section>
-                    <input type='submit' id='submitButton' placeholder="Enter in parrot">
-                </form>
-                <a href ='#'>More</a>
-                <!-- may get rid of the following -->
-                <p id='data'></p>
-            </section>
+            <form action="/addEntry" method="POST" enctype='multipart/form-data'>
+                <section class='inputSection'>
+                    <span>Word, phrase, or sentence</span>
+                    <input type='text' placeholder="Input word, phrase, or sentence." name='wordInput'>
+                </section>
+                <section class='inputSection'>
+                     <span>IPA spelling</span>
+                    <input type='text' placeholder="Input IPA version of input." name='phoneticInput'>
+                </section>
+                <section class='inputSection'>
+                    <span>Grammatical Structure</span>
+                    <input type='text' placeholder="Put type of grammatical structure." name='grammaticalInput'>
+                </section>
+                <section class='inputSection'>
+                    <span>Translation</span>
+                    <input type='text' placeholder="Input translation." name='translationInput'>
+                </section>
+                <section class='inputSection'>
+                    <span>Example</span>
+                    <input type='text' placeholder="Input example." name='exampleInput'>
+                </section>
+                <section id='audioSection' class='inputSection'>
+                    <span>Audio</span>
+                    <input type='file' placeholder="Upload audio file." name='file' id='audioButton'>
+                </section>
+                <input type='submit' id='submitButton' placeholder="Enter in parrot">
+            </form>
+            <a href ='#'>More</a>
+            <!-- may get rid of the following -->
+            <p id='data'></p>
         </section>
     </section>
   

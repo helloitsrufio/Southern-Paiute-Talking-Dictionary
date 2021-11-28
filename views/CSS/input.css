@@ -61,6 +61,19 @@ nav li:hover{
 
 
 /* Body */
+/* .body {
+    border: 2px solid #2184AA;
+    width:fit-content;
+    height: fit-content;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.form {
+    padding: -1vh;
+}
 
 p {
     display: flex;
@@ -94,8 +107,6 @@ input {
     width: 54vh;
 }
 
-
-
 .inputSection {
     display: flex;
     flex-direction: column;
@@ -105,9 +116,6 @@ input {
     margin-left: 1.5vh;
 }
 
-#audioSection span {
-    margin-left: 3vh;
-}
 
 #audioButton {
     border:none;
@@ -147,7 +155,7 @@ footer{
     margin: .5em 0em -.1em 0em;
 }
 
-.footer-container > h3{
+.footer-container  > h3{
     display:flex;
     justify-content: center;
     margin-left:5em;
