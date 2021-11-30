@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Home Page</title>
+    <title>Entry added.</title>
     <!--external CSS link -->
-    <link rel='stylesheet' href='/CSS/style.css'>
+    <link rel='stylesheet' href='/CSS/entryAdded.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet"> 
@@ -24,14 +24,10 @@
         </ul>
     </nav>
 
-    <!-- Mid section -->
-    <section class='middle-section'>
-        <img src='../CSS/Images/LogoImg.png' alt='Symbol of the Cedar Band of Paiutes.'>
-        <section class='search'>
-            <form action='/searchResults' method='GET'>
-                <input type = 'search' placeholder='Search dictionary...' name='search'>
-            </form>
-        </section>
+    <section class='bodySection'>
+        <h2>Entry added.</h2>
+        <button id='anotherEntryButton'>Add another.</button>
+        <button id='returnToHome'>Return to home page.</button>
     </section>
 
     <!-- Footer -->
@@ -42,4 +38,9 @@
         </section>
     </footer>
 </body>
+
+<script type="text/javascript">
+    document.getElementById('anotherEntryButton').onclick = () => {location.href = '/input'}
+    document.getElementById('returnToHome').onclick = () => {location.href = '/'}
+</script>
 </html>

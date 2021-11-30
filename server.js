@@ -93,7 +93,6 @@ app.get("/search", async (req, res) => {
 //About Page
 app.get('/about', (req,res) =>{
     res.render('aboutPage.ejs')
-    if(err){console.log(error)}
 })
 
 //Contact Page
@@ -179,12 +178,16 @@ app.get('/input', (req,res)=>{
             })
   
           fs.unlinkSync(path);
-          res.redirect('/');
+          res.redirect('/entryAdded');
         }
       );
       
     });
   });
+
+app.get('/entryAdded', (req,res)=>{
+  res.render('completedEntry.ejs')
+})
 
 
 app.listen(PORT, ()=>{
