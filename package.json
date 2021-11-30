@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/helloitsrufio/Southern-Paiute-Talking-Dictionary#readme",
   "dependencies": {
+    "busboy": "^0.3.1",
     "cloudinary": "^1.27.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",

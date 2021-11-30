@@ -13,27 +13,15 @@ let db,
     dbConnectionStr = process.env.DB_STRING,
     dbName = 'SouthernPaiute'
     PORT = process.env.PORT || 8000
-      // databaseName = process.env.databaseName
-      // username = process.env.username
-      // password = process.env.password
-      // cluster = process.env.cluster
-
-
-// mongoose.connect(
-// `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${databaseName}?retryWrites=true&w=majority`, {useNewUrlParser: true})
-//     .then(client => {
-//         console.log(`Connected to ${dbName} Database`)
-//         db = client.db(dbName)
-//   })
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
     .then(client => {
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
-    // .catch((err) =>{
-    //   console.error("Failure to connect: ", err.message, err.stack)
-    // })
+    .catch((err) =>{
+      console.error("Failure to connect: ", err.message, err.stack)
+    })
 
 //Using EJS for views
 app.set("view engine", "ejs");
@@ -44,10 +32,12 @@ app.use(express.urlencoded({ extended : true}))//method inbuilt in express to re
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 
 //Home Page
-
+app.get('/', (req,res) =>{
+  res.render('homePage.ejs')
+})
 //Search Results Page
-app.get("/", async (req, res) => {
-    res.render('homePage.ejs')
+app.get("/search", async (req, res) => {
+    res.render('searchResults.ejs')
 
     let { searchResult } = await req.query;
     const regex = new RegExp(searchResult, "gi");
@@ -66,9 +56,6 @@ app.get("/", async (req, res) => {
     } catch (err) {
       console.error(err);
     }
-    //POST /:resource_type/explicit
-    //explicit used for already uploaded media
-    //cloudinary.v2.uploader.explicit(public_id, options, callback);
 
   });
 // app.get('/search', (req, res) =>  {
@@ -126,44 +113,6 @@ app.get('/input', (req,res)=>{
     res.render('inputPage.ejs')
 })
 
-app.post('/profile', upload.array(), function (req, res, next) {
-  console.log(req.body)
-  res.json(req.body)
-})
-
-// app.post('/addEntry', upload.array(), (req,res) =>{
-
-  // multer({
-  //   storage: multer.diskStorage({}),
-  //   fileFilter: (req, file, cb) => {
-  //     let ext = path.extname(file.originalname);
-  //     if (ext !== ".mp3" && ext !== ".mp4" && ext !== ".wav") {
-  //       cb(new Error("File type is not supported"), false);
-  //       return;
-  //     }
-  //     cb(null, true);
-  //   },
-  // });
-   
-  
-  
-
-  // try {
-  //   console.log(req.body)
-  //   const result = await cloudinary.uploader.upload(req.files.path)
-  //   await db.collection("SouthernPaiute").insertOne(
-  //     {wordInput: req.body.wordInput, audioInput: result, phoneticInput: req.body.phoneticInput, grammaticalInput: req.body.grammaticalInput, translationInput: req.body.translationInput, exampleInput: req.body.exampleInput, })
-  //     ///for the audio input, changed req.body.audioInput to 'result' to implement the 'result' var. Not sure if that's how it works or not.
-  //     .then(result => {
-  //       console.log(result)
-  //       res.redirect('/')
-  //     })
-  //     //added the .then because the async (res) param wasn't being used, and with this code it is. Not sure if it works or not. 
-  // }catch (err) {
-  //   console.log(err)
-  // }
-  // })
-
   app.post("/addEntry", async (req, res) => {
     // Get the file name and extension with multer
     const storage = multer.diskStorage({
@@ -176,7 +125,7 @@ app.post('/profile', upload.array(), function (req, res, next) {
   
     // Filter the file to validate if it meets the required audio extension
     const fileFilter = (req, file, cb) => {
-      if (file.mimetype === "audio/mp3" || file.mimetype === "audio/mpeg") {
+      if (file.mimetype === "audio/mp3" || file.mimetype === "audio/wav") {
         cb(null, true);
       } else {
         cb(
@@ -191,7 +140,6 @@ app.post('/profile', upload.array(), function (req, res, next) {
     // Set the storage, file filter and file size with multer
     const upload = multer({
       storage,
-     
       fileFilter,
     }).single("audio");
   
@@ -211,7 +159,7 @@ app.post('/profile', upload.array(), function (req, res, next) {
       const { path } = req.file; // file becomes available in req at this point
   
       const fName = req.file.originalname.split(".")[0];
-      let result = cloudinary.uploader.upload(
+       cloudinary.uploader.upload( //got rid of 'result' var because it wasn't being used and wasn't in source code.
         path,
         {
           resource_type: "raw",
