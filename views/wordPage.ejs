@@ -27,29 +27,35 @@
     </nav>
 
     <!-- Word info section -->
+    <section>
+        <% if(searchQueryResults){ %>   
+            <section>
+                <h1><%= `${searchQueryResults.wordInput}` %></h1>
+                <button><i class="fas fa-volume-up"><%= `${searchQueryResults.audioInput}` %></i></button>
+            </section>
+            <section>
+                <span><%= `${searchQueryResults.grammaticalInput}` %></span>
+                <section class='translation'>
+                    <h2>Translation</h2>
+                    <span><%= `${searchQueryResults.translationInput}`%></span>
+                </section>
+                <section class="example">
+                    <h2>Example</h2>
+                    <span><%= `${searchQueryResults.exampleInput}` %></span>
+                </section>
+                <section class='more'>
+                    <h2>See More</h2>
+                    <span><%= %></span>
+                    <span><%= %></span>
+                    <button>More</button>
+                </section>
+            </section>
+            <% } %>
+        <% } else { %>
+            <span>No entry found. <strong><%= searchQuery %></strong></span><% } %>
+        </section>
     <section class='wordInfo'>
-        <section>
-            <h1></h1>
-            <button><i class="fas fa-volume-up"></i></button>
-        </section>
-        <section>
-            <span><%=  %></span>
-            <section class='translation'>
-                <h2>Translation</h2>
-                <span><%= %></span>
-            </section>
-            <section class="example">
-                <h2>Example</h2>
-                <span><%= %></span>
-                <span><%= %></span>
-            </section>
-            <section class='more'>
-                <h2>See More</h2>
-                <span><%= %></span>
-                <span><%= %></span>
-                <button>More</button>
-            </section>
-        </section>
+        
     </section>
 
     <!-- Footer -->

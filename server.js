@@ -44,59 +44,51 @@ app.get('/', (req,res) =>{
   res.render('homePage.ejs')
 })
 //Search Results Page
-app.get("/search", async (req, res) => {
-    res.render('searchResults.ejs')
+// app.get("/search", async (req, res) => {
+//     res.render('searchResults.ejs')
  
-    let { searchResult } = await req.query;
-    const regex = new RegExp(searchResult, "gi");
-    try {
-      const dictionaryDB = await db
-        .collection("SouthernPaiute")
-        .find({
-           result: { $regex: regex } 
-        })
-        .toArray();
-      console.log(dictionaryDB);
-      if (dictionaryDB.length) {
-        return res.render("searchResults.ejs", { searchQueryResults: dictionaryDB });
-      }
-      return res.render("searchResults.ejs", { searchQueryResults: null });
-    } catch (err) {
-      console.error(err);
-    }
- 
-  });
-
-  // app.get('/search', (req, res) =>  {
-//   getResult: async (req,res) => {
-//       try {
-//           const results = await Result.findbyId({req.params.id})
-//           .then((data) => {
-//               if (!data) {
-//                   return res.status(404).send({
-//                       message: "Sorry, that result can't be found."
-//                   })
-//               }
-//           })
+//     let { searchResult } = await req.query;
+//     const regex = new RegExp(searchResult, "gi");
+//     try {
+//       const dictionaryDB = await db
+//         .collection("SouthernPaiute")
+//         .find({
+//            result: { $regex: regex } 
+//         })
+//         .toArray();
+//       console.log(dictionaryDB);
+//       if (dictionaryDB.length) {
+//         return res.render("searchResults.ejs", { searchQueryResults: dictionaryDB });
 //       }
-//   }
-//   db.collection('SouthernPaiute').find({}, { projection: {_id:}}).toArray()
-//   .then(data => {
-//       console.log(data)
-//       res.render('searchResults.ejs', { info: data })
-// //   })
-//   .catch(error => console.error(error))
-// })
+//       return res.render("searchResults.ejs", { searchQueryResults: null });
+//     } catch (err) {
+//       console.error(err);
+//     }
+ 
+//   });
 
   app.get('/:id', (req,res) =>{
-    db.collection('SouthernPaiute').find({}, { projection: {_id: 0, wordInput: 1, grammaticalInput: 1, translationInput: 1}}).toArray()
+    let name = req.query.search;
+    db.collection('SouthernPaiute').find({
+            translationInput: {$regex: new RegExp(`.*${name}.*`,'gi')}}).toArray()
+    //  { projection: {_id: 0, wordInput: 1, grammaticalInput: 1, translationInput: 1}}).toArray()
     .then(data => {
-        console.log(data)
-        res.render('wordPage.ejs', { info: data })
+        console.log(req.query.search)
+        res.render('searchResults.ejs', {searchQueryResults: data, searchQuery: name})
     })
     .catch(error => console.error(error))
   })
- 
+
+  app.get('/word:id', (req,res) =>{
+    let name = req.query.id;
+    console.log(req.query)
+    db.collection('SouthernPaiute').find({
+            _id: result})
+    .then(data => {
+        res.render('wordPage.ejs', {searchQueryResults: data, searchQuery: name})
+    })
+    .catch(error => console.error(error))
+  })
  
  
 //About Page

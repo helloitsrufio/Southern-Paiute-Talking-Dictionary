@@ -27,19 +27,23 @@
     </nav>
 
     <!-- Body of page -->
-    <button><i class="fas fa-arrow-alt-circle-left"></i></button>
     <section>
-        <h1>Search results for <%= %></h1>
-        <section>
-            <section class="wordData">
-                <h4><%= `${searchQueryResults.wordInput}`%></h4>
-                <!-- result -->
-                <span><%= `${searchQueryResults.grammaticalInput}`%></span>
-                <!-- type of result (word) -->
-            </section>
-            <span><%= `${searchQueryResults.translationInput}%></span>
-            <!-- translation -->
+        <% if(searchQueryResults && searchQueryResults.length){ %>
+            <h1>Search Results for <%= searchQuery %></h1>
+            <ul>
+            <% for(let result of searchQueryResults) { %>    
+                <li>
+                <strong>Translation:</strong> <%= result.translationInput %><br> 
+                <strong>Word:</strong>  <%= result.wordInput %>
+                <h1><%= `${result._id}` %></h1>
+                <a href="/word?id=<%=result._id %>">Click Here</a>
+                </li>
+            <% } %>
+            </ul>
+        <% } else { %>
+            <span>No Results for search: <strong><%= searchQuery %></strong></span><% } %>
         </section>
+        
         <p>No more search results could be found.</p>
     </section>
 
@@ -47,7 +51,7 @@
         <footer>
             <section class='footer-container'>
                 <h3>© 2021 - Cedar Band of Paiutes</h3>
-                <h3 id='attribution'>Created By<a href='https://ruthreed.netlify.app/'>Ruth Reed</a></h3>
+                <h3 id='attribution'>Created By<a href='https://ruthreed.dev/'>Ruth Reed</a></h3>
             </section>
         </footer>
 </body>
