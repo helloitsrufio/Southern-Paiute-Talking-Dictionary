@@ -35,8 +35,8 @@
                 <li>
                 <strong>Translation:</strong> <%= result.translationInput %><br> 
                 <strong>Word:</strong>  <%= result.wordInput %>
-                <h1><%= `${result._id}` %></h1>
-                <a href="/word?id=<%=result._id %>">Click Here</a>
+                <!-- has an additional / because it's a param, not a query -->
+                <a href="/word/<%= result._id %>">Click Here</a>
                 </li>
             <% } %>
             </ul>

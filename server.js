@@ -2,9 +2,10 @@ require('dotenv').config()
  
 //Brings express into the app
 const express = require('express')
-const fs = require('fs')
+// const fs = require('fs')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
+const ObjectId = require('mongodb').ObjectId
 const cloudinary = require('cloudinary').v2
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -33,6 +34,7 @@ app.use(express.static('views'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
  
+//look into this and explain it: npmjs.com/package/express-fileupload
 const fileUpload = require('express-fileupload')
 app.use(fileUpload({
     useTempFiles: true,
@@ -43,51 +45,32 @@ app.use(fileUpload({
 app.get('/', (req,res) =>{
   res.render('homePage.ejs')
 })
-//Search Results Page
-// app.get("/search", async (req, res) => {
-//     res.render('searchResults.ejs')
- 
-//     let { searchResult } = await req.query;
-//     const regex = new RegExp(searchResult, "gi");
-//     try {
-//       const dictionaryDB = await db
-//         .collection("SouthernPaiute")
-//         .find({
-//            result: { $regex: regex } 
-//         })
-//         .toArray();
-//       console.log(dictionaryDB);
-//       if (dictionaryDB.length) {
-//         return res.render("searchResults.ejs", { searchQueryResults: dictionaryDB });
-//       }
-//       return res.render("searchResults.ejs", { searchQueryResults: null });
-//     } catch (err) {
-//       console.error(err);
-//     }
- 
-//   });
 
-  app.get('/:id', (req,res) =>{
+//Search Results Page
+  app.get('/searchResults', (req,res) =>{
     let name = req.query.search;
     db.collection('SouthernPaiute').find({
+      //returning full result and using translationInput as the search parameter
+      //.* = anything. So by putting the name in the middle, you're looking for anything with that in it.
             translationInput: {$regex: new RegExp(`.*${name}.*`,'gi')}}).toArray()
-    //  { projection: {_id: 0, wordInput: 1, grammaticalInput: 1, translationInput: 1}}).toArray()
     .then(data => {
-        console.log(req.query.search)
         res.render('searchResults.ejs', {searchQueryResults: data, searchQuery: name})
     })
     .catch(error => console.error(error))
   })
 
-  app.get('/word:id', (req,res) =>{
-    let name = req.query.id;
-    console.log(req.query)
-    db.collection('SouthernPaiute').find({
-            _id: result})
-    .then(data => {
-        res.render('wordPage.ejs', {searchQueryResults: data, searchQuery: name})
-    })
-    .catch(error => console.error(error))
+  //Get specific entry/word
+  app.get('/word/:id', (req,res) =>{
+    let name = req.params.id;
+    try{
+      db.collection('SouthernPaiute').findOne(
+        {'_id':ObjectId(name)}).then(data => {
+          res.render('wordPage.ejs', {searchQueryResults: data})
+        })
+    }
+    catch(error){
+      console.error(error)
+    }
   })
  
  
