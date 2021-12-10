@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
 
-    <link rel='stylesheet' href='../CSS/aboutPage.css'>
+    <link rel='stylesheet' href='../CSS/wordPage.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
@@ -27,16 +27,22 @@
     </nav>
 
     <!-- Word info section -->
-    <section>
+    <a href = '/searchResults'>
+        <i class="fas fa-arrow-circle-left fa-3x"></i>
+    </a>
+    <section class = 'entry'>
         <% if(searchQueryResults){ %>   
-            <section>
+            <section class='wordAndAudio'>
                 <h1><%= searchQueryResults.wordInput %></h1>
                 <audio controls>
                     <source src="<%= searchQueryResults.audioInput.url %>" type='audio/wav'>
                 </audio>
             </section>
-            <section>
-                <span><%= searchQueryResults.grammaticalInput %></span>
+            <section class='entryData'>
+                <section class='phoneticAndGrammaticalInput'>
+                    <span><%= searchQueryResults.phoneticInput %></span>
+                    <span><%= searchQueryResults.grammaticalInput %></span>
+                </section>
                 <section class='translation'>
                     <h2>Translation</h2>
                     <span><%= searchQueryResults.translationInput %></span>
@@ -45,8 +51,9 @@
                     <h2>Example</h2>
                     <span><%= searchQueryResults.exampleInput %></span>
                 </section>
+                <!-- commenting the following section out because I need to add functionality for looking up related terms. -->
                 <section class='more'>
-                    <h2>See More</h2>
+                    <h2>See More</h2> 
                     <!-- <span><%= %></span>
                     <span><%= %></span> -->
                     <button>More</button>
