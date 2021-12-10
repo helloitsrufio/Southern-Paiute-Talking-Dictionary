@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
 
-    <link rel='stylesheet' href='../CSS/aboutPage.css'>
+    <link rel='stylesheet' href='../CSS/searchResults.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
@@ -27,23 +27,27 @@
     </nav>
 
     <!-- Body of page -->
-    <section>
+    <a href = '/input'>
+        <i class="fas fa-arrow-circle-left fa-3x"></i>
+    </a>
+    <section class='h1Box'>
+        <h1 id='bodyH1'>Search results for '<%= searchQuery %>'</h1>
+    </section>
+    <section class='results'
         <% if(searchQueryResults && searchQueryResults.length){ %>
-            <h1>Search Results for <%= searchQuery %></h1>
             <ul>
             <% for(let result of searchQueryResults) { %>    
                 <li>
-                <strong>Translation:</strong> <%= result.translationInput %><br> 
-                <strong>Word:</strong>  <%= result.wordInput %>
+                <strong><%= result.wordInput %></strong>
+                <span><%= result.translationInput %><br></span>
+
                 <!-- has an additional / because it's a param, not a query -->
-                <a href="/word/<%= result._id %>">Click Here</a>
+                <a href="/word/<%= result._id %>" class='clickHere'>Click here to see more.</a>
                 </li>
             <% } %>
             </ul>
         <% } else { %>
             <span>No Results for search: <strong><%= searchQuery %></strong></span><% } %>
-        </section>
-        
         <p>No more search results could be found.</p>
     </section>
 

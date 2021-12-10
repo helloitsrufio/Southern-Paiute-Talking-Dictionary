@@ -4,6 +4,10 @@ require('dotenv').config()
 const express = require('express')
 // const fs = require('fs')
 const app = express()
+const cors = require('cors')
+const nodemailer = require('nodemailer')
+const multiparty = require('multiparty')
+
 const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectId
 const cloudinary = require('cloudinary').v2
@@ -33,6 +37,7 @@ app.set("view engine", "ejs");
 app.use(express.static('views'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
+app.use(cors({ origin: "*"}))
  
 //look into this and explain it: npmjs.com/package/express-fileupload
 const fileUpload = require('express-fileupload')
@@ -83,7 +88,10 @@ app.get('/about', (req,res) =>{
 app.get('/contact', (req,res) =>{
     res.render('contactPage.ejs')
 })
- 
+
+app.get('/send', (req,res) =>{
+  res.sendFile(process.cwd())
+})
 //Alphabet Page
 app.get('/alphabet', (req,res)=>{
     try {res.render('alphabetPage.ejs')
