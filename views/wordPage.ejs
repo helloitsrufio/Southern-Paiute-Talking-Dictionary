@@ -9,7 +9,7 @@
     <link rel='stylesheet' href='../CSS/wordPage.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/9213c82d7b.js" crossorigin="anonymous"></script> 
 </head>
 
@@ -27,6 +27,7 @@
     </nav>
 
     <!-- Word info section -->
+    <!-- Need to add functionality to back button to make it go back to the search results. Right now it goes to the search results, but doesn't remember the search query. -->
     <a href = '/searchResults'>
         <i class="fas fa-arrow-circle-left fa-3x"></i>
     </a>
@@ -40,18 +41,22 @@
             </section>
             <section class='entryData'>
                 <section class='phoneticAndGrammaticalInput'>
-                    <span><%= searchQueryResults.phoneticInput %></span>
-                    <span><%= searchQueryResults.grammaticalInput %></span>
+                    <span id ='phonetic'><%= searchQueryResults.phoneticInput %></span>
+                    <span id='grammar'><%= searchQueryResults.grammaticalInput %></span>
                 </section>
                 <section class='translation'>
                     <h2>Translation</h2>
                     <span><%= searchQueryResults.translationInput %></span>
                 </section>
+                <!-- Need to add option of if(!searchQueryResults.exampleInput){
+                    <span> No additional example available. </span> 
+                } 
+                But I can't figure it out with EJS yet.-->
                 <section class="example">
                     <h2>Example</h2>
                     <span><%= searchQueryResults.exampleInput %></span>
                 </section>
-                <!-- commenting the following section out because I need to add functionality for looking up related terms. -->
+                <!-- Need to add functionality for looking up related terms. -->
                 <section class='more'>
                     <h2>See More</h2> 
                     <!-- <span><%= %></span>
