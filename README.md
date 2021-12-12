@@ -14,32 +14,23 @@ View project [here](https://southernpaiutedictionary.herokuapp.com/).
 ## Details of Application
 This application is a search engine that can search the database for the Southern Paiute language and return relevant words, phrases, and sentences. 
 
-This is what the home page looks like. The user can search the database from here.
-![Screenshot of home page](views\CSS\Images\Homepage.png)
+It includes the following pages:
+- **Home page**: The user can search the database from here.
+- **Search results page**: The search results include all words, phrases, and sentences that contain the user's query. 
+- **(Word) Entry page**: All of the entries have the following information:
+  - _The word written in Southern Paiute_
+  - _How it is written in the International Phonetic Alphabet_
+  - _Relevant grammatical information_ 
+  - _The translation of the word, phrase, or sentence_
+  - _An example_ (when provided) 
+  - _Related terms_
+  - _An audio file:_ These audio files have been gathered over the last five years through language sessions with a tribal elder. It is our hope that, even if people can't read the Southern Paiute alphabet, they will still know how to pronounce the words due to these audio files. In addition, the inclusion of the audio should, to a certain extent, preserve the pronunciation of the language as it is right now. 
+- **About page**: This application includes an about page in which users can understand the background and purpose of the project.
+- **Contact page**: The application includes a contact page in case the users wish to contact the project team. 
+- **Input page**: A page in which an administrator can add relevant (word) entries to the database.
+- **Alphabet page**: Explains the alphabet this application/language uses.
 
-The search results include all words, phrases, and sentences that contain the user's query. 
-![Screenshot of search page](views\CSS\Images\SearchPage.png)
-
-All of the entries have the following information:
-  - **The word written in Southern Paiute** 
-  - **How it is written in the International Phonetic Alphabet**
-  - **Relevant grammatical information** 
-  - **The translation of the word, phrase, or sentence** 
-  - **An example** (when provided) 
-  - **Related terms** 
-  - **An audio file:** These audio files have been gathered over the last five years through language sessions with a tribal elder. It is our hope that, even if people can't read the Southern Paiute alphabet, they will still know how to pronounce the words due to these audio files. In addition, the inclusion of the audio should, to a certain extent, preserve the pronunciation of the language as it is right now. 
-
-![Screenshot of entry page](views\CSS\Images\WordPage.png)
-
-
-This application includes an about page in which users can understand the background and purpose of the project.
-![Screenshot of about page](views\CSS\Images\AboutPage1.png)
-
-It also includes a contact page in case the users wish to contact the project team. 
-![Screenshot of contact page.](views\CSS\Images\ContactPage.png)
-
-Since the inception and design of the project, two additional pages have been added. These are an alphabet page, to explain the alphabet this application uses, and an input page, so that an administrator can add relevant entries to the database. While there is no mockup for the alphabet page as of right now, the input page is as follows:
-![Screenshot of input page.](views\CSS\Images\InputPage.png)
+You can see a screenshot of all these pages (except for the alphabet page, which is under construction) in this repository under views/CSS/Images.
 
 ## Technologies Used
 Made with **Node.js**, **Express**, **MongoDB**, **JavaScript**, **EJS**, **Cloudinary**, and **CSS3**.
@@ -84,6 +75,8 @@ To get the values for these environment variables, you will need to
 - [ ] Add content and styling to `Alphabet` page
 - [ ] Reprogram the front-end in React
 - [ ] Add photos of team and team members for `About` page
+- [ ] Add a page in which the admin can update entries to database
+- [ ] Add a button which enables the admin to delete an entry from the database
 
 ## Contact
 If you have questions, concerns, suggestions, or anything else, feel free to email the developer, Ruth Reed, at [ruthreed.dev@gmail.com](mailto:ruthreed.dev@gmail.com).
