@@ -100,6 +100,7 @@ nav li:hover{
     flex-direction: column;
     margin: 2vh;
     line-height: 2rem;
+    width: 50vh;
     padding-bottom: .7rem;
     border-bottom: 1px solid lightgray;
 }
@@ -129,7 +130,7 @@ footer{
     width:102.5%;
     height:1em;   /* Height of the footer */
     margin-left:-1em;
-    margin-top: 40vh;
+    margin-top: 26.5vh;
     background:#545454;
     padding: 1em;
     border-top: 10px solid #2184AA;

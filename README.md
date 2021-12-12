@@ -15,11 +15,10 @@ View project [here](https://southernpaiutedictionary.herokuapp.com/).
 This application is a search engine that can search the database for the Southern Paiute language and return relevant words, phrases, and sentences. 
 
 This is what the home page looks like. The user can search the database from here.
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/wnQQDNC" data-context="false" ><a href="//imgur.com/a/wnQQDNC"></a></blockquote>
-![Screenshot of home page design, including search bar.](https://share.getcloudapp.com/GGu4mKxY)
+![Screenshot of home page](views\CSS\Images\Homepage.png)
 
 The search results include all words, phrases, and sentences that contain the user's query. 
-![Screenshot of search page design.](https://imgur.com/a/95cd0Vq)
+![Screenshot of search page](views\CSS\Images\SearchPage.png)
 
 All of the entries have the following information:
   - **The word written in Southern Paiute** 
@@ -30,18 +29,17 @@ All of the entries have the following information:
   - **Related terms** 
   - **An audio file:** These audio files have been gathered over the last five years through language sessions with a tribal elder. It is our hope that, even if people can't read the Southern Paiute alphabet, they will still know how to pronounce the words due to these audio files. In addition, the inclusion of the audio should, to a certain extent, preserve the pronunciation of the language as it is right now. 
 
-![Screenshot of entry page design, including the entry, audio file, IPA, translation, and example.](https://imgur.com/a/AY2oKNs)
+![Screenshot of entry page](views\CSS\Images\WordPage.png)
 
 
 This application includes an about page in which users can understand the background and purpose of the project.
-![Screenshot of about page design.](https://i.imgur.com/S7dV0BD.png)
-![(Continued) Screenshot of about page design.](https://imgur.com/ofCBbwR)
+![Screenshot of about page](views\CSS\Images\AboutPage1.png)
 
 It also includes a contact page in case the users wish to contact the project team. 
-![Screenshot of contact page.](https://imgur.com/a/E4TXnVN)
+![Screenshot of contact page.](views\CSS\Images\ContactPage.png)
 
-Since the inception and design of the project, two additional pages have been added. These are an alphabet page, to explain the alphabet this application uses, and an input page, so that an administrator can add relevant entries to the database. While there is no mockup for the alphabet page as of right now, the input page is as follows.
-![Screenshot of contact page.](https://i.imgur.com/a/E4TXnVN)
+Since the inception and design of the project, two additional pages have been added. These are an alphabet page, to explain the alphabet this application uses, and an input page, so that an administrator can add relevant entries to the database. While there is no mockup for the alphabet page as of right now, the input page is as follows:
+![Screenshot of input page.](views\CSS\Images\InputPage.png)
 
 ## Technologies Used
 Made with **Node.js**, **Express**, **MongoDB**, **JavaScript**, **EJS**, **Cloudinary**, and **CSS3**.
