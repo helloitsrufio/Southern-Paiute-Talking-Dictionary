@@ -89,6 +89,45 @@ app.get('/contact', (req,res) =>{
     res.render('contactPage.ejs')
 })
 
+app.post('/send', async (req,res) =>{
+
+  const {userEmail, userMessage, userName} = req.body
+
+  let testAccount = await nodemailer.createTestAccount();
+
+  const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      secure: true,
+      auth: {
+          user: process.env.EMAIL, 
+          pass: process.env.PASS
+      }
+  })
+
+const message = {
+  from: `${userName}`,
+  to: 'speakpaiute@gmail.com',
+  subject: `Sent from: ${userEmail}`,
+  text: `${userMessage}`,
+};
+console.log(message)
+
+//3.
+try{
+  transporter.sendMail(message, (err,data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Something went wrong.");
+    }else {
+      res.status(200).send("Email successfully sent to recipient!");
+    }
+  });
+} catch (err) {
+    console.log(err)
+}
+
+})
+
 app.get('/send', (req,res) =>{
   res.sendFile(process.cwd())
 })
