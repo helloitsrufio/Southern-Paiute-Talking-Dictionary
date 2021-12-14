@@ -67,7 +67,7 @@ To get the values for these environment variables, you will need to
 ## What still needs to be done
 - [ ] Make overall site more responsive for various screen widths (each page need this adjustment)
   - [ ] Make site mobile-friendly
-- [ ] Make contact form functional
+- [x] Make contact form functional
 - [ ] Disable search history in search bar
 - [ ] Make a button/link to access input page
   - [ ] Set up auth for admin (in order to access input page)
