@@ -99,8 +99,12 @@ app.post('/send', async (req,res) =>{
       service: 'gmail',
       secure: true,
       auth: {
-          user: process.env.EMAIL, 
-          pass: process.env.PASS
+        type: 'OAuth2',
+        user: process.env.EMAIL, 
+        clientId:process.env.CLIENT_ID,
+        clientSecret:process.env.CLIENT_SECRET,
+        refreshToken:process.env.REFRESH_TOKEN,
+        accessToken:process.env.ACCESS_TOKEN,
       }
   })
 
@@ -112,7 +116,6 @@ const message = {
 };
 console.log(message)
 
-//3.
 try{
   transporter.sendMail(message, (err,data) => {
     if (err) {
@@ -125,7 +128,6 @@ try{
 } catch (err) {
     console.log(err)
 }
-
 })
 
 app.get('/send', (req,res) =>{
