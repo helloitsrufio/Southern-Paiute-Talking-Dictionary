@@ -101,11 +101,11 @@ app.post('/send', async (req,res) =>{
     'https://developer.google.com/oauthplayground'
   )
 
-    myOAuth2Client.setCredentials(
-      process.env.REFRESH_TOKEN
-    )
+    myOAuth2Client.setCredentials({
+      refresh_token: process.env.REFRESH_TOKEN
+    })
 
-  const myAccessToken = myOAuth2Client.getAccessToken()
+  const accessToken = myOAuth2Client.getAccessToken()
   
 
   const transporter = nodemailer.createTransport({
@@ -115,10 +115,10 @@ app.post('/send', async (req,res) =>{
       auth: {
         type: 'OAuth2',
         user: process.env.EMAIL, 
-        clientId,
-        clientSecret,
-        refreshToken,
-        accessToken: myAccessToken,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN,
+        accessToken: accessToken,
       },
       tls: {
         rejectUnauthorized: false
