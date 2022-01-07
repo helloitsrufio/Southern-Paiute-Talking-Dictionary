@@ -7,6 +7,7 @@ const app = express()
 const cors = require('cors')
 const nodemailer = require('nodemailer')
 const multiparty = require('multiparty')
+const OAuth2 = require('@googleapis/oauth2')
 
 const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectId
@@ -38,7 +39,6 @@ app.use(express.static('views'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(cors({ origin: "*"}))
- 
 //look into this and explain it: npmjs.com/package/express-fileupload
 const fileUpload = require('express-fileupload')
 app.use(fileUpload({
@@ -94,6 +94,17 @@ app.post('/send', async (req,res) =>{
   const {userEmail, userMessage, userName} = req.body
 
   let testAccount = await nodemailer.createTestAccount();
+  const myOAuth2Client = new OAuth2 ({
+    clientId:process.env.CLIENT_ID,
+    clientSecret:process.env.CLIENT_SECRET,}
+    )
+
+    myOAuth2Client.setCredentials({
+      refreshToken:process.env.REFRESH_TOKEN
+    })
+
+  const myAccessToken = myOAuth2Client.getAccessToken()
+  
 
   const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -102,10 +113,10 @@ app.post('/send', async (req,res) =>{
       auth: {
         type: 'OAuth2',
         user: process.env.EMAIL, 
-        clientId:process.env.CLIENT_ID,
-        clientSecret:process.env.CLIENT_SECRET,
-        refreshToken:process.env.REFRESH_TOKEN,
-        accessToken:process.env.ACCESS_TOKEN,
+        clientId,
+        clientSecret,
+        refreshToken,
+        myAccessToken,
       }
   })
 
