@@ -101,9 +101,9 @@ app.post('/send', async (req,res) =>{
     'https://developer.google.com/oauthplayground'
   )
 
-    myOAuth2Client.setCredentials({
-      refreshToken:process.env.REFRESH_TOKEN
-    })
+    myOAuth2Client.setCredentials(
+      process.env.REFRESH_TOKEN
+    )
 
   const myAccessToken = myOAuth2Client.getAccessToken()
   
