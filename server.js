@@ -7,7 +7,8 @@ const app = express()
 const cors = require('cors')
 const nodemailer = require('nodemailer')
 const multiparty = require('multiparty')
-const OAuth2 = require('@googleapis/oauth2')
+const { google } = require('googleapis')
+const OAuth2 = google.auth.OAuth2
 
 const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectId
@@ -94,9 +95,10 @@ app.post('/send', async (req,res) =>{
   const {userEmail, userMessage, userName} = req.body
 
   let testAccount = await nodemailer.createTestAccount();
-  const myOAuth2Client = new OAuth2 ({
+  const myOAuth2Client = new OAuth2 (
     clientId:process.env.CLIENT_ID,
-    clientSecret:process.env.CLIENT_SECRET,}
+    clientSecret:process.env.CLIENT_SECRET,
+    'https://developer.google.com/oauthplayground'
     )
 
     myOAuth2Client.setCredentials({
@@ -117,6 +119,9 @@ app.post('/send', async (req,res) =>{
         clientSecret,
         refreshToken,
         myAccessToken,
+      }
+      tls: {
+        rejectUnauthorized: false
       }
   })
 
