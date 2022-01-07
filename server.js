@@ -96,10 +96,10 @@ app.post('/send', async (req,res) =>{
 
   let testAccount = await nodemailer.createTestAccount();
   const myOAuth2Client = new OAuth2 (
-    clientId:process.env.CLIENT_ID,
-    clientSecret:process.env.CLIENT_SECRET,
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
     'https://developer.google.com/oauthplayground'
-    )
+  )
 
     myOAuth2Client.setCredentials({
       refreshToken:process.env.REFRESH_TOKEN
