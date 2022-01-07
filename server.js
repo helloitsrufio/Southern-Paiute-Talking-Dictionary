@@ -93,6 +93,7 @@ app.get('/contact', (req,res) =>{
 app.post('/send', async (req,res) =>{
 
   const {userEmail, userMessage, userName} = req.body
+  console.log(req.body)
 
   let testAccount = await nodemailer.createTestAccount();
   const myOAuth2Client = new OAuth2 (
