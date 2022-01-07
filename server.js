@@ -156,7 +156,7 @@ app.post("/addEntry", async (req, res) => {
           folder: 'AudioUploads/',
           public_id: newfileName,
       }, err => {
-          if (err) res.send(err)
+          if (err) res.send('err')
           try {
               db.collection("SouthernPaiute").insertOne(
                   {
