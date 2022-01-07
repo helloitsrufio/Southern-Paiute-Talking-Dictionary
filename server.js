@@ -118,7 +118,7 @@ app.post('/send', async (req,res) =>{
         clientId,
         clientSecret,
         refreshToken,
-        myAccessToken,
+        accessToken: myAccessToken,
       },
       tls: {
         rejectUnauthorized: false
