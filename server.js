@@ -94,6 +94,7 @@ app.post('/send', async (req,res) =>{
 
   const {userEmail, userMessage, userName} = req.body
   console.log(req.body)
+  //not getting body or console logging it at all. Need to get req.body.
 
   let testAccount = await nodemailer.createTestAccount();
   const myOAuth2Client = new OAuth2 (
@@ -133,6 +134,7 @@ const message = {
   text: `${userMessage}`,
 };
 console.log(message)
+//not console logging the message either, prob because it's not getting req.body.
 
 try{
   transporter.sendMail(message, (err,data) => {
