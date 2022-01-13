@@ -90,6 +90,7 @@ app.get('/contact', (req,res) =>{
     res.render('contactPage.ejs')
 })
 
+//note from 1/13/22: changed the access and refresh tokens and it went from giving us req.body to giving us nothing at all. Just ran the 'something went wrong' err code. So I need to work on those. It's broken even at the local hosting level.
 app.post('/send', async (req,res) =>{
 
   const {userEmail, userMessage, userName} = req.body
@@ -128,13 +129,18 @@ app.post('/send', async (req,res) =>{
   })
 
 const message = {
-  from: `${process.env.userName}`,
+  from: `${userName}`,
   to: 'speakpaiute@gmail.com',
-  subject: `Sent from: ${process.env.userEmail}`,
-  text: `${process.env.userMessage}`,
+  subject: `Sent from: ${userEmail}`,
+  text: `${userMessage}`,
 };
 console.log(message)
 //not console logging the message either, prob because it's not getting req.body.
+
+transporter.verify((err, success) => {
+  err
+    ? console.log(err)
+    : console.log(`=== Server is ready to take messages: ${success} ===`);
 
 try{
   transporter.sendMail(message, (err,data) => {
@@ -148,6 +154,7 @@ try{
 } catch (err) {
     console.log(err)
 }
+})
 })
 
 app.get('/send', (req,res) =>{
