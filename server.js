@@ -96,7 +96,6 @@ app.post('/send', async (req,res) =>{
   console.log(req.body)
   //not getting body or console logging it at all. Need to get req.body.
 
-  let testAccount = await nodemailer.createTestAccount();
   const myOAuth2Client = new OAuth2 (
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
@@ -111,6 +110,7 @@ app.post('/send', async (req,res) =>{
   
 
   const transporter = nodemailer.createTransport({
+      // service: 'gmail',
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
@@ -128,10 +128,10 @@ app.post('/send', async (req,res) =>{
   })
 
 const message = {
-  from: `${userName}`,
+  from: `${process.env.userName}`,
   to: 'speakpaiute@gmail.com',
-  subject: `Sent from: ${userEmail}`,
-  text: `${userMessage}`,
+  subject: `Sent from: ${process.env.userEmail}`,
+  text: `${process.env.userMessage}`,
 };
 console.log(message)
 //not console logging the message either, prob because it's not getting req.body.
