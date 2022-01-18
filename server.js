@@ -120,7 +120,7 @@ app.post('/send', async (req,res) =>{
         user: process.env.EMAIL, 
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.REFRESH_TOKEN,
+        refresh_token: process.env.REFRESH_TOKEN,
         accessToken: accessToken,
       },
       tls: {
