@@ -94,10 +94,9 @@ footer{
     position:absolute;
     bottom:0;
     width:102%;
-    height:20vh;   /* Height of the footer */
+    height:8vh;   /* Height of the footer */
     margin-left:-1em;
     background:#545454;
-    padding: 1em;
     border-top: 10px solid #2184AA;
 }
 
@@ -106,7 +105,11 @@ footer{
     flex-direction: column; 
     color:white; 
     background-color: #545454;
-    padding: 0em;
+}
+
+#copyright {
+    padding-top:1vh;
+    margin:0vh;
 }
 
 #attribution{
@@ -114,8 +117,8 @@ footer{
     justify-content: center;
     font-size: .8em;
     color: white;
-     padding-left: 98vh;
-    margin: .2em 0em .5em -65em;
+    padding: 0vh;
+    margin:.4vh;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -138,50 +141,45 @@ a:hover {
 
 /* Media queries */
 
-@media screen and (max-width:1570px){
+@media screen and (max-width:1833px){
     /* nav */
-        nav h1{ margin-right:20em; }
-        nav li{ padding:0em 2em 0em 3em; }
-    /* footer */
-        .footer-container { margin: -1em -3em 0em -5em; }
-        #attribution{ margin: .2em 0em .5em -91em; }
+        nav h1{ margin-right:30em; }
     }
     
-@media screen and (max-width:1442px){
-        nav h1{ margin-right:15em; }
+@media screen and (max-width:1761px){
+        nav h1{ margin-right:26em; }
     }
  
-@media screen and (max-width:1322px) {
-    nav h1{ margin-right:8em; }
+@media screen and (max-width:1665px) {
+    nav h1{ margin-right:20em; }
 }
 
-@media screen and (max-width:1152px) {
+@media screen and (max-width:1521px) {
    nav h1{ 
-       margin-right:0em;
-       margin-left:1em; }
-       /* Footer */
-   footer{ width:103%; }
+       margin-right:15em;
 }
 
-@media screen and (max-width:986px){
-   nav li{ padding:0em 1em 0em 2em; }
+@media screen and (max-width:1401px){
+   nav h1{ margin-right: 10em; }
 }
 
-@media screen and (max-width:858px){
+@media screen and (max-width:1281px){
     nav li{ padding:0em 1em 0em 1em; }
 }
 
-@media screen and (max-width:794px){
+@media screen and (max-width:1091px){
     nav li{ padding:0em 1em 0em 0em; }
-    footer{ width:105%; }
+    /* footer{ width:105%; } */
 }
 
-@media screen and (max-width:730px){
+@media screen and (max-width:1019px){
     nav li{ padding:0em 0em 0em .5em; }
 }
 
-@media screen and (max-width:698px){
-    nav{ margin:-1em; }
+@media screen and (max-width:989px){
+    nav h1{ 
+        padding-right:8em;
+        margin-right:10em;  }
 }
 
 /* Hamburger menu here */
