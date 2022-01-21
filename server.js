@@ -79,7 +79,28 @@ app.get('/', (req,res) =>{
     }
   })
  
- 
+  //Note as of 1/20/22. I wasn't able to get this to work, though I did set up the update input page. I thought it would work, but it didn't because searchQueryResults is not defined. This is extremely confusing to me because it worked in the get request above and I did try to include it in the findOneAndUpdate. Maybe it doesn't work in the params in a put request, or just in the findOneAndUpdate? I'm not sure, but that's what I need to figure out.
+  app.put('/update', (req,res)=>{
+    let name = req.params.id;
+    try{
+      db.collection('SouthernPaiute').findOneAndUpdate(
+        {'_id':ObjectId(name).then(data => {
+          res.render('updateInputPage.ejs', {searchQueryResults: data})
+        })},{
+          wordInput: req.body.wordInput,
+          audioInput: newfileName,
+          phoneticInput: req.body.phoneticInput,
+          grammaticalInput: req.body.grammaticalInput,
+          translationInput: req.body.translationInput,
+          exampleInput: req.body.exampleInput,
+      },).then(data => {
+          res.render('updateInputPage.ejs', {searchQueryResults: data})
+        })   
+    } 
+    catch(error) {
+       console.error(error)
+    }
+  })
 //About Page
 app.get('/about', (req,res) =>{
     res.render('aboutPage.ejs')
@@ -171,6 +192,11 @@ app.get('/alphabet', (req,res)=>{
 app.get('/input', (req,res)=>{
     res.render('inputPage.ejs')
 })
+
+//Update Input Page
+app.get('/update',(req,res)=>{
+  res.render('updateInputPage.ejs')
+})
  
 app.post("/addEntry", async (req, res) => {
   let file = Array.isArray(req.files.audio) ? req.files.audio[0] : req.files.audio
@@ -206,7 +232,6 @@ app.post("/addEntry", async (req, res) => {
 app.get('/entryAdded', (req,res)=>{
   res.render('completedEntry.ejs')
 })
- 
  
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
