@@ -10,7 +10,7 @@ const connectDB = require("./config/database");
 const fileUpload = require('express-fileupload')
 const entryRoutes = require('./routes/entry.route')
 const mainRoutes = require('./routes/main.route')
-let PORT = 8000;
+let PORT = process.env.PORT || 8000;
 
 //Connect to DB
  connectDB()
