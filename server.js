@@ -1,238 +1,44 @@
-require('dotenv').config()
- 
+require('dotenv').config({ path: "./config/.env" })
 //Brings express into the app
 const express = require('express')
-// const fs = require('fs')
 const app = express()
+const mongoose = require('mongoose')
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const cors = require('cors')
-const nodemailer = require('nodemailer')
-const multiparty = require('multiparty')
-const { google } = require('googleapis')
-const OAuth2 = google.auth.OAuth2
+const connectDB = require("./config/database");
+const entryRoutes = require('./routes/entry.route')
+const mainRoutes = require('./routes/main.route')
+let PORT = 8000;
 
-const MongoClient = require('mongodb').MongoClient
-const ObjectId = require('mongodb').ObjectId
-const cloudinary = require('cloudinary').v2
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
- 
-let db,
-    dbName = 'SouthernPaiute'
-    PORT = process.env.PORT || 8000
- 
-MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology : true})
-    .then(client => {
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
-    })
-    .catch((err) =>{
-      console.error("Failure to connect: ", err.message, err.stack)
-    })
- 
+//Connect to DB
+ connectDB()
+
 //Using EJS for views
 app.set("view engine", "ejs");
  
-//Body Parsing
-app.use(express.static('views'))//lets you use files in your public folder
+//Body Parsing for Static Folder
+app.use(express.static('public'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(cors({ origin: "*"}))
-//look into this and explain it: npmjs.com/package/express-fileupload
-const fileUpload = require('express-fileupload')
-app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: '/tmp/'
-}))
 
-//Home Page
-app.get('/', (req,res) =>{
-  res.render('homePage.ejs')
-})
-
-//Search Results Page
-  app.get('/searchResults', (req,res) =>{
-    let name = req.query.search;
-    db.collection('SouthernPaiute').find({
-      //returning full result and using translationInput as the search parameter
-      //.* = anything. So by putting the name in the middle, you're looking for anything with that in it.
-            translationInput: {$regex: new RegExp(`.*${name}.*`,'gi')}}).toArray()
-    .then(data => {
-        res.render('searchResults.ejs', {searchQueryResults: data, searchQuery: name})
-    })
-    .catch(error => console.error(error))
+// Setup Sessions - stored in MongoDB; Do I need this?
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({  mongoUrl: process.env.DB_STRING }) 
   })
+);
 
-  //Get specific entry/word
-  app.get('/word/:id', (req,res) =>{
-    let name = req.params.id;
-    try{
-      db.collection('SouthernPaiute').findOne(
-        {'_id':ObjectId(name)}).then(data => {
-          res.render('wordPage.ejs', {searchQueryResults: data})
-        })
-    }
-    catch(error){
-      console.error(error)
-    }
-  })
- 
-  //Note as of 1/20/22. I wasn't able to get this to work, though I did set up the update input page. I thought it would work, but it didn't because searchQueryResults is not defined. This is extremely confusing to me because it worked in the get request above and I did try to include it in the findOneAndUpdate. Maybe it doesn't work in the params in a put request, or just in the findOneAndUpdate? I'm not sure, but that's what I need to figure out.
-  app.put('/update', (req,res)=>{
-    let name = req.params.id;
-    try{
-      db.collection('SouthernPaiute').findOneAndUpdate(
-        {'_id':ObjectId(name).then(data => {
-          res.render('updateInputPage.ejs', {searchQueryResults: data})
-        })},{
-          wordInput: req.body.wordInput,
-          audioInput: newfileName,
-          phoneticInput: req.body.phoneticInput,
-          grammaticalInput: req.body.grammaticalInput,
-          translationInput: req.body.translationInput,
-          exampleInput: req.body.exampleInput,
-      },).then(data => {
-          res.render('updateInputPage.ejs', {searchQueryResults: data})
-        })   
-    } 
-    catch(error) {
-       console.error(error)
-    }
-  })
-//About Page
-app.get('/about', (req,res) =>{
-    res.render('aboutPage.ejs')
-})
- 
-//Contact Page
-app.get('/contact', (req,res) =>{
-    res.render('contactPage.ejs')
-})
+//Setup Routes For Which The Server Is Listening
+app.use('/', mainRoutes)
+//What should the entry point be? /searchResults, /input, or something else?
+app.use('/searchResults', entryRoutes)
 
-//note from 1/13/22: changed the access and refresh tokens and it went from giving us req.body to giving us nothing at all. Just ran the 'something went wrong' err code. So I need to work on those. It's broken even at the local hosting level.
-app.post('/send', async (req,res) =>{
-
-  const {userEmail, userMessage, userName} = req.body
-  console.log(req.body)
-  //not getting body or console logging it at all. Need to get req.body.
-
-  const myOAuth2Client = new OAuth2 (
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    'https://developer.google.com/oauthplayground'
-  )
-
-    myOAuth2Client.setCredentials({
-      refresh_token: process.env.REFRESH_TOKEN
-    })
-
-  const accessToken = myOAuth2Client.getAccessToken()
-  
-
-  const transporter = nodemailer.createTransport({
-      // service: 'gmail',
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        type: 'OAuth2',
-        user: process.env.EMAIL, 
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        refresh_token: process.env.REFRESH_TOKEN,
-        accessToken: accessToken,
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-  })
-
-const message = {
-  from: `${userName}`,
-  to: 'speakpaiute@gmail.com',
-  subject: `Sent from: ${userEmail}`,
-  text: `${userMessage}`,
-};
-console.log(message)
-//not console logging the message either, prob because it's not getting req.body.
-
-transporter.verify((err, success) => {
-  err
-    ? console.log(err)
-    : console.log(`=== Server is ready to take messages: ${success} ===`);
-
-try{
-  transporter.sendMail(message, (err,data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Something went wrong.");
-    }else {
-      res.status(200).send("Email successfully sent to recipient!");
-    }
-  });
-} catch (err) {
-    console.log(err)
-}
-})
-})
-
-app.get('/send', (req,res) =>{
-  res.sendFile(process.cwd())
-})
-//Alphabet Page
-app.get('/alphabet', (req,res)=>{
-    try {res.render('alphabetPage.ejs')
-  }catch (err) {
-    console.error(err);}
-})
- 
-//Input Page
-app.get('/input', (req,res)=>{
-    res.render('inputPage.ejs')
-})
-
-//Update Input Page
-app.get('/update',(req,res)=>{
-  res.render('updateInputPage.ejs')
-})
- 
-app.post("/addEntry", async (req, res) => {
-  let file = Array.isArray(req.files.audio) ? req.files.audio[0] : req.files.audio
-  if (['audio/wav', 'audio/mp3'].includes(file.mimetype)) {
-      const newfileName = `${new Date().getTime()}.${file.name.split('.')[1]}`
-
-      await cloudinary.uploader.upload(file.tempFilePath, {
-          resource_type: "video",
-          folder: 'AudioUploads/',
-          public_id: newfileName,
-      }, err => {
-          if (err) res.send('err')
-          try {
-              db.collection("SouthernPaiute").insertOne(
-                  {
-                      wordInput: req.body.wordInput,
-                      audioInput: newfileName,
-                      phoneticInput: req.body.phoneticInput,
-                      grammaticalInput: req.body.grammaticalInput,
-                      translationInput: req.body.translationInput,
-                      exampleInput: req.body.exampleInput,
-                  })
-              res.redirect('/entryAdded');
-          } catch(err){
-              console.log(err)
-              res.send(err)
-          }
-
-      })
-  }
-});
- 
-app.get('/entryAdded', (req,res)=>{
-  res.render('completedEntry.ejs')
-})
- 
+//Server running
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
