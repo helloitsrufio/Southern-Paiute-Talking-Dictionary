@@ -7,7 +7,7 @@ const EntrySchema = new mongoose.Schema({
     },
     //what is the type on this?
     audioInput: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
     },
     phoneticInput: {

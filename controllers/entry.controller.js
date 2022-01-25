@@ -11,7 +11,6 @@ module.exports = {
           //.* = anything. So by putting the name in the middle, you're looking for anything with that in it.
           translationInput: { $regex: new RegExp(`.*${name}.*`, "gi") },
         })
-        .toArray()
         .then((data) => {
           res.render("searchResults.ejs", {
             searchQueryResults: data,
@@ -25,6 +24,7 @@ module.exports = {
   //Get specific entry/word: app.get(/word/:id)
   getID: async (req, res) => {
     let name = req.params.id;
+    console.log(req.params.id)
     try {
       await Entry.findOne({ _id: ObjectId(name) })
         .then((data) => {
@@ -82,9 +82,7 @@ module.exports = {
         ? req.files.audio[0]
         : req.files.audio;
       if (["audio/wav", "audio/mp3"].includes(file.mimetype)) {
-        const newfileName = `${new Date().getTime()}.${
-          file.name.split(".")[1]
-        }`;
+        const newfileName = `${new Date().getTime()}`
 
         await cloudinary.uploader.upload(
           file.tempFilePath,
@@ -93,12 +91,12 @@ module.exports = {
             folder: "AudioUploads/",
             public_id: newfileName,
           },
-          (err) => {
+          (err,result) => {
             if (err) res.send("err");
             try {
-              Entry.insertOne({
+              Entry.create({
                 wordInput: req.body.wordInput,
-                audioInput: newfileName,
+                audioInput: result.url,
                 phoneticInput: req.body.phoneticInput,
                 grammaticalInput: req.body.grammaticalInput,
                 translationInput: req.body.translationInput,

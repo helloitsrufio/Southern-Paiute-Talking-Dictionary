@@ -7,6 +7,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require('cors')
 const connectDB = require("./config/database");
+const fileUpload = require('express-fileupload')
 const entryRoutes = require('./routes/entry.route')
 const mainRoutes = require('./routes/main.route')
 let PORT = 8000;
@@ -22,6 +23,11 @@ app.use(express.static('public'))//lets you use files in your public folder
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(cors({ origin: "*"}))
+//file upload for audio
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}))
 
 // Setup Sessions - stored in MongoDB; Do I need this?
 app.use(
@@ -35,8 +41,8 @@ app.use(
 
 //Setup Routes For Which The Server Is Listening
 app.use('/', mainRoutes)
-//What should the entry point be? /searchResults, /input, or something else?
-app.use('/searchResults', entryRoutes)
+//So what app.use('/searchResults', entryRoutes) does is tell express to let requests that start with /searchResults to be handled by entryRoutes
+app.use('/', entryRoutes)
 
 //Server running
 app.listen(PORT, ()=>{
