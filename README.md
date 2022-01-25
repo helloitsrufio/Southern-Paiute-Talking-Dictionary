@@ -67,7 +67,7 @@ To get the values for these environment variables, you will need to
 ## What still needs to be done
 - [ ] Make overall site more responsive for various screen widths (each page need this adjustment)
   - [ ] Make site mobile-friendly
-- [x] Make contact form functional
+- [ ] Make contact form functional
 - [ ] Disable search history in search bar
 - [ ] Make a button/link to access input page
   - [ ] Set up auth for admin (in order to access input page)
@@ -77,6 +77,7 @@ To get the values for these environment variables, you will need to
 - [ ] Add photos of team and team members for `About` page
 - [ ] Add a page in which the admin can update entries to database
 - [ ] Add a button which enables the admin to delete an entry from the database
+- [ ] Fix back button on search query page/word page from going to input page to previous page.
 
 ## Contact
 If you have questions, concerns, suggestions, or anything else, feel free to email the developer, Ruth Reed, at [ruthreed.dev@gmail.com](mailto:ruthreed.dev@gmail.com).
