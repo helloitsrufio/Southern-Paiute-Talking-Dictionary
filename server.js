@@ -2,7 +2,7 @@ require('dotenv').config({ path: "./config/.env" })
 //Brings express into the app
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require('cors')
@@ -13,7 +13,7 @@ const mainRoutes = require('./routes/main.route')
 let PORT = process.env.PORT || 8000;
 
 //Connect to DB
- connectDB()
+connectDB()
 
 //Using EJS for views
 app.set("view engine", "ejs");
