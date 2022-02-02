@@ -7,22 +7,28 @@
     
     <title>Update Entry</title>
     <!--external CSS link -->
-    <link rel='stylesheet' href='/CSS/updateInput.css'>
+    <link rel='stylesheet' href='/CSS/input.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <!-- Nav bar -->
-    <nav class='blue-sections nav-container'>
-        <h1><a href='/'>Southern Paiute Dictionary</a></h1>
-        <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/about'>About Us</a></li>
+    <nav class="blue-sections nav-container">
+        <h1><a href="/">Southern Paiute Dictionary</a></h1>
+        <input type="checkbox" name="menu" id="menu" />
+        <label for="menu" class="hamburger-label">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </label>
+        <div class="menu-container">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
             <li><a href="/alphabet">Alphabet</a></li>
             <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
+          </ul>
+        </div>
+      </nav>
 
     <section class='body'>
     <!-- Instructions -->

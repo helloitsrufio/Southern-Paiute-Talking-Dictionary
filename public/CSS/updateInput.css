@@ -1,63 +1,60 @@
-*{
+* {
     box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif; 
-}
-
-html{
-    /*height:98.1%;*/
-}
-
-body{
-    position:relative;
-    height:100%;
-}
-
-title{
-    display:none;
-}
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
 
 
 /* Navigation bar */
-.blue-sections{
-    background-color: #2184AA;
-    color:white;
-}
-
-nav{
+nav {
     display: flex;
-    align-items:center;
-    height:3em;
-    margin:-.5em;
+    align-items: center;
+    height: 3em;
     justify-content: space-between;
-}
-
-.nav-container{
+  }
+  
+  .nav-container {
     display: flex;
-    align-items:center;
-    justify-content: space-around;
-}
-nav h1{
-    margin-right:33em;
-}
-
-
-nav ul{
-    list-style:none;
-    display: flex;
+    align-items: center;
     justify-content: space-between;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
     margin-right: 1em;
-}
-
-nav li{
-    padding:0em 3em 0em 3em;
+  }
+  
+  nav li {
+    /* margin-right: .5em; */
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
-}
-
-nav li:hover{
-    color:#e3e4e8;
-}
+  }
+  
+  nav li:hover {
+    color: #e3e4e8;
+  }
+  
+  .nav-container input {
+    display: none;
+  }
+  
+  .hamburger-label {
+    display: none;
+  }
 
 
 /* Body */
@@ -124,7 +121,7 @@ input {
 /* Footer */
 
 footer{
-    
+
     position:absolute;
     bottom:0;
     width:101.3%;
@@ -140,7 +137,7 @@ footer{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    margin: -1em 0em 0em -5em;
+    /* margin: -1em 0em 0em -5em; */
     color:white; 
     background-color: #545454;
     
@@ -187,57 +184,47 @@ a:hover {
     text-decoration: none;
     color: #e3e4e8}
 
-/* Media queries */
-
-@media screen and (max-width:1570px){
-    /* nav */
-        nav h1{ margin-right:20em; }
-        nav li{ padding:0em 2em 0em 3em; }
-    /* footer */
-        .footer-container { margin: -1em -3em 0em -5em; }
-        #attribution{ margin: .2em 0em .5em -91em; }
+    /* Media Queries */
+@media screen and (max-width: 662px) {
+    .nav-container {
+      position: relative;
     }
-    
-@media screen and (max-width:1442px){
-        nav h1{ margin-right:15em; }
+  
+    .nav-container input:checked ~ .menu-container {
+      display: flex;
     }
- 
-@media screen and (max-width:1322px) {
-    nav h1{ margin-right:8em; }
-}
-
-@media screen and (max-width:1152px) {
-   nav h1{ 
-       margin-right:0em;
-       margin-left:1em; }
-       /* Footer */
-   footer{ width:103%; }
-}
-
-@media screen and (max-width:986px){
-   nav li{ padding:0em 1em 0em 2em; }
-}
-
-@media screen and (max-width:858px){
-    nav li{ padding:0em 1em 0em 1em; }
-}
-
-@media screen and (max-width:794px){
-    nav li{ padding:0em 1em 0em 0em; }
-    footer{ width:105%; }
-}
-
-@media screen and (max-width:730px){
-    nav li{ padding:0em 0em 0em .5em; }
-}
-
-@media screen and (max-width:698px){
-    nav{ margin:-1em; }
-}
-
-/* Hamburger menu here */
-@media screen and (max-width:682px){
-    
-}
-
+  
+    .nav-container input:checked ~ .hamburger {
+      display: flex;
+    }
+  
+    .hamburger-label {
+      display: flex;
+      width: 3em;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .hamburger {
+      font-size: 2em;
+      width: auto;
+      cursor: pointer;
+      display: none;
+    }
+  
+    nav ul {
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-container {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      top: 3em;
+      right: 0;
+    }
+  }
   
