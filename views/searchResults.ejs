@@ -33,10 +33,10 @@
     <section class='h1Box'>
         <h1 id='bodyH1'>Search results for '<%= searchQuery %>'</h1>
     </section>
-    <section class='results'
+    <section class='results'>
         <% if(searchQueryResults && searchQueryResults.length){ %>
             <ul>
-            <% for(let result of searchQueryResults) { %>    
+            <% for(let result of searchQueryResults) { %> 
                 <li>
                 <strong><%= result.wordInput %></strong>
                 <span><%= result.translationInput %><br></span>
@@ -47,7 +47,7 @@
             <% } %>
             </ul>
         <% } else { %>
-            <span>No Results for search: <strong><%= searchQuery %></strong></span><% } %>
+            <span>No Results for search: <strong><%= searchQuery %></strong></span><% } %> 
         <p>No more search results could be found.</p>
     </section>
 

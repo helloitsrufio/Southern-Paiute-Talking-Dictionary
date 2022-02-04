@@ -11,6 +11,7 @@ const fileUpload = require('express-fileupload')
 const entryRoutes = require('./routes/entry.route')
 const mainRoutes = require('./routes/main.route')
 let PORT = process.env.PORT || 8000;
+const path = require('path') 
 
 //Connect to DB
 connectDB()
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
  
 //Body Parsing for Static Folder
 app.use(express.static('public'))//lets you use files in your public folder
+
 app.use(express.urlencoded({ extended : true}))//method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
 app.use(express.json())//method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 app.use(cors({ origin: "*"}))
@@ -28,6 +30,7 @@ app.use(fileUpload({
   useTempFiles: true,
   tempFileDir: '/tmp/'
 }))
+
 
 // Setup Sessions - stored in MongoDB; Do I need this?
 app.use(

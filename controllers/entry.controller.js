@@ -1,5 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Entry = require("../models/Entry");
+const fileUpload = require('express-fileupload');
+const { ObjectId } = require("mongodb");
 
 //equivalent of app.get('/searchResults')
 module.exports = {
@@ -16,6 +18,7 @@ module.exports = {
             searchQueryResults: data,
             searchQuery: name,
           });
+          console.log(data)
         });
     } catch (error) {
       console.error(error);
@@ -24,9 +27,8 @@ module.exports = {
   //Get specific entry/word: app.get(/word/:id)
   getID: async (req, res) => {
     let name = req.params.id;
-    console.log(req.params.id)
     try {
-      await Entry.findOne({ _id: ObjectId(name) })
+      await Entry.findOne({ _id: name})
         .then((data) => {
           res.render("wordPage.ejs", { searchQueryResults: data });
         });
@@ -96,7 +98,7 @@ module.exports = {
             try {
               Entry.create({
                 wordInput: req.body.wordInput,
-                audioInput: result.url,
+                audioInput: newfileName,
                 phoneticInput: req.body.phoneticInput,
                 grammaticalInput: req.body.grammaticalInput,
                 translationInput: req.body.translationInput,
