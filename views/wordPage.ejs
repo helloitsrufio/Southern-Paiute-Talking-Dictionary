@@ -67,7 +67,8 @@
             </section>
         <% } %>
     </section>
-    <form method="put" action="/update"><button>Update Entry</button>
+    <button><a href="/update-word/<%= searchQueryResults._id %>">Update</a></button>
+    <form method="get" action="/update" id="updateButton"><button>Update Entry</button>
     <!-- Footer -->
         <footer>
             <section class='footer-container'>

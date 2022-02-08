@@ -1,10 +1,11 @@
 const cloudinary = require("../middleware/cloudinary");
 const Entry = require("../models/Entry");
-const fileUpload = require('express-fileupload');
-const { ObjectId } = require("mongodb");
+// const fileUpload = require('express-fileupload');
+// const { ObjectId } = require("mongodb");
 
 //equivalent of app.get('/searchResults')
 module.exports = {
+  //can't find certain entries. Can find some, like asdf or SOME fold-related entries, but can't find the rest of them in the db. Not sure what is making it so it finds some and not others. There are the entries that I made before I messed with the code, and then there are those that came after. I thought that all those that came after were unsearchable, but 'fold' (in database) is searchable and it came after...? Need to figure this out. 
   getSearchResults: async (req, res) => {
     try {
       let name = req.query.search;
@@ -18,7 +19,6 @@ module.exports = {
             searchQueryResults: data,
             searchQuery: name,
           });
-          console.log(data)
         });
     } catch (error) {
       console.error(error);
@@ -37,46 +37,70 @@ module.exports = {
     }
   },
   // Equivalent of app.put('/updateEntry')
-  //Note as of 1/20/22. I wasn't able to get this to work, though I did set up the update input page. I thought it would work, but it didn't because searchQueryResults is not defined. This is extremely confusing to me because it worked in the get request above and I did try to include it in the findOneAndUpdate. Maybe it doesn't work in the params in a put request, or just in the findOneAndUpdate? I'm not sure, but that's what I need to figure out.
-  updateEntry: async (req, res) => {
+//This is working...in that there are no errors. But it does not actually update any of the entries. It goes to the entry added page though. Doesn't change functionality whether it has the cloudinary code or not. 
+  submitEntry: async (req, res) => {
     let name = req.params.id;
-    try {
-      await Entry.findOneAndUpdate(
+    let file = Array.isArray(req.files.audio)
+        ? req.files.audio[0]
+        : req.files.audio;
+      if (["audio/wav", "audio/mp3"].includes(file.mimetype)) {
+        const newfileName = `${new Date().getTime()}`
+
+        await cloudinary.uploader.upload(
+          file.tempFilePath,
           {
-            _id: ObjectId(name).then((data) => {
-              res.render("updateInputPage.ejs", { searchQueryResults: data });
-            }),
+            resource_type: "video",
+            folder: "AudioUploads/",
+            public_id: newfileName,
           },
-          {
-            $set: {
-              wordInput: req.body.wordInput,
-              audioInput: newfileName,
-              phoneticInput: req.body.phoneticInput,
-              grammaticalInput: req.body.grammaticalInput,
-              translationInput: req.body.translationInput,
-              exampleInput: req.body.exampleInput,
-            },
-          },
-          {
-            upsert: false,
-            returnDocument: "after",
-          }
-        )
-        .then((data) => {
-          res.render("updateInputPage.ejs", { searchQueryResults: data });
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  },
+          async (err,result)=>{
+            if (err) res.send("err");
+            try {
+               Entry.updateOne(
+                  {_id: name},
+                  {
+                    $set: {
+                      //supposed to have all of these in 'quotation marks' b/c of the documentation, but I didn't see it make a big difference.
+                      wordInput: req.body.wordInput,
+                      audioInput: newfileName,
+                      phoneticInput: req.body.phoneticInput,
+                      grammaticalInput: req.body.grammaticalInput,
+                      translationInput: req.body.translationInput,
+                      exampleInput: req.body.exampleInput,
+                    },
+                  },
+                  {
+                    upsert: false,
+                    returnDocument: "after",
+                  }
+                )
+                .then((data) => {
+                  res.redirect("/entryAdded")
+                })
+            } catch (error) {
+              console.error(error);
+            }
+          }   
+        )}},
+
   //Input Page app.get('/input')
   getInputPage: async (req, res) => {
     res.render("inputPage.ejs");
   },
-  //Update Input Page app.get('/update')
+
+  //Update Input Page app.get('/update-word/:id')
   updateInputPage: async (req, res) => {
-    res.render("updateInputPage.ejs");
-  },
+      let name = req.params.id;
+      try {
+        await Entry.findOne({ _id: name})
+          .then((data) => {
+            res.render("editWord.ejs", { result: data });
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
   //Post entry app.post("/addEntry")
   addEntry: async (req, res) => {
     {

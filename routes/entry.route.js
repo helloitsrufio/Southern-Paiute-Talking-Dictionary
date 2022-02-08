@@ -6,11 +6,11 @@ router.get('/searchResults', entryController.getSearchResults)
 
 router.get('/word/:id', entryController.getID)
 
-router.put('/updateEntry', entryController.updateEntry)
+router.put('/submitEntry', entryController.submitEntry)
 
 router.get('/input', entryController.getInputPage)
 
-router.get('/update', entryController.updateInputPage)
+router.get('/update-word/:id', entryController.updateInputPage)
 
 router.post("/addEntry", entryController.addEntry)
 
