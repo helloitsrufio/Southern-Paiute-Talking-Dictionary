@@ -3,9 +3,9 @@
     font-family: 'Ubuntu', sans-serif; 
 }
 
-html{
+/* html{
     height:98.1%;
-}
+} */
 
 body{
     position:relative;
@@ -124,7 +124,7 @@ input {
 /* Footer */
 
 footer{
-    
+
     position:absolute;
     bottom:0;
     width:101.3%;
@@ -140,7 +140,7 @@ footer{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    margin: -1em 0em 0em -5em;
+    /* margin: -1em 0em 0em -5em; */
     color:white; 
     background-color: #545454;
     

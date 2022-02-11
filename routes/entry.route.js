@@ -6,7 +6,7 @@ router.get('/searchResults', entryController.getSearchResults)
 
 router.get('/word/:id', entryController.getID)
 
-router.put('/submitEntry', entryController.submitEntry)
+router.post('/updateEntry', entryController.updateEntry)
 
 router.get('/input', entryController.getInputPage)
 
