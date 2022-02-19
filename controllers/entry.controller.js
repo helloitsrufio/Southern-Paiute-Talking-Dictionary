@@ -37,6 +37,7 @@ module.exports = {
   //Update Input Page app.get('/update-word/:id')
   updateInputPage: async (req, res) => {
     let name = req.params.id;
+    console.log(req.params.id)
     try {
       await Entry.findOne({ _id: name }).then((data) => {
         res.render("editWord.ejs", { result: data });
@@ -46,62 +47,55 @@ module.exports = {
     }
   },
   // Equivalent of app.put('/updateEntry')
-  //TODO: Want to try to use .save() mongoose method. first you have to find the item you want to update, once you get it you save it in a const and that variable has a save() function.
-  //So maybe use the .findOne() that you used earlier and call the .save() on that variable.
-  //Tried to do it below, original update code is commented out.
+  //TODO: Aren't getting req.params even though it's in the above route. Not sure why. That's why req.params.id isn't working. Also tried to incorporate .explicit() in cloudinary req since that's what you're supposed to do for an update, but not entirely sure how to use/format it. 
   updateEntry: async (req, res) => {
-    let name = req.params.id;
-    name.overwrite({
-      wordInput: req.body.wordInput,
-      audioInput: newfileName,
-      phoneticInput: req.body.phoneticInput,
-      grammaticalInput: req.body.grammaticalInput,
-      translationInput: req.body.translationInput,
-      exampleInput: req.body.exampleInput,
-    });
-    await name.save();
-    // console.log(req.body.wordInput)
-    // // let file = Array.isArray(req.files.audio) ?
-    // // req.files.audio[0] :
-    // // req.files.audio;
-    // // if (["audio/wav", "audio/mp3"].includes(file.mimetype)) {
-    // //   const newfileName = `${new Date().getTime()}`
+    {
+      const name = req.params.id;
+      console.log(req.body);
+      console.log(req.params);
+      let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${req.body.audio}`
+      let file = Array.isArray(req.files.audio)
+        ? req.files.audio[0]
+        : req.files.audio;
+      if (["audio/wav", "audio/mp3"].includes(file.mimetype)) {
+        const newfileName = `${new Date().getTime()}`;
+        await cloudinary.uploader.explicit(
+          downloadURL, 
+          {type: "fetch",
+            invalidate: true,
+          },
+          {
+            resource_type: "video",
+            folder: "AudioUploads/",
+            public_id: newfileName,
+          },
+          async (err) => {
+            if (err) res.send("err");
 
-    // //   await cloudinary.uploader.upload(
-    // //     file.tempFilePath, {
-    // //       resource_type: "video",
-    // //       folder: "AudioUploads/",
-    // //       public_id: newfileName,
-    // //     },
-    //     async (err, result) => {
-    //       if (err) res.send("err");
-
-    //       try {
-    //         Entry.updateOne({
-    //             _id: name
-    //           }, {
-    //             $set: {
-    //               //supposed to have all of these in 'quotation marks' b/c of the documentation, but I didn't see it make a big difference.
-    //               wordInput: req.body.wordInput,
-    //               // audioInput: newfileName,
-    //               phoneticInput: req.body.phoneticInput,
-    //               grammaticalInput: req.body.grammaticalInput,
-    //               translationInput: req.body.translationInput,
-    //               exampleInput: req.body.exampleInput,
-    //             },
-    //           }, {
-    //             upsert: false,
-    //             returnDocument: "after",
-    //           })
-    //           // .then((data) => {
-    //           //   res.redirect("/entryAdded")
-    //           // })
-    //       } catch (error) {
-    //         console.error(error);
-    //       }
-    //     }
-    //   // )
-    // // }
+            try {
+              Entry.findOneAndUpdate(
+                {
+                  _id: name,
+                },
+                {
+                  wordInput: req.body.wordInput,
+                  audioInput: newfileName,
+                  phoneticInput: req.body.phoneticInput,
+                  grammaticalInput: req.body.grammaticalInput,
+                  translationInput: req.body.translationInput,
+                  exampleInput: req.body.exampleInput,
+                }
+              );
+              // .then((data) => {
+              //   res.redirect("/entryAdded")
+              // })
+            } catch (error) {
+              console.error(error);
+            }
+          }
+        );
+      }
+    }
   },
 
   //Input Page app.get('/input')
@@ -125,7 +119,7 @@ module.exports = {
             folder: "AudioUploads/",
             public_id: newfileName,
           },
-          (err, result) => {
+          (err) => {
             if (err) res.send("err");
             try {
               Entry.create({
