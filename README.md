@@ -45,7 +45,7 @@ To get the values for these environment variables, you will need to
   1) Create an account and set up a cluster for this project on MongoDB
   2) Create an account on Cloudinary
    
-- Create a `.env` file and add the following as `key = value`
+- Create a `.env` file, put it in your config folder, and add the following as `key = value`
   - DB_STRING = `your database URI`
   - CLOUDINARY_CLOUD_NAME = `your cloudinary cloud name`
   - CLOUDINARY_API_KEY = `your cloudinary api key`
@@ -53,8 +53,10 @@ To get the values for these environment variables, you will need to
 
 
 ### Packages/Dependencies Utilized
+    "@googleapis/oauth2": "^0.2.0",
     "busboy": "^0.3.1",
     "cloudinary": "^1.27.1",
+    "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
@@ -63,6 +65,15 @@ To get the values for these environment variables, you will need to
     "mongodb": "^4.1.4",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15"
+    "express-session": "^1.17.2",
+    "file-upload": "^0.0.0",
+    "googleapis": "^92.0.0",
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.1.8",
+    "multiparty": "^4.2.2",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15"
+  }
     
 ## What still needs to be done
 - [ ] Make overall site more responsive for various screen widths (each page need this adjustment)
