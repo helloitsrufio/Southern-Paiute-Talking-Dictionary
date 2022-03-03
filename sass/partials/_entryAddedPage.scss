@@ -1,0 +1,23 @@
+/* Body */
+.bodySection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    margin-top:20vh;
+}
+
+h2 {
+    color: #545454;
+    margin-bottom: 10vh;
+}
+
+button{
+    padding:2.5vh;
+    margin:1.2vh;
+    color: #fff;
+    background-color: #2184AA;
+    border-radius: 2vh;
+    border: 2px solid #2184AA;
+    font-size: medium;
+}

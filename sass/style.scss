@@ -1,0 +1,29 @@
+@use 'partials/nav';
+@use 'partials/footer';
+@use 'partials/homePage';
+@use 'partials/aboutPage';
+@use 'partials/contactPage';
+@use 'partials/searchResults';
+@use 'partials/wordPage';
+@use 'partials/inputPage';
+@use 'partials/entryAddedPage';
+
+* {
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+
+  

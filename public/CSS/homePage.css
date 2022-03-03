@@ -1,0 +1,24 @@
+/*
+The compiler will now automatically create a 
+homePage.css inside public/css
+
+So then you could just link homePage.css in to the
+homePage html etc
+
+Comment out imports, add them, whatever :D
+
+But I stress this is a bit messy lol
+
+Easier to have one style.scss
+
+I think the general practice is that it's preferred
+to have one single large minimized CSS over linking
+multiple CSS files...minimized would mean it could
+be read quickly by the browser, and the browser will
+cache large CSS files
+
+You can tell the extension to automatically minimize
+outputted CSS if you want
+
+*/
+/*# sourceMappingURL=homePage.css.map */

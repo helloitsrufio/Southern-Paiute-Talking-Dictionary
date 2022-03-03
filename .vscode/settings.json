@@ -2,5 +2,11 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
       },
-      "eslint.validate": ["javascript"]
+      "eslint.validate": ["javascript"],
+      "liveSassCompile.settings.formats":[ { 
+        "format": "expanded", 
+        "extensionName": ".css", 
+        "savePath": "/public/CSS/" } ],
 }
+
+// I will give examples of how SASS can be helpful

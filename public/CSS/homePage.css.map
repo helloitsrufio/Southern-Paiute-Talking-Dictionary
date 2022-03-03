@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAQA;;;;;;;;;;;;;;;;;;;;;;EAsBE",
+    "sources": [
+        "../../sass/homePage.scss",
+        "../../sass/homePage/_body.scss",
+        "../../sass/partials/_variables.scss"
+    ],
+    "names": [],
+    "file": "homePage.css"
+}

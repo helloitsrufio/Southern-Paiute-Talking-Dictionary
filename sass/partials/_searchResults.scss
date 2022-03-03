@@ -1,0 +1,54 @@
+/* Body */
+
+.fas{
+    color:#2184AA;
+    border:none;
+    background-color: white;
+    cursor: pointer;
+    margin: 10vh 0vh 0vh 10vh;
+}
+
+.results, .h1Box{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30vh;
+}
+
+/* .h1Box {
+    margin-top: 2vh;
+} */
+
+#bodyH1 {
+    font-size: 2rem;
+    margin-bottom: 3vh;
+}
+
+.results li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 2vh;
+    line-height: 2rem;
+    width: 50vh;
+    padding-bottom: .7rem;
+    border-bottom: 1px solid lightgray;
+}
+
+strong {
+    font-size: 1.7rem;
+    color: #1a5970;
+}
+
+.results span {
+    font-size: 1.3rem;
+}
+
+.results a {
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.results p {
+    font-size: 1.3rem;
+}

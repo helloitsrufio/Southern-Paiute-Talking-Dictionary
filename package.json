@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha test/**/**/*.test.js",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "scss": "sass --watch ./sass/style.scss ./public/CSS/style.css"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,9 @@
     "mongoose": "^6.1.8",
     "multiparty": "^4.2.2",
     "nodemailer": "^6.7.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sass": "^1.49.9",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "eslint": "^8.9.0",

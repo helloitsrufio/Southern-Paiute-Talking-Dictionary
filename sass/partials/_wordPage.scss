@@ -1,0 +1,77 @@
+/* Body */
+
+.fas{
+    color:#2184AA;
+    border:none;
+    background-color: white;
+    cursor: pointer;
+    margin: 10vh 0vh 0vh 10vh;
+}
+
+.entry{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30vh;
+    height: fit-content
+}
+
+.wordAndAudio{
+    display:flex;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+    width: fit-content;
+}
+
+.entry h1 {
+    padding-right: 4vh;
+    margin:3.5vh;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a5970;
+}
+
+audio {
+    padding-bottom: 3vh;
+}
+
+.entry span {
+    font-size: 1.2rem;
+}
+
+.entryData {
+    margin-left: 3.5vh;
+}
+.phoneticAndGrammaticalInput {
+    /* display: flex;
+    flex-direction: column; */
+    margin-top: 4vh;
+}
+
+#grammar {
+    color: white;
+    background-color: #2184AA;
+    width: fit-content;
+    padding: .7vh 1.5vh;
+    border-radius: .3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: small;
+}
+
+#phonetic {
+    font-size: 1.2rem;
+    margin-right: 2vh;
+}
+
+.translation span, .example span{
+    margin-left: 1.3vh;
+}
+
+.more button {
+    color: white;
+    background-color:#2184AA;
+    border-radius: .3rem;
+    margin-left: 1vh;
+    padding: .5vh 1vh;
+}
