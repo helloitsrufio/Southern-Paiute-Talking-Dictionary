@@ -5,7 +5,6 @@ const Entry = require("../models/Entry");
 
 //equivalent of app.get('/searchResults')
 module.exports = {
-  //can't find certain entries. Can find some, like asdf or SOME fold-related entries, but can't find the rest of them in the db. Not sure what is making it so it finds some and not others. There are the entries that I made before I messed with the code, and then there are those that came after. I thought that all those that came after were unsearchable, but 'fold' (in database) is searchable and it came after...? Need to figure this out.
   getSearchResults: async (req, res) => {
     try {
       let name = req.query.search;
