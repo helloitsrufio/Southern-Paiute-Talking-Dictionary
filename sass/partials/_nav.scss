@@ -4,30 +4,29 @@
   color: white;
 }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 nav {
-  display: flex;
-  align-items: center;
   height: 3em;
-  justify-content: space-between;
+  display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  .logo {
+    padding: 1em;
+  }
   ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
     margin-right: 1em;
   }
-  li {
+  a {
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
     margin: 0 1em;
+    color:white;
+    text-decoration: none;
   }
-  li:hover {
+  a:hover {
     color: #e3e4e8;
   }
   input {

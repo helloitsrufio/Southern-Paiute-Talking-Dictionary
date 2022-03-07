@@ -5,17 +5,12 @@
   color: white;
 }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 nav {
-  display: flex;
-  align-items: center;
   height: 3em;
-  justify-content: space-between;
+  display: flex;
+}
+nav .logo {
+  padding: 1em;
 }
 nav ul {
   list-style: none;
@@ -23,13 +18,15 @@ nav ul {
   justify-content: flex-end;
   margin-right: 1em;
 }
-nav li {
+nav a {
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
   margin: 0 1em;
+  color: white;
+  text-decoration: none;
 }
-nav li:hover {
+nav a:hover {
   color: #e3e4e8;
 }
 nav input {
