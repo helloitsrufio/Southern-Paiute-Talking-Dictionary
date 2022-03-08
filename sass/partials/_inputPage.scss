@@ -13,7 +13,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height:75vh;
+    // height:75vh;
 }
 
 span {
@@ -23,7 +23,7 @@ span {
     color: #545454;
 }
 
-input {
+.inputSection input {
     padding:1.2vh;
     margin:1.5vh;
     border: 1px solid RGBA(31, 155, 103, .38);

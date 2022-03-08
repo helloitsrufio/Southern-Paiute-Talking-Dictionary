@@ -46,8 +46,8 @@ img{
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    height:50vh;
-    margin: 0vh 40vh;
+    /*height:50vh;
+    margin: 0vh 40vh;*/ //very bad not needed and only gives issues....
 }
 
 .second-half h2 {
@@ -74,8 +74,8 @@ img{
 
 i{
     font-size:18vh;
-    color:#2184AA;
-    margin-bottom: 5vh;
+    color:white;
+    // margin-bottom: 5vh;
 }
 
 .member-name {

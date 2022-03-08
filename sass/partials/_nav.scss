@@ -1,28 +1,30 @@
 /* Navigation bar */
 .blue-sections {
   background-color: #2184aa;
-  color: white;
 }
 
 nav {
   height: 3em;
   display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  .logo {
-    padding: 1em;
+  align-items: center;
+  justify-content: space-between;
+  .logo{
+    margin:0rem 0rem 0rem 1rem;
+    font-size: 1.26rem;
   }
   ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    margin-right: 1em;
+    margin-right: 1rem;
+    a{
+      margin: 0 1rem;
+    }
   }
   a {
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
-    margin: 0 1em;
     color:white;
     text-decoration: none;
   }
@@ -33,37 +35,49 @@ nav {
     display: none;
   }
   .hamburger-label {
-    display: none;
+    display: none;  //it's default
   }
+
+  // i mean here it's nav wrapper
+  // all the rules below is inside media query
 }
 
+//I am not sure but the hamburger-label class above compiles as nav .hamburger-label so the .hamburger-label below may not override it. if it's the problem you can take all media query and put it inside nav{} above. and remove nav selectors of course.
+// I don't know how css priority works but it may prioritize "nav .hamburger-label" instead of .hamburger-label 
+// more specific selector is higher priority in css
 /* Media Queries */
-@media screen and (max-width: 662px) {
-  .nav-container {
+@media screen and (max-width: 790px) {
+  nav {
     position: relative;
   }
 
-  .nav-container input:checked ~ .menu-container {
-    display: flex;
-  }
-
-  .nav-container input:checked ~ .hamburger {
-    display: flex;
-  }
-
-  .hamburger-label {
-    display: flex;
-    width: 3em;
+  nav .hamburger-label { //you did this btw but you can put all to nav above anyways
+    display: inline;  
+    display: flex; 
+    width: 3rem;
     height: 100%;
     align-items: center;
     justify-content: center;
   }
+  
+  nav input:checked ~ .menu-container {
+    display: flex;
+  }
+
+  nav input:checked ~ .hamburger {
+    display: flex;
+  }
+
+  nav input:checked ~ .hamburger-label{
+    background-color: #1b6c89;
+  }
 
   .hamburger {
-    font-size: 2em;
+    font-size: 2rem;
     width: auto;
     cursor: pointer;
-    display: none;
+    display:block;
+    padding: 1.5rem;
   }
 
   nav ul {
@@ -74,9 +88,15 @@ nav {
     display: none;
     position: absolute;
     flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    top: 3em;
+    align-items: flex-end;
+    width: 9.5rem;
+    top: 3rem;
     right: 0;
+    background-color: #1b6c89;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    border-radius: 0rem 0rem .3rem .3rem;
+  }
+  li {
+    padding:.2rem;
   }
 }

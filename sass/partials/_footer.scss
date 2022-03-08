@@ -3,9 +3,9 @@
 footer {
   display: flex;
   justify-content: center;
-  bottom: 0;
   width: 100%;
-  height: 5em; /* Height of the footer | note:dont use vh here, use fixed values*/
+  position: fixed;
+  bottom: 0;
   background: #545454;
   border-top: 10px solid #2184aa;
   .footer-container {

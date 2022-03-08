@@ -2,27 +2,31 @@
 /* Navigation bar */
 .blue-sections {
   background-color: #2184aa;
-  color: white;
 }
 
 nav {
   height: 3em;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 nav .logo {
-  padding: 1em;
+  margin: 0rem 0rem 0rem 1rem;
+  font-size: 1.26rem;
 }
 nav ul {
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  margin-right: 1em;
+  margin-right: 1rem;
+}
+nav ul a {
+  margin: 0 1rem;
 }
 nav a {
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
-  margin: 0 1em;
   color: white;
   text-decoration: none;
 }
@@ -37,32 +41,38 @@ nav .hamburger-label {
 }
 
 /* Media Queries */
-@media screen and (max-width: 662px) {
-  .nav-container {
+@media screen and (max-width: 790px) {
+  nav {
     position: relative;
   }
 
-  .nav-container input:checked ~ .menu-container {
+  nav .hamburger-label {
+    display: inline;
     display: flex;
-  }
-
-  .nav-container input:checked ~ .hamburger {
-    display: flex;
-  }
-
-  .hamburger-label {
-    display: flex;
-    width: 3em;
+    width: 3rem;
     height: 100%;
     align-items: center;
     justify-content: center;
   }
 
+  nav input:checked ~ .menu-container {
+    display: flex;
+  }
+
+  nav input:checked ~ .hamburger {
+    display: flex;
+  }
+
+  nav input:checked ~ .hamburger-label {
+    background-color: #1b6c89;
+  }
+
   .hamburger {
-    font-size: 2em;
+    font-size: 2rem;
     width: auto;
     cursor: pointer;
-    display: none;
+    display: block;
+    padding: 1.5rem;
   }
 
   nav ul {
@@ -74,20 +84,26 @@ nav .hamburger-label {
     display: none;
     position: absolute;
     flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    top: 3em;
+    align-items: flex-end;
+    width: 9.5rem;
+    top: 3rem;
     right: 0;
+    background-color: #1b6c89;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    border-radius: 0rem 0rem 0.3rem 0.3rem;
+  }
+
+  li {
+    padding: 0.2rem;
   }
 }
 /* Footer */
 footer {
   display: flex;
   justify-content: center;
-  bottom: 0;
   width: 100%;
-  height: 5em;
-  /* Height of the footer | note:dont use vh here, use fixed values*/
+  position: fixed;
+  bottom: 0;
   background: #545454;
   border-top: 10px solid #2184aa;
 }
@@ -133,21 +149,18 @@ footer .footer-container #attribution a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  flex-grow: 1;
 }
-
-input {
-  height: 2.5em;
-  width: 20em;
+.middle-section input {
+  height: 2.5rem;
+  width: 40vw;
   color: #444;
   border: 1px solid #e5e5e5;
-  padding-left: 8.5vh;
   background-color: #ededed;
 }
-
-#logo {
+.middle-section #logo {
   height: 12rem;
-  margin: 2em;
+  margin-bottom: 2rem;
   width: auto;
 }
 
@@ -197,8 +210,8 @@ img {
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  height: 50vh;
-  margin: 0vh 40vh;
+  /*height:50vh;
+  margin: 0vh 40vh;*/
 }
 
 .second-half h2 {
@@ -225,8 +238,7 @@ img {
 
 i {
   font-size: 18vh;
-  color: #2184AA;
-  margin-bottom: 5vh;
+  color: white;
 }
 
 .member-name {
@@ -347,7 +359,7 @@ button {
   border: none;
   background-color: white;
   cursor: pointer;
-  margin: 10vh 0vh 0vh 10vh;
+  /*margin: 10vh 0vh 0vh 10vh;*/
 }
 
 .results, .h1Box {
@@ -400,7 +412,7 @@ strong {
   border: none;
   background-color: white;
   cursor: pointer;
-  margin: 10vh 0vh 0vh 10vh;
+  /*margin: 10vh 0vh 0vh 10vh;*/
 }
 
 .entry {
@@ -487,7 +499,6 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 75vh;
 }
 
 span {
@@ -497,7 +508,7 @@ span {
   color: #545454;
 }
 
-input {
+.inputSection input {
   padding: 1.2vh;
   margin: 1.5vh;
   border: 1px solid RGBA(31, 155, 103, 0.38);
@@ -555,7 +566,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 3em - 84.2px);
 }
 
 /*# sourceMappingURL=style.css.map */

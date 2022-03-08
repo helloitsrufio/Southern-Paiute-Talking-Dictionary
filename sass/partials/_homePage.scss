@@ -4,20 +4,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    flex-grow:1;
+    input {
+      height: 2.5rem;
+      width: 40vw;
+      color: #444;
+      border: 1px solid #e5e5e5;
+      background-color: #ededed;
+    }
+    #logo {
+      height: 12rem;
+      margin-bottom: 2rem;
+      width: auto;
+    }
   }
   
-  input {
-    height: 2.5em;
-    width: 20em;
-    color: #444;
-    border: 1px solid #e5e5e5;
-    padding-left: 8.5vh;
-    background-color: #ededed;
-  }
   
-  #logo {
-    height: 12rem;
-    margin: 2em;
-    width: auto;
-  }
+  
