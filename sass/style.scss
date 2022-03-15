@@ -7,23 +7,38 @@
 @use 'partials/wordPage';
 @use 'partials/inputPage';
 @use 'partials/entryAddedPage';
-
 * {
     box-sizing: border-box;
     font-family: "Ubuntu", sans-serif;
-  }
-  
-  html,
-  body {
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
-  }
-  
-  main {
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+// main {
+//     display: flex;
+//     flex-direction: column;
+//     height: calc(100vh - 3em - 84.2px)
+// }
+
+.middle-section {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 3em - 84.2px)
-  }
-  
+    flex: 1;
+}
 
-  
+.content-body {
+    flex: 1;
+}

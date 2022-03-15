@@ -1,77 +1,95 @@
 /* Body */
-
-.fas{
-    color:#2184AA;
-    border:none;
+.content-body-word-page {
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #545454;
+  .fas {
+    color: #2184aa;
+    border: none;
     background-color: white;
     cursor: pointer;
-    /*margin: 10vh 0vh 0vh 10vh;*/  // very bad
-}
-
-.entry{
-    display:flex;
+  }
+  i {
+    padding: 4rem 0rem 0rem 4rem;
+  }
+  .entry {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-left: 30vh;
-    height: fit-content
+    padding-left: 4rem;
+    h1 {
+      padding-right: 4rem;
+      margin: 3.5rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a5970;
+    }
+    span {
+      font-size: 1.2rem;
+    }
+    .entryData {
+      margin-left: 3.5rem;
+    }
+    .wordAndAudio {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid lightgray;
+      width: fit-content;
+    }
+    audio {
+      padding-bottom: 3rem;
+      width: 16vw;
+    }
+    .entry-data-section {
+      padding: 0.3rem 0rem 0rem 0rem;
+    }
+    .phoneticAndGrammaticalInput {
+      padding: 1.5rem 0rem;
+      #grammar {
+        color: white;
+        background-color: #2184aa;
+        width: fit-content;
+        padding: 0.7rem 1.5rem;
+        border-radius: 0.3rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: small;
+      }
+
+      #phonetic {
+        font-size: 1.2rem;
+        margin-right: 2rem;
+      }
+    }
+    .more {
+      button {
+        color: white;
+        background-color: #2184aa;
+        border-radius: 0.3rem;
+        margin-left: 1rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+    a,
+    a:visited {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+
+  .translation span,
+  .example span {
+    margin-left: 1.3rem;
+  }
 }
 
-.wordAndAudio{
-    display:flex;
-    flex-direction: row;
-    border-bottom: 1px solid lightgray;
-    width: fit-content;
+@media screen and (max-width: 435px) {
+  .content-body {
+    .entry {
+      h1 {
+        padding-right: 0rem;
+      }
+    }
+  }
 }
-
-.entry h1 {
-    padding-right: 4vh;
-    margin:3.5vh;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a5970;
-}
-
-audio {
-    padding-bottom: 3vh;
-}
-
-.entry span {
-    font-size: 1.2rem;
-}
-
-.entryData {
-    margin-left: 3.5vh;
-}
-.phoneticAndGrammaticalInput {
-    /* display: flex;
-    flex-direction: column; */
-    margin-top: 4vh;
-}
-
-#grammar {
-    color: white;
-    background-color: #2184AA;
-    width: fit-content;
-    padding: .7vh 1.5vh;
-    border-radius: .3rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: small;
-}
-
-#phonetic {
-    font-size: 1.2rem;
-    margin-right: 2vh;
-}
-
-.translation span, .example span{
-    margin-left: 1.3vh;
-}
-
-.more button {
-    color: white;
-    background-color:#2184AA;
-    border-radius: .3rem;
-    margin-left: 1vh;
-    padding: .5vh 1vh;
-}
+//TODO: continue making word page suitable for mobile devices. Fix audio button, padding on .entry. Maybe actually make everything at the media query centered in flex. 

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha test/**/**/*.test.js",
-    "start": "nodemon server.js",
+    "start": "npx appmap-agent-js -- nodemon server.js",
     "scss": "sass --watch ./sass/style.scss ./public/CSS/style.css"
   },
   "repository": {
@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/helloitsrufio/Southern-Paiute-Talking-Dictionary#readme",
   "dependencies": {
-    "@appland/appmap-agent-js": "^9.4.4",
     "@googleapis/oauth2": "^0.2.0",
     "busboy": "^0.3.1",
     "cloudinary": "^1.27.1",
@@ -42,6 +41,6 @@
   },
   "devDependencies": {
     "eslint": "^8.9.0",
-    "mocha": "^9.2.0"
+    "mocha": "^9.2.1"
   }
 }

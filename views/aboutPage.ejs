@@ -1,82 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us</title>
 
-    <link rel='stylesheet' href='../CSS/style.css'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9213c82d7b.js" crossorigin="anonymous"></script> 
-</head>
-<body>
-    <!-- Nav bar -->
-    <nav class='blue-sections'>
-        <h1><a href='/'>Southern Paiute Dictionary</a></h1>
-        <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/about'>About Us</a></li>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/15578398e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="middle-section">
+      <!-- Nav bar -->
+      <nav class="blue-sections">
+        <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
+        <input type="checkbox" name="menu" id="menu" />
+        <label for="menu" class="hamburger-label">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </label>
+        <div class="menu-container">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
             <li><a href="/alphabet">Alphabet</a></li>
             <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <!-- Introduction of About Us page half-->
-    <section class='first-half'>
-        <section class="first-half-h2">
+          </ul>
+        </div>
+      </nav>
+      <section class="content-body">
+        <!-- Introduction of About Us page half-->
+        <section class="first-half">
+          <section class="first-half-h2">
             <h2>Maikw. Noomi niaam Paiutsi Ampákhai.</h2>
             <h2>Hello. We are the Ampákhai Project.</h2>
+          </section>
+          <img
+            src="/public/CSS/Images/filler-photo.png"
+            alt="Photo of Paiute team."
+          />
+          <section>
+            <p>
+              Funded by the Cedar Band of Paiutes, the Ampákhai Project began in
+              late 2016 when Jeremy Garcia Standing Soldier began recording
+              tribal elder Eleanor Tom in an effort to learn the language. Their
+              efforts quickly snowballed as students from the local university
+              as well as other tribal members began to attend their language
+              sessions.
+            </p>
+            <p>
+              Today the Ampákhai Project seeks to preserve and eventually teach
+              the Southern Paiute language to all those who wish to learn it.
+              Currently we have this dictionary and are working on further
+              materials.
+            </p>
+            <p>
+              Questions? Contact us
+              <a id="here-link" href="contactPage.html">here.</a>
+            </p>
+          </section>
         </section>
-        <img src='/public/CSS/Images/filler-photo.png' alt='Photo of Paiute team.'>
-        <section>
-            <p>Funded by the Cedar Band of Paiutes, the Ampákhai Project began in late 2016 when Jeremy Garcia Standing Soldier began recording tribal elder Eleanor Tom in an effort to learn the language. Their efforts quickly snowballed as students from the local university as well as other tribal members began to attend their language sessions.</p>
-            <p>Today the Ampákhai Project seeks to preserve and eventually teach the Southern Paiute language to all those who wish to learn it. Currently we have this dictionary and are working on further materials.</p>
-            <p>Questions? Contact us <a id='here-link' href='contactPage.html'>here.</a></p>
-        </section>
-    </section>
 
-<!-- Introduction to the team half -->
-    <section class='second-half'>
-        <h2>Meet the team</h2>
-        <section class='team-data'>
-            <section class='team-member-first-row'>
-                <section class ='team-member'>
-                    <i class="fas fa-user-circle"  alt='Picture of Eleanor Tom.'></i>
-                    <span class='member-name'>Eleanor Tom</span>
-                    <span>Tribal Elder</span>
-                    <span>Language Specialist</span>
-                    <span>Author</span>
-                </section>
-                <section class='team-member first-row-second-member'>
-                    <i class="fas fa-user-circle"  alt='Picture of Jeremy Garcia Standing Soldier.'></i>
-                    <span class='member-name'>Jeremy Garcia Standing Soldier</span>
-                    <span>Project Lead</span>
-
-                </section>
+        <!-- Introduction to the team half -->
+        <section class="second-half">
+          <h2>Meet the team</h2>
+          <section class="team-data">
+            <section class="team-member-first-row">
+              <section class="team-member">
+                <i class="fas fa-user-circle" alt="Picture of Eleanor Tom."></i>
+                <span class="member-name">Eleanor Tom</span>
+                <span>Tribal Elder</span>
+                <span>Language Specialist</span>
+                <span>Author</span>
+              </section>
+              <section class="team-member first-row-second-member">
+                <i
+                  class="fas fa-user-circle"
+                  alt="Picture of Jeremy Garcia Standing Soldier."
+                ></i>
+                <span class="member-name">Jeremy Garcia Standing Soldier</span>
+                <span>Project Lead</span>
+              </section>
             </section>
-            <section class='team-member-second-row'>
-                <section class ='team-member'>
-                    <i class="fas fa-user-circle"  alt='Picture of Jonathan Hatch.'></i>
-                    <span class='member-name'>Jonathan Hatch</span>
-                    <span>Linguistic Specialist</span>
-                </section>
-                <section class ='team-member second-row-second-member'>
-                    <i class="fas fa-user-circle"  alt='Picture of Ruth Reed.'></i>
-                    <span class='member-name'>Ruth Reed</span>
-                    <span>Language Recorder</span>
-                    <span>Dictionary Developer</span>
-                </section>
+            <section class="team-member-second-row">
+              <section class="team-member">
+                <i
+                  class="fas fa-user-circle"
+                  alt="Picture of Jonathan Hatch."
+                ></i>
+                <span class="member-name">Jonathan Hatch</span>
+                <span>Linguistic Specialist</span>
+              </section>
+              <section class="team-member second-row-second-member">
+                <i class="fas fa-user-circle" alt="Picture of Ruth Reed."></i>
+                <span class="member-name">Ruth Reed</span>
+                <span>Language Recorder</span>
+                <span>Dictionary Developer</span>
+              </section>
             </section>
+          </section>
         </section>
+      </section>
+      <!-- Footer -->
+      <footer>
+        <section class="footer-container">
+          <h3 id="copyright">© 2021 - Cedar Band of Paiutes</h3>
+          <h3 id="attribution">
+            Created By<a href="https://ruthreed.dev">Ruth Reed</a>
+          </h3>
+        </section>
+      </footer>
     </section>
-    <!-- Footer -->
-    <footer>
-        <section class='footer-container'>
-            <h3>© 2021 - Cedar Band of Paiutes</h3>
-            <h3 id='attribution'>Created By<a href='https://ruthreed.dev/'>Ruth Reed</a></h3>
-        </section>
-    </footer>
-</body>
+  </body>
 </html>

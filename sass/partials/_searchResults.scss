@@ -1,54 +1,68 @@
 /* Body */
-
-.fas{
-    color:#2184AA;
-    border:none;
+.back-button {
+  align-self: flex-start;
+  padding-left: 5rem;
+  .fas {
+    color: #2184aa;
+    border: none;
     background-color: white;
     cursor: pointer;
-    /*margin: 10vh 0vh 0vh 10vh;*/ // very bad
+  }
 }
 
-.results, .h1Box{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 30vh;
+.results,
+.h1Box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-start;
+  padding-left: 10rem;
 }
-
-/* .h1Box {
-    margin-top: 2vh;
-} */
 
 #bodyH1 {
-    font-size: 2rem;
-    margin-bottom: 3vh;
+  font-size: 2rem;
+  color: #545454;
 }
 
-.results li {
+.results {
+  color: #545454;
+  li {
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin: 2vh;
+    margin: 2rem;
     line-height: 2rem;
-    width: 50vh;
-    padding-bottom: .7rem;
+    width: 40rem;
+    padding-bottom: 0.7rem;
     border-bottom: 1px solid lightgray;
+  }
+  span {
+    font-size: 1.3rem;
+  }
+  a {
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  p {
+    font-size: 1.3rem;
+  }
 }
 
 strong {
-    font-size: 1.7rem;
-    color: #1a5970;
+  font-size: 1.7rem;
+  color: #1a5970;
 }
 
-.results span {
-    font-size: 1.3rem;
-}
-
-.results a {
-    font-style: italic;
-    font-size: .9rem;
-}
-
-.results p {
-    font-size: 1.3rem;
+@media screen and (max-width: 730px) {
+  .results,
+  .h1Box {
+    padding-left: 0rem;
+    align-self: center;
+    li {
+      width: 50vw;
+    }
+  }
+  .back-button {
+    padding-left: 2rem;
+  }
 }

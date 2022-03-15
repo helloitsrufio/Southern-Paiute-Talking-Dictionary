@@ -1,46 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Entry added.</title>
     <!--external CSS link -->
-    <link rel='stylesheet' href='/CSS/style.css'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap" rel="stylesheet"> 
-</head>
-<body>
-    <!-- Nav bar -->
-    <nav class='blue-sections nav-container'>
-        <h1><a href='/'>Southern Paiute Dictionary</a></h1>
-        <ul>
-            <li><a href='/'>Home</a></li>
-            <li><a href='/about'>About Us</a></li>
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/15578398e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="middle-section">
+      <!-- Nav bar -->
+      <nav class="blue-sections">
+        <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
+        <input type="checkbox" name="menu" id="menu" />
+        <label for="menu" class="hamburger-label">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </label>
+        <div class="menu-container">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
             <li><a href="/alphabet">Alphabet</a></li>
             <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
+          </ul>
+        </div>
+      </nav>
 
-    <section class='bodySection'>
-        <h2>Entry added.</h2>
-        <button id='anotherEntryButton'>Add another.</button>
-        <button id='returnToHome'>Return to home page.</button>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <section class='footer-container'>
-            <h3>© 2021 - Cedar Band of Paiutes</h3>
-            <h3 id='attribution'>Created By<a href='https://ruthreed.dev'>Ruth Reed</a></h3>
+      <section class="content-body">
+        <section class="bodySection">
+          <h2>Entry added.</h2>
+          <button id="anotherEntryButton">Add another.</button>
+          <button id="returnToHome">Return to home page.</button>
         </section>
-    </footer>
-</body>
+      </section>
 
-<script type="text/javascript">
-    document.getElementById('anotherEntryButton').onclick = () => {location.href = '/input'}
-    document.getElementById('returnToHome').onclick = () => {location.href = '/'}
-</script>
+      <!-- Footer -->
+      <footer>
+        <section class="footer-container">
+          <h3 id="copyright">© 2021 - Cedar Band of Paiutes</h3>
+          <h3 id="attribution">
+            Created By<a href="https://ruthreed.dev">Ruth Reed</a>
+          </h3>
+        </section>
+      </footer>
+
+      <script type="text/javascript">
+        document.getElementById("anotherEntryButton").onclick = () => {
+          location.href = "/input";
+        };
+        document.getElementById("returnToHome").onclick = () => {
+          location.href = "/";
+        };
+      </script>
+    </section>
+  </body>
 </html>
