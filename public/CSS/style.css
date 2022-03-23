@@ -437,16 +437,15 @@ strong {
   background-color: white;
   cursor: pointer;
 }
-.content-body-word-page i {
+.content-body-word-page .arrow {
   padding: 4rem 0rem 0rem 4rem;
 }
 .content-body-word-page .entry {
   display: flex;
   flex-direction: column;
-  padding-left: 4rem;
+  padding-left: 10vw;
 }
 .content-body-word-page .entry h1 {
-  padding-right: 4rem;
   margin: 3.5rem;
   font-size: 2rem;
   font-weight: 700;
@@ -461,12 +460,19 @@ strong {
 .content-body-word-page .entry .wordAndAudio {
   display: flex;
   flex-direction: row;
+  align-items: center;
   border-bottom: 1px solid lightgray;
   width: fit-content;
 }
-.content-body-word-page .entry audio {
-  padding-bottom: 3rem;
-  width: 16vw;
+.content-body-word-page .entry .wordAndAudio audio {
+  display: none;
+}
+.content-body-word-page .entry .wordAndAudio .audio-button {
+  color: white;
+  background-color: #2184aa;
+  height: 2rem;
+  width: 2.5rem;
+  border-radius: 0.3rem;
 }
 .content-body-word-page .entry .entry-data-section {
   padding: 0.3rem 0rem 0rem 0rem;
@@ -506,9 +512,25 @@ strong {
   margin-left: 1.3rem;
 }
 
-@media screen and (max-width: 435px) {
-  .content-body .entry h1 {
-    padding-right: 0rem;
+@media screen and (max-width: 630px) {
+  .content-body-word-page {
+    padding: 0vw;
+  }
+  .content-body-word-page .entry {
+    width: 100%;
+    align-items: center;
+    padding-left: 0vw;
+  }
+  .content-body-word-page .entry .entryData {
+    margin-left: 0rem;
+  }
+  .content-body-word-page .entry .entryData h1 {
+    margin: 0rem 2rem 2rem 0rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .content-body-word-page .entry h1 {
+    margin: 1.5rem;
   }
 }
 .page-intro {

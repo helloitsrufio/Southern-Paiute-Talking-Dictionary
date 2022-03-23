@@ -9,15 +9,14 @@
     background-color: white;
     cursor: pointer;
   }
-  i {
+  .arrow{
     padding: 4rem 0rem 0rem 4rem;
   }
   .entry {
     display: flex;
     flex-direction: column;
-    padding-left: 4rem;
+    padding-left: 10vw;
     h1 {
-      padding-right: 4rem;
       margin: 3.5rem;
       font-size: 2rem;
       font-weight: 700;
@@ -32,12 +31,19 @@
     .wordAndAudio {
       display: flex;
       flex-direction: row;
+      align-items: center;
       border-bottom: 1px solid lightgray;
       width: fit-content;
+      audio {
+        display: none;
     }
-    audio {
-      padding-bottom: 3rem;
-      width: 16vw;
+    .audio-button {
+      color: white;
+      background-color: #2184aa;
+      height: 2rem;
+      width: 2.5rem;
+      border-radius: .3rem;
+    }
     }
     .entry-data-section {
       padding: 0.3rem 0rem 0rem 0rem;
@@ -83,11 +89,28 @@
   }
 }
 
-@media screen and (max-width: 435px) {
-  .content-body {
+@media screen and (max-width: 630px) {
+  .content-body-word-page {
+    padding: 0vw;
     .entry {
-      h1 {
-        padding-right: 0rem;
+      width: 100%;
+      align-items: center;
+      padding-left: 0vw;
+      .entryData {
+        margin-left: 0rem;
+        h1 {
+          margin: 0rem 2rem 2rem 0rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:375px){
+  .content-body-word-page {
+    .entry {
+      h1{
+        margin: 1.5rem
       }
     }
   }

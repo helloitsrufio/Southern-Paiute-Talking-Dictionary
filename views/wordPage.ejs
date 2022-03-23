@@ -10,10 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
-    <script
-      src="https://kit.fontawesome.com/15578398e0.js"
-      crossorigin="anonymous"
-    ></script> 
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap"
+    rel="stylesheet"
+  />
+  <script
+    src="https://kit.fontawesome.com/15578398e0.js"
+    crossorigin="anonymous"
+  ></script>
 </head>
 
 <!-- Body -->
@@ -40,7 +44,7 @@
       <!-- Word info section -->
         <!-- Need to add functionality to back button to make it go back to the search results. Right now it goes to the search results, but doesn't remember the search query. -->
       <a href = '/searchResults'>
-        <i class="fas fa-arrow-circle-left fa-3x"></i>
+        <i class="fas fa-arrow-circle-left fa-3x arrow"></i>
       </a>
       <section class = 'entry'>
         <% if(searchQueryResults){ %>   
@@ -50,6 +54,7 @@
               <% let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${searchQueryResults.audioInput}` %>
               <source src='<%= downloadURL %>' type='audio/wav'>
             </audio>
+            <button class="audio-button"><i class="fa-solid fa-play fa-1x"></i></button>
           </section>
           <section class='entryData'>
             <section class='phoneticAndGrammaticalInput'>
@@ -92,5 +97,6 @@
         </section>
     </footer>
   </section>
+  <script src="../audioButton.js"></script>
 </body>
 </html>
