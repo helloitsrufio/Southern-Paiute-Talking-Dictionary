@@ -1,92 +1,120 @@
- // About Page
-  /* First half of body */
-  .first-half{
+// About Page
+/* First half of body */
+.first-half {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  .first-half-h2 {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 3vh; 
-}
-
-.first-half-h2{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-}
-
-.first-half h2 {
-    color:#545454;
-}
-
-.first-half h2 + h2{
+  }
+  h2 {
+    color: #545454;
+  }
+  h2 + h2 {
     align-self: flex-end;
     justify-content: flex-end;
-    margin-bottom: 5vh;
+    margin-bottom: 3rem;
     color: rgb(132, 131, 131);
+  }
+  section {
+    margin-top: 2rem;
+    width: 58%;
+    color: black;
+  }
+  img {
+    width: 60%;
+    max-height: 45rem;
+  }
+  #here-link {
+    color: blue;
+  }
 }
 
-img{
-    width:60%;
-    max-height: 45vh;
-}
-
-.first-half section{
-    margin-top: 5vh;
-    width:58%;
-    color:black;
-}
-
-#here-link{
-    color:blue;
-}
-
-.team-data{
-    display:flex;
-    justify-content: space-between;
+.second-half {
+   color: #545454;
+  .team-data {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    /*height:50vh;
-    margin: 0vh 40vh;*/ //very bad not needed and only gives issues....
-}
-
-.second-half h2 {
+    gap: 1rem;
+    .team-member-first-row,
+    .team-member-second-row {
+      display: flex;
+      flex-direction: row;
+    }
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 26vw;
+    }
+    .first-row-second-member{
+        span {
+            text-align: center;
+        }
+    }
+    .member-name {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+    i {
+      font-size: 12rem;
+      color: #2184AA;
+    }
+  }
+  h2 {
     display: flex;
     justify-content: center;
+    margin-top:5rem;
+  }
 }
 
-.team-member-first-row, .team-member-second-row{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    /* margin-bottom: 10vh;
-    width: 20vh; */
-}
 
-.team-member{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width:50vh;
-    margin: 5vh 0vh;
+// Media queries
+//TODO: Meet the ppl section not looking good on tablet, going all venn diagram on us. 
+//Maybe switch fa for svgs, else change font size or transform scale, check utility classes.
+//Transform: scale(2) = 2x, transform: scale(.5) = half
+@media screen and (max-width:880px){
+    .first-half{
+        margin-top:0;
+        .first-half-h2{
+            margin-bottom: 1rem;
+        }
+        h2 + h2 {
+            margin-bottom: 1rem;
+        }
+        section {
+            margin-top: 2rem;
+        }
+    }
 }
-
-i{
-    font-size:18vh;
-    color:white;
-    // margin-bottom: 5vh;
-}
-
-.member-name {
-    font-weight: bold;
-    font-size: 1.4em;
-}
-
-.first-row-second-member{
-    padding-bottom: 4.5vh;
-}
-
-.second-row-second-member{
-    padding-top: 1.9vh;
+@media screen and (max-width:430px){
+    .first-half{
+        margin-top:0;
+        section {
+            margin-top: 2rem;
+        }
+        img {
+            display: none;
+        }
+        h2 + h2 {
+            margin-bottom: 0rem;
+        }
+    }
+    .second-half{
+        .team-data {
+            .team-member-first-row,
+            .team-member-second-row {
+                flex-direction: column;
+            }
+            .team-member{
+                width: 100%;
+                padding: .5rem;
+            }
+            i {
+                font-size: 8rem;
+            }
+        }
+    }
 }
