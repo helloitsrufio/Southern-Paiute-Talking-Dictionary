@@ -219,16 +219,16 @@ footer .footer-container #attribution a:hover {
   align-items: center;
   width: 26vw;
 }
-.second-half .team-data .first-row-second-member span {
-  text-align: center;
+.second-half .team-data .team-member i {
+  font-size: 17vw;
+  color: #2184AA;
 }
-.second-half .team-data .member-name {
+.second-half .team-data .team-member .member-name {
   font-weight: bold;
   font-size: 1.4rem;
 }
-.second-half .team-data i {
-  font-size: 12rem;
-  color: #2184AA;
+.second-half .team-data .first-row-second-member span {
+  text-align: center;
 }
 .second-half h2 {
   display: flex;
@@ -248,6 +248,14 @@ footer .footer-container #attribution a:hover {
   }
   .first-half section {
     margin-top: 2rem;
+  }
+
+  .second-half .team-data .team-member {
+    width: 100%;
+    padding: 0.5rem;
+  }
+  .second-half .team-data .team-member i {
+    font-size: 22vw;
   }
 }
 @media screen and (max-width: 430px) {
@@ -272,8 +280,8 @@ footer .footer-container #attribution a:hover {
     width: 100%;
     padding: 0.5rem;
   }
-  .second-half .team-data i {
-    font-size: 8rem;
+  .second-half .team-data .team-member i {
+    font-size: 31vw;
   }
 }
 /* Form */
