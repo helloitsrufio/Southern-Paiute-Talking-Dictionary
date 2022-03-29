@@ -27,16 +27,22 @@
     <section class="middle-section">
       <!-- Nav bar -->
       <nav class="blue-sections">
-        <h1><a href="/">Southern Paiute Dictionary</a></h1>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/alphabet">Alphabet</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
+        <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
+        <input type="checkbox" name="menu" id="menu" />
+        <label for="menu" class="hamburger-label">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </label>
+        <div class="menu-container">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/alphabet">Alphabet</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
       </nav>
 
-      <section class="content-body">
+      <section class="content-body-contact">
         <!-- Form -->
         <section class="contact-container">
           <h1 class="contact-h1">Contact Us</h1>
@@ -47,16 +53,16 @@
             enctype="multipart/form-data"
           >
             <section class="top-line">
-              <section>
+              <section class="top-line-section top-line-section-1">
                 <span>Name</span>
                 <input
                   type="text"
-                  placeholder="Enter your first and last name"
+                  placeholder="Enter your name"
                   name="userName"
                   required
                 />
               </section>
-              <section>
+              <section class="top-line-section">
                 <span>Email</span>
                 <input
                   type="text"
@@ -67,11 +73,11 @@
             </section>
             <section class="message">
               <span>Message</span>
-              <input
+              <textarea
                 type="text"
                 placeholder="Enter your message here."
                 name="userMessage"
-              />
+              ></textarea>
             </section>
             <section class="submit">
               <button type="submit" value="submit">

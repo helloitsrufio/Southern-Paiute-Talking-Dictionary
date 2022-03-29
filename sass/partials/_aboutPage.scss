@@ -70,10 +70,6 @@
   }
 }
 
-// Media queries
-//TODO: Meet the ppl section not looking good on tablet, going all venn diagram on us.
-//Maybe switch fa for svgs, else change font size or transform scale, check utility classes.
-//Transform: scale(2) = 2x, transform: scale(.5) = half
 @media screen and (max-width: 880px) {
   .first-half {
     margin-top: 0;

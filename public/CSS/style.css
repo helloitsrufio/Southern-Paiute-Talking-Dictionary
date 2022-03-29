@@ -284,101 +284,100 @@ footer .footer-container #attribution a:hover {
     font-size: 31vw;
   }
 }
+.content-body-contact {
+  display: flex;
+  flex-grow: 1;
+  align-items: start;
+  justify-content: center;
+}
+
 /* Form */
-.form span {
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #545454;
+}
+.contact-container .contact-h1 {
+  margin-bottom: 5rem;
+  font-size: 2rem;
+}
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  overflow: hidden;
+  width: 21rem;
+}
+.contact-container form span {
   font-weight: bold;
   text-transform: uppercase;
 }
-
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2vh;
-  overflow: hidden;
-}
-
-.contact-h1 {
-  margin-bottom: 5vh;
-}
-
-.top-line {
+.contact-container form .top-line {
   display: flex;
   flex-direction: row;
-  margin: 3vh;
+  margin-bottom: 2rem;
+  width: 100%;
 }
-
-.top-line span {
+.contact-container form .top-line .top-line-section {
   display: flex;
   flex-direction: column;
-  margin: 0vh 1vh 1vh 1vh;
+  width: 50%;
 }
-
-.top-line input {
-  margin: 0vh 1vh 0vh 1vh;
+.contact-container form .top-line .top-line-section-1 {
+  margin-right: 4%;
 }
-
-.message {
+.contact-container form .top-line span {
   display: flex;
   flex-direction: column;
-  max-width: 47vh;
-  margin-left: 4vh;
+  margin-bottom: 1rem;
+}
+.contact-container form .top-line input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: 2px solid rgba(31, 155, 103, 0.38);
+  margin-bottom: 1rem;
+}
+.contact-container form .submit span {
+  color: #545454;
+  font-size: 1.1em;
+  margin-left: -0.3em;
+}
+.contact-container form .submit button {
+  color: #2184aa;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.contact-container form .message {
+  display: flex;
+  flex-direction: column;
   overflow-wrap: break-word;
+  width: 100%;
 }
-
-.message span {
-  margin-bottom: 1.5vh;
+.contact-container form .message span {
+  margin-bottom: 1.5rem;
 }
-
-.message input {
-  /* text-align: flex-start;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-  padding: 0.5em 0em 14em 0.5em;
-  font-size: 0.8em;
+.contact-container form .message textarea {
+  height: 14rem;
+  font-size: 0.8rem;
   border-top-style: solid;
   border-right-style: solid;
   border-left-style: solid;
   border: 2px solid rgba(31, 155, 103, 0.38);
   color: black;
-  margin-bottom: 1.5vh;
+  margin-bottom: 1.5rem;
   line-break: auto;
   overflow-wrap: normal;
 }
-
-.contact-container input {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom: 2px solid rgba(31, 155, 103, 0.38);
-}
-
-.submit {
-  margin: 0vh 0vh 3vh 4vh;
-}
-
-button {
-  color: #2184AA;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-}
-
-.submit span {
-  color: #545454;
-  font-size: 1.1em;
-  margin-left: -0.3em;
-}
-
-.email-option span {
+.contact-container .email-option span {
   display: flex;
   flex-direction: column;
 }
-
-.email-option a {
-  color: #2184AA;
+.contact-container .email-option a {
+  color: #2184aa;
   text-transform: lowercase;
   text-decoration: none;
 }
@@ -401,7 +400,6 @@ button {
   flex-direction: column;
   justify-content: center;
   align-self: flex-start;
-  padding-left: 10rem;
 }
 
 #bodyH1 {
@@ -613,23 +611,21 @@ form {
   }
 }
 /* Body */
-.bodySection {
+.bodySectionAdded {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  margin-top: 20rem;
 }
-.bodySection h2 {
+.bodySectionAdded h2 {
   color: #545454;
-  margin-bottom: 10rem;
 }
-.bodySection button {
-  padding: 2.5rem;
+.bodySectionAdded button {
+  padding: 1.4rem;
   margin: 1.2rem;
   color: #fff;
   background-color: #2184AA;
-  border-radius: 2rem;
+  border-radius: 1rem;
   border: 2px solid #2184AA;
   font-size: medium;
 }

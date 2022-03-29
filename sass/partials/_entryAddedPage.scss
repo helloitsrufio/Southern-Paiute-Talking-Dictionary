@@ -1,20 +1,19 @@
 /* Body */
-.bodySection {
+.bodySectionAdded {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
-    margin-top:20rem;
     h2 {
         color: #545454;
-        margin-bottom: 10rem;
+        // margin-bottom: 10rem;
     }
     button{
-        padding:2.5rem;
+        padding:1.4rem;
         margin:1.2rem;
         color: #fff;
         background-color: #2184AA;
-        border-radius: 2rem;
+        border-radius: 1rem;
         border: 2px solid #2184AA;
         font-size: medium;
     }

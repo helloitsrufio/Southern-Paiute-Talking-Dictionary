@@ -1,100 +1,102 @@
 // Contact Page
+.content-body-contact {
+  display: flex;
+  flex-grow: 1;
+  align-items: start;
+  justify-content: center;
+}
 /* Form */
-.form span{
-    font-weight: bold;
-    text-transform: uppercase;
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:#545454;
+  .contact-h1 {
+    margin-bottom: 5rem;
+    font-size: 2rem;
   }
-  
-  .form {
+  form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top:2vh;
+    margin-top: 2rem;
     overflow: hidden;
+    width: 21rem;
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .top-line {
+      display: flex;
+      flex-direction: row;
+      margin-bottom:2rem;
+      width: 100%;
+      .top-line-section {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+      .top-line-section-1{
+        margin-right: 4%;
+      }
+      span {
+        display: flex;
+        flex-direction: column;
+        margin-bottom:1rem;
+      }
+      input {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom: 2px solid rgba(31, 155, 103, 0.38);
+        margin-bottom:1rem;
+      }
+    }
+    .submit {
+      span {
+        color: #545454;
+        font-size: 1.1em;
+        margin-left: -0.3em;
+      }
+      //TODO: Push this to flex-start position?
+      button {
+        color: #2184aa;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+      }
+    }
+    .message {
+      display: flex;
+      flex-direction: column;
+      overflow-wrap: break-word;
+      width: 100%;
+      span {
+        margin-bottom: 1.5rem;
+      }
+      textarea {
+        height: 14rem;
+        font-size: 0.8rem;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-left-style: solid;
+        border: 2px solid rgba(31, 155, 103, 0.38);
+        color: black;
+        margin-bottom: 1.5rem;
+        line-break: auto;
+        overflow-wrap: normal;
+      }
+    }
   }
-  
-  .contact-h1{
-    margin-bottom: 5vh;
+  .email-option {
+    span {
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #2184aa;
+      text-transform: lowercase;
+      text-decoration: none;
+    }
   }
-  
-  .top-line{
-    display:flex;
-    flex-direction: row;
-    margin:3vh;
-  }
-  
-  .top-line span{
-    display:flex;
-    flex-direction: column;
-    margin: 0vh 1vh 1vh 1vh;
-  }
-  
-  .top-line input{
-    margin: 0vh 1vh 0vh 1vh;
-  }
-  
-  .message{
-    display:flex;
-    flex-direction: column;
-    max-width: 47vh;
-    margin-left:4vh;
-    overflow-wrap: break-word;
-  }
-  
-  .message span{
-    margin-bottom:1.5vh;
-  }
-  
-  .message input {
-    /* text-align: flex-start;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-    padding: .5em 0em 14em .5em; 
-    font-size: .8em;
-    border-top-style:solid;
-    border-right-style: solid;
-    border-left-style: solid;
-    border:2px solid rgba(31,155,103,0.38);
-    color:black;
-    margin-bottom: 1.5vh;
-    line-break:auto;
-    overflow-wrap: normal;
-  }
-  
-  .contact-container input{
-    border-top-style:hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom: 2px solid rgba(31,155,103,0.38);
-  }
-  
-  .submit{
-    margin: 0vh 0vh 3vh 4vh;
-  }
-  
-  button{
-    color:#2184AA;
-    border:none;
-    background-color: white;
-    cursor: pointer;
-  }
-  
-  .submit span{
-    color: #545454;
-    font-size: 1.1em;
-    margin-left:-.3em;
-  }
-  
-  
-  .email-option span{
-    display:flex;
-    flex-direction: column;
-  }
-  
-  .email-option a{
-    color:#2184AA;
-    text-transform: lowercase;
-    text-decoration:none;
-  }
+}
