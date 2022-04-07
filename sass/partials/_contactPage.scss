@@ -12,7 +12,7 @@
   align-items: center;
   color:#545454;
   .contact-h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
     font-size: 2rem;
   }
   form {
@@ -53,6 +53,7 @@
       }
     }
     .submit {
+      width: 100%;
       span {
         color: #545454;
         font-size: 1.1em;
@@ -89,6 +90,8 @@
     }
   }
   .email-option {
+    width: 100%;
+    padding: 1rem 0;
     span {
       display: flex;
       flex-direction: column;

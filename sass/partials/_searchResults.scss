@@ -1,67 +1,70 @@
 /* Body */
-.back-button {
-  align-self: flex-start;
-  padding-left: 5rem;
-  .fas {
-    color: #2184aa;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-  }
-}
-
-.results,
-.h1Box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: flex-start;
-}
-
-#bodyH1 {
-  font-size: 2rem;
-  color: #545454;
-}
-
-.results {
-  color: #545454;
-  li {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    margin: 2rem;
-    line-height: 2rem;
-    width: 40rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid lightgray;
-  }
-  span {
-    font-size: 1.3rem;
-  }
-  a {
-    font-size: 0.9rem;
-    text-decoration: none;
-  }
-  p {
-    font-size: 1.3rem;
-  }
-}
-
-strong {
-  font-size: 1.7rem;
-  color: #1a5970;
-}
-
-@media screen and (max-width: 730px) {
-  .results,
-  .h1Box {
-    padding-left: 0rem;
-    align-self: center;
-    li {
-      width: 50vw;
+.content-body-search {
+  padding: 5rem;
+  .back-button {
+    align-self: flex-start;
+    .fas {
+      color: #2184aa;
+      border: none;
+      background-color: white;
+      cursor: pointer;
     }
   }
-  .back-button {
-    padding-left: 2rem;
+  
+  .results,
+  .h1Box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-start;
   }
+  
+  #bodyH1 {
+    font-size: 2rem;
+    color: #545454;
+  }
+  
+  .results {
+    color: #545454;
+    li {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin: 2rem;
+      line-height: 2rem;
+      width: 40rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid lightgray;
+    }
+    span {
+      font-size: 1.3rem;
+    }
+    a {
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    p {
+      font-size: 1.3rem;
+    }
+  }
+  
+  strong {
+    font-size: 1.7rem;
+    color: #1a5970;
+  }
+  
+  @media screen and (max-width: 730px) {
+    .results,
+    .h1Box {
+      padding-left: 0rem;
+      align-self: center;
+      li {
+        width: 50vw;
+      }
+    }
+    .back-button {
+      padding-left: 2rem;
+    }
+  }  
 }
+

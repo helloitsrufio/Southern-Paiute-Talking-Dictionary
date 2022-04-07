@@ -109,6 +109,7 @@ footer {
   bottom: 0;
   background: #545454;
   border-top: 10px solid #2184aa;
+  margin-top: 5rem;
 }
 footer .footer-container {
   display: flex;
@@ -299,7 +300,7 @@ footer .footer-container #attribution a:hover {
   color: #545454;
 }
 .contact-container .contact-h1 {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   font-size: 2rem;
 }
 .contact-container form {
@@ -340,6 +341,9 @@ footer .footer-container #attribution a:hover {
   border-bottom: 2px solid rgba(31, 155, 103, 0.38);
   margin-bottom: 1rem;
 }
+.contact-container form .submit {
+  width: 100%;
+}
 .contact-container form .submit span {
   color: #545454;
   font-size: 1.1em;
@@ -372,6 +376,10 @@ footer .footer-container #attribution a:hover {
   line-break: auto;
   overflow-wrap: normal;
 }
+.contact-container .email-option {
+  width: 100%;
+  padding: 1rem 0;
+}
 .contact-container .email-option span {
   display: flex;
   flex-direction: column;
@@ -383,34 +391,33 @@ footer .footer-container #attribution a:hover {
 }
 
 /* Body */
-.back-button {
-  align-self: flex-start;
-  padding-left: 5rem;
+.content-body-search {
+  padding: 5rem;
 }
-.back-button .fas {
+.content-body-search .back-button {
+  align-self: flex-start;
+}
+.content-body-search .back-button .fas {
   color: #2184aa;
   border: none;
   background-color: white;
   cursor: pointer;
 }
-
-.results,
-.h1Box {
+.content-body-search .results,
+.content-body-search .h1Box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: flex-start;
 }
-
-#bodyH1 {
+.content-body-search #bodyH1 {
   font-size: 2rem;
   color: #545454;
 }
-
-.results {
+.content-body-search .results {
   color: #545454;
 }
-.results li {
+.content-body-search .results li {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -420,37 +427,35 @@ footer .footer-container #attribution a:hover {
   padding-bottom: 0.7rem;
   border-bottom: 1px solid lightgray;
 }
-.results span {
+.content-body-search .results span {
   font-size: 1.3rem;
 }
-.results a {
+.content-body-search .results a {
   font-size: 0.9rem;
   text-decoration: none;
 }
-.results p {
+.content-body-search .results p {
   font-size: 1.3rem;
 }
-
-strong {
+.content-body-search strong {
   font-size: 1.7rem;
   color: #1a5970;
 }
-
 @media screen and (max-width: 730px) {
-  .results,
-.h1Box {
+  .content-body-search .results,
+.content-body-search .h1Box {
     padding-left: 0rem;
     align-self: center;
   }
-  .results li,
-.h1Box li {
+  .content-body-search .results li,
+.content-body-search .h1Box li {
     width: 50vw;
   }
-
-  .back-button {
+  .content-body-search .back-button {
     padding-left: 2rem;
   }
 }
+
 /* Body */
 .content-body-word-page {
   justify-content: flex-start;
