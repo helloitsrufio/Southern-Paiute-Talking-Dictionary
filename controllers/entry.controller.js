@@ -49,9 +49,13 @@ module.exports = {
   // Equivalent of app.put('/updateEntry')
   //TODO: Messed around with the params in .explicit(),and it just isn't fucking working. Getting err, but it is not descriptive. Sometimes it says that we are using the wrong type. Also, we hardcoded the params so that we could get this far; will need to fix that. Also we changed public_id from downloadURL to newFileName since it's the new uploaded one vs the one we are getting from Cloudinary.
   //Sorry if that doesn't make any sense. It doesn't to past Ruthie either. 
+  //https://clips.twitch.tv/ViscousLazyStingrayEleGiggle-NJboAucoxrITFORJ
+  //"Resource not found - 1650580416885" err; something wrong with update while adding entry. Is it uploading audios correctly? CHEQUE.
+  //dom wants more dj khalid
   updateEntry: async (req, res) => {
     {
       const name = req.params.id;
+      console.log(req.files)
       let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${req.body.audio}`
       let file = Array.isArray(req.files.audio)
         ? req.files.audio[0]
@@ -59,19 +63,17 @@ module.exports = {
       if (["audio/wav", "audio/mp3", "audio/mpeg"].includes(file.mimetype)) {
         const newfileName = `${new Date().getTime()}`;
         await cloudinary.uploader.explicit(
-          newfileName,
+          req.body.currentAudio,
           {
             //public_id: downloadURL,
             type: "upload",
             invalidate: true,
+            resource_type: "video",
+            folder: "AudioUploads/",
           },
-          {resource_type: "video",
-          folder: "AudioUploads/",
-          // public_id: newfileName
-        },
           async (err) => {
             console.log(err.message)
-            if (err) res.send("err");
+            if (err) res.send(err);
 
             try {
               // if(req.files == null){

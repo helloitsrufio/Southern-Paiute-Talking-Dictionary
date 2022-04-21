@@ -1,0 +1,82 @@
+apostrophe user
+123mnB
+
+
+// // Given an integral number, determine if it's a square number. Is it always a number? Are there ever any special characters? 
+// //Boolean
+// //write the function
+// function isSquare(x){
+//   //do an if conditional thingy
+//   return Math.round(Math.sqrt(x)) == Math.sqrt(x)
+// //where if x = y * y,
+// //return true
+// //else return false
+// }
+// function isSquare(x){
+//   return (Math.sqrt(x). isInteger())
+// }
+
+// function isSquare(n){
+//   let sr = Math.round(Math.sqrt(n)); return ((sr * sr) == n);
+// }
+
+// console.log(isSquare(5),false)
+// console.log(isSquare(25),true)
+// console.log(isSquare(4),true)
+
+
+// //Trolls are attacking your comment section!
+
+// // A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+
+// // Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+// // For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+
+// // Note: for this kata y isn't considered a vowel.
+
+// function disemvowel(str) {
+//   let regex = RegExp(/[AEIOUaeiou]/g)
+//   return str.replace(regex, '')
+  
+// }
+
+// function rps(choice1, choice2){
+//     if(choice1 == 'rock' && choice2 == 'paper'){
+//         return 'paper wins'
+//     }else if(choice1 == 'rock' && choice2 == scissors'){
+//         return 'rock wins'
+//     }else{
+//         return 'scissors wins'
+//     }      
+// }
+
+// console.log(rps('rock', 'scissors'))
+// console.log(rps('paper', 'scissors'))
+// console.log(rps('rock', 'paper'))
+function sum(arr){
+    for(i=0;i<arr.length;i++){
+        return arr.map(arr[i]+=)
+    }
+}
+sum([1,2,3,4,5,6])
+
+
+client id:  84b5309671264fb88bcf4442f3514f03
+client secret:  1582e01ee3fe4275b2f355aa37a106cb
+549 x 549 , top 180, b 50
+
+<select> for drop down
+	<option value ...selected">
+
+strength6400>add>> -> azure appland
+entered398.contain - ruthappland email
+
+
+marketplace: https://marketplace.visualstudio.com/manage/publishers/appland/extensions/appmap/hub?_a=acquisition
+
+jetbrains:
+https://plugins.jetbrains.com/plugin/16701-appmap/analytics
+
+
+jazmin getting paid for
