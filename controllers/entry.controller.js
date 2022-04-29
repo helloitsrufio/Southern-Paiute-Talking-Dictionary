@@ -34,13 +34,21 @@ module.exports = {
       console.error(error);
     }
   },
+  //TODO:method is not running. We are trying to get the id of the audio so we can populate the form with the audio. 
+  //In downloadURL we are trying to figure out what the last template literal should be. 
   //Update Input Page app.get('/update-word/:id')
   updateInputPage: async (req, res) => {
     let name = req.params.id;
+    // console.log(req)
+    // console.log('test')
+    // let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${audioInput}`
+    
     console.log(req.params.id)
+    // console.log(downloadURL)
     try {
       await Entry.findOne({ _id: name }).then((data) => {
-        res.render("editWord.ejs", { result: data });
+        // var request = new XMLHttpRequest(); data.append('audioInput',downloadURL);
+        res.render("editWord.ejs", { result: data, });
       });
     } catch (error) {
       console.error(error);
