@@ -33,7 +33,7 @@ It includes the following pages:
 You can see a screenshot of all these pages (except for the alphabet page, which is under construction) in this repository under views/CSS/Images.
 
 ## Technologies Used
-Made with **Node.js**, **Express**, **MongoDB**, **JavaScript**, **EJS**, **Cloudinary**, and **CSS3**.
+Made with **Node.js**, **Express**, **MongoDB**, **JavaScript**, **EJS**, **Cloudinary**, **SASS**, and **CSS3**.
 
 ## Use and Installation
 
@@ -76,19 +76,20 @@ To get the values for these environment variables, you will need to
   }
     
 ## What still needs to be done
-- [ ] Make overall site more responsive for various screen widths (each page need this adjustment)
-  - [ ] Make site mobile-friendly
+- [x] Make overall site more responsive for various screen widths (each page needs this adjustment)
+  - [x] Make site mobile-friendly
 - [ ] Make contact form functional
 - [ ] Disable search history in search bar
 - [ ] Make a button/link to access input page
   - [ ] Set up auth for admin (in order to access input page)
-- [ ] Reorganize code base into MVC format to make more readable/accessible
+- [x] Reorganize code base into MVC format to make more readable/accessible
 - [ ] Add content and styling to `Alphabet` page
 - [ ] Reprogram the front-end in React
 - [ ] Add photos of team and team members for `About` page
 - [ ] Add a page in which the admin can update entries to database
 - [ ] Add a button which enables the admin to delete an entry from the database
 - [ ] Fix back button on search query page/word page from going to input page to previous page.
+- [ ] Add an alphabetical list of words in the databse that the user can go through.
 
 ## Contact
 If you have questions, concerns, suggestions, or anything else, feel free to email the developer, Ruth Reed, at [ruthreed.dev@gmail.com](mailto:ruthreed.dev@gmail.com).
