@@ -46,7 +46,7 @@ module.exports = {
     // console.log(downloadURL)
     try {
       await Entry.findOne({ _id: name }).then((data) => {
-        // var request = new XMLHttpRequest(); data.append('audioInput',downloadURL);
+        // console.log(data)
         res.render("editWord.ejs", { result: data, });
       });
     } catch (error) {
@@ -54,60 +54,99 @@ module.exports = {
     }
   },
   // Equivalent of app.put('/updateEntry')
-  //TODO: Messed around with the params in .explicit(),and it just isn't fucking working. Getting err, but it is not descriptive. Sometimes it says that we are using the wrong type. Also, we hardcoded the params so that we could get this far; will need to fix that. Also we changed public_id from downloadURL to newFileName since it's the new uploaded one vs the one we are getting from Cloudinary.
-  //Sorry if that doesn't make any sense. It doesn't to past Ruthie either. 
-  //https://clips.twitch.tv/ViscousLazyStingrayEleGiggle-NJboAucoxrITFORJ
-  //"Resource not found - 1650580416885" err; something wrong with update while adding entry. Is it uploading audios correctly? CHEQUE.
-  //dom wants more dj khalid
+  
   updateEntry: async (req, res) => {
-    {
-      const name = req.params.id;
-      console.log(req.files)
-      let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${req.body.audio}`
-      let file = Array.isArray(req.files.audio)
-        ? req.files.audio[0]
-        : req.files.audio;
-      if (["audio/wav", "audio/mp3", "audio/mpeg"].includes(file.mimetype)) {
-        const newfileName = `${new Date().getTime()}`;
-        await cloudinary.uploader.explicit(
-          req.body.currentAudio,
-          {
-            //public_id: downloadURL,
-            type: "upload",
-            invalidate: true,
-            resource_type: "video",
-            folder: "AudioUploads/",
-          },
-          async (err) => {
-            console.log(err.message)
-            if (err) res.send(err);
+      // console.log("request.body: ", req.body);
+      // console.log("request.params: ", req.params);
+      // console.log("request.query: ", req.query);
+      // console.log('request.files', req.files);
 
-            try {
-              // if(req.files == null){
-                Entry.findOneAndUpdate(
-                  {
-                    _id: name,
-                  },
-                  {
-                    wordInput: req.body.wordInput,
-                    phoneticInput: req.body.phoneticInput,
-                    audioInput: newfileName,
-                    grammaticalInput: req.body.grammaticalInput,
-                    translationInput: req.body.translationInput,
-                    exampleInput: req.body.exampleInput,
-                  }
-                );
-              // }
-              // .then((data) => {
-              //   res.redirect("/entryAdded")
-              // })
-            } catch (error) {
-              console.error(error);
-            }
-          }
-        );
+      const name = req.params.id;
+      // console.log(req.files)
+      // let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${req.body.audio}`
+ 
+
+      
+      const files = req.files;
+      let audio = undefined;
+      if (files) {
+        audio = files.audio;
       }
-    }
+
+      const file = Array.isArray(audio)
+        ? audio[0]
+        : audio;
+      
+      
+      if (file == undefined) {
+        // UPDATE WITHOUT NEW AUDIO FILE
+        console.log("No audio in request, updating mongoDB only");
+        Entry.findOneAndUpdate(
+          {
+            _id: name,
+          },
+          {
+            wordInput: req.body.wordInput,
+            phoneticInput: req.body.phoneticInput,
+            grammaticalInput: req.body.grammaticalInput,
+            translationInput: req.body.translationInput,
+            exampleInput: req.body.exampleInput,
+          }
+        ).then((result) => {
+          console.log("mongo result: ", result);
+          res.redirect("/entryAdded")
+        });
+      } else if (["audio/wav", "audio/mp3", "audio/mpeg"].includes(file.mimetype)) {
+        console.log("New audio found!");
+        const newfileName = `${new Date().getTime()}`;
+        console.log(newfileName);
+
+        try{
+          await cloudinary.uploader.upload(
+            file.tempFilePath,
+            {
+              resource_type: "video",
+              folder: "AudioUploads/",
+              public_id: newfileName,
+            },
+          );
+          
+          // Get the existing MongoDB document
+          // const existingEntry.previousAudioID = await Entry.findOne()
+          // [Step: Unicorn] Get the old audioID from the existing mongoDB document, save in variable.
+          
+          // UPload new audio file.
+          // Update existing mongoDB document
+
+          // Finally call cloudinary.uploader.destroy() to delete old audio file with ID we saved in step Unicorn.
+          
+          const result = await Entry.findOneAndUpdate(
+            {
+              _id: name,
+            },
+            {
+              wordInput: req.body.wordInput,
+              phoneticInput: req.body.phoneticInput,
+              audioInput: newfileName,
+              grammaticalInput: req.body.grammaticalInput,
+              translationInput: req.body.translationInput,
+              exampleInput: req.body.exampleInput,
+            }
+          )
+          console.log("mongo result: ", result);
+          res.redirect("/entryAdded")
+        } catch (error) {
+          res.status(500).json({
+            message: 'Internal server error. Issue with MongoDB or Cloudinary',
+            errorMsg: error?.message,
+            errorObj: JSON.stringify(error),
+          })
+        }
+
+      } else {
+        console.warn('Mimetype not supported.',file.mimetype)
+        res.status(400).json({message: 'Failed to add item; bad mimetype'})
+      }
   },
 
   //Input Page app.get('/input')
