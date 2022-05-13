@@ -33,9 +33,7 @@ module.exports = {
       console.error(error);
     }
   },
-  //TODO:method is not running. We are trying to get the id of the audio so we can populate the form with the audio. 
-  //In downloadURL we are trying to figure out what the last template literal should be. 
-  //Update Input Page app.get('/update-word/:id')
+
   updateInputPage: async (req, res) => {
     let name = req.params.id;
     // console.log(req)
@@ -53,20 +51,12 @@ module.exports = {
       console.error(error);
     }
   },
+
   // Equivalent of app.put('/updateEntry')
-  
   updateEntry: async (req, res) => {
-      // console.log("request.body: ", req.body);
-      // console.log("request.params: ", req.params);
-      // console.log("request.query: ", req.query);
-      // console.log('request.files', req.files);
 
       const name = req.params.id;
-      // console.log(req.files)
-      // let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${req.body.audio}`
- 
 
-      
       const files = req.files;
       let audio = undefined;
       if (files) {
@@ -194,5 +184,31 @@ module.exports = {
   //Entry added to db: app.get('/entryAdded')
   entryAdded: async (req, res) => {
     res.render("completedEntry.ejs");
+  },
+
+  getID: async (req, res) => {
+    let name = req.params.id;
+    try {
+      await Entry.findOne({ _id: name }).then((data) => {
+        res.render("wordPage.ejs", { searchQueryResults: data });
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  //delete entry
+  deleteEntry: async (req, res) => {
+    let name = req.params.id;
+
+    try {
+      const data = await Entry.deleteOne({ _id: name})
+      console.log(data)
+      //TODO: Indicate to the user that the entry was deleted somehow.
+    //  req.flash('message', `Entry ${data.name} deleted`);
+     res.redirect('/')
+    } catch (error) {
+      console.error(error);
+    }
   },
 };

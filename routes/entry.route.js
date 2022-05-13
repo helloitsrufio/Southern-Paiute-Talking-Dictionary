@@ -16,4 +16,7 @@ router.post("/addEntry", entryController.addEntry)
 
 router.get('/entryAdded', entryController.entryAdded)
 
+//TODO: Need to make this delete, can do so successfully if you incorporate ajax/axios and fetch
+router.post('/delete/:id', entryController.deleteEntry)
+
 module.exports = router
