@@ -141,7 +141,7 @@ module.exports = {
 
   //Input Page app.get('/input')
   getInputPage: async (req, res) => {
-    res.render("inputPage.ejs");
+    res.render("inputPage.ejs",{errorMessage: ''});
   },
 
   //Post entry app.post("/addEntry")
@@ -150,9 +150,8 @@ module.exports = {
       let file = Array.isArray(req.files.audio)
         ? req.files.audio[0]
         : req.files.audio;
-      if (["audio/wav", "audio/mp3"].includes(file.mimetype)) {
+      if (["audio/wav", "audio/mp4", ].includes(file.mimetype)) {
         const newfileName = `${new Date().getTime()}`;
-
         await cloudinary.uploader.upload(
           file.tempFilePath,
           {
@@ -173,11 +172,14 @@ module.exports = {
               });
               res.redirect("/entryAdded");
             } catch (err) {
-              console.log(err);
+              console.error(err);
               res.send(err);
             }
           }
         );
+      }else{
+        console.error({message: 'The type of audio file provided is not allowed.', mimetype: file.mimetype})
+        res.render("inputPage.ejs", {errorMessage: 'The type of audio file provided is not allowed.'});
       }
     }
   },

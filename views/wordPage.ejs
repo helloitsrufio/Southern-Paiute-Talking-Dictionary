@@ -79,8 +79,8 @@
                 <!-- <span><%= %></span>
                 <span><%= %></span> -->
               <button><a href='#'>More</a></button>
-              <button><a href="/update-word/<%= searchQueryResults._id %>">Edit entry</a></button>
-              <form action="/delete/<%= searchQueryResults._id %>" method="post">
+              <button><a href="/word/<%= searchQueryResults._id%>/edit">Edit entry</a></button>
+              <form action="/word/<%= searchQueryResults._id %>/delete" method="post">
                 <button>Delete entry</button>
                 <input type="hidden" name="_method" value="DELETE">
               </form>

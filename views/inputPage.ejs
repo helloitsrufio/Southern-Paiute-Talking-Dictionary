@@ -38,10 +38,13 @@
             <!-- Instructions -->
             <section class="page-intro">
                 <p>Input the following for a Paiute word, sentence, or phrase.</p>
+                <% if(errorMessage){ %>
+                    <span><%= errorMessage %></span>
+                <% } %>
             </section>
             <!-- Form -->
             <section class="form-body">
-                <form action="/addEntry" method="POST" enctype="multipart/form-data">
+                <form action="/word" method="POST" enctype="multipart/form-data">
                     <section class="inputSection">
                         <span>Word, phrase, or sentence</span>
                         <input type="text" placeholder="Input word, phrase, or sentence." name="wordInput" />
