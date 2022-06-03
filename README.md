@@ -75,7 +75,7 @@ To get the values for these environment variables, you will need to
     "nodemon": "^2.0.15"
   }
     
-## What still needs to be done
+## Optimizations
 - [x] Make overall site more responsive for various screen widths (each page needs this adjustment)
   - [x] Make site mobile-friendly
 - [ ] Make contact form functional
@@ -86,8 +86,8 @@ To get the values for these environment variables, you will need to
 - [ ] Add content and styling to `Alphabet` page
 - [ ] Reprogram the front-end in React
 - [ ] Add photos of team and team members for `About` page
-- [ ] Add a page in which the admin can update entries to database
-- [ ] Add a button which enables the admin to delete an entry from the database
+- [x] Add a page in which the admin can update entries to database
+- [x] Add a button which enables the admin to delete an entry from the database
 - [ ] Fix back button on search query page/word page from going to input page to previous page.
 - [ ] Add an alphabetical list of words in the databse that the user can go through.
 
