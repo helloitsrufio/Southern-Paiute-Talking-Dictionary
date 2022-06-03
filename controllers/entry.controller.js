@@ -39,14 +39,12 @@ module.exports = {
     // console.log(req)
     // console.log('test')
     // let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${audioInput}`
-    
+  
     console.log(req.params.id)
     // console.log(downloadURL)
     try {
-      await Entry.findOne({ _id: name }).then((data) => {
-        // console.log(data)
-        res.render("editWord.ejs", { result: data, });
-      });
+      const data = await Entry.findOne({ _id: name })
+      res.render("editWord.ejs", { result: data });
     } catch (error) {
       console.error(error);
     }
@@ -88,10 +86,12 @@ module.exports = {
         });
       } else if (["audio/wav", "audio/mp3", "audio/mpeg"].includes(file.mimetype)) {
         console.log("New audio found!");
-        const newfileName = `${new Date().getTime()}`;
+        const newfileName = new Date().toISOString();
         console.log(newfileName);
 
         try{
+          // await cloudinaryUpload(file.tempFilePath)
+
           await cloudinary.uploader.upload(
             file.tempFilePath,
             {
@@ -146,43 +146,34 @@ module.exports = {
 
   //Post entry app.post("/addEntry")
   addEntry: async (req, res) => {
-    {
-      let file = Array.isArray(req.files.audio)
-        ? req.files.audio[0]
-        : req.files.audio;
-      if (["audio/wav", "audio/mp4", ].includes(file.mimetype)) {
-        const newfileName = `${new Date().getTime()}`;
-        await cloudinary.uploader.upload(
-          file.tempFilePath,
-          {
-            resource_type: "video",
-            folder: "AudioUploads/",
-            public_id: newfileName,
-          },
-          (err) => {
-            if (err) res.send("err");
-            try {
-              Entry.create({
-                wordInput: req.body.wordInput,
-                audioInput: newfileName,
-                phoneticInput: req.body.phoneticInput,
-                grammaticalInput: req.body.grammaticalInput,
-                translationInput: req.body.translationInput,
-                exampleInput: req.body.exampleInput,
-              });
-              res.redirect("/entryAdded");
-            } catch (err) {
-              console.error(err);
-              res.send(err);
-            }
-          }
-        );
-      }else{
-        console.error({message: 'The type of audio file provided is not allowed.', mimetype: file.mimetype})
-        res.render("inputPage.ejs", {errorMessage: 'The type of audio file provided is not allowed.'});
-      }
+    let file = Array.isArray(req.files.audio)
+      ? req.files.audio[0]
+      : req.files.audio;
+
+    if (!["audio/wav", "audio/mpeg"].includes(file.mimetype)) {
+      res.render("inputPage.ejs", {errorMessage: 'The type of audio file provided is not allowed.'});
+      return;
     }
+
+    const uploadedFile = await cloudinaryUpload(file.tempFilePath)
+    const { public_id } = uploadedFile;
+    console.log("add", { public_id });
+
+    const entry = {
+      wordInput: req.body.wordInput,
+      audioInput: public_id,
+      phoneticInput: req.body.phoneticInput,
+      grammaticalInput: req.body.grammaticalInput,
+      translationInput: req.body.translationInput,
+      exampleInput: req.body.exampleInput,
+    }
+    console.log({entry})
+
+    await Entry.create(entry);
+    
+    res.redirect("/entryAdded");
   },
+  
   //Entry added to db: app.get('/entryAdded')
   entryAdded: async (req, res) => {
     res.render("completedEntry.ejs");
@@ -190,6 +181,7 @@ module.exports = {
 
   getID: async (req, res) => {
     let name = req.params.id;
+    const entry = {};
     try {
       await Entry.findOne({ _id: name }).then((data) => {
         res.render("wordPage.ejs", { searchQueryResults: data });
@@ -201,16 +193,69 @@ module.exports = {
 
   //delete entry
   deleteEntry: async (req, res) => {
+    // query from database to get the public_id
+    // delete from database
+    // delete from cloudinary (public_id)
     let name = req.params.id;
 
-    try {
-      const data = await Entry.deleteOne({ _id: name})
-      console.log(data)
-      //TODO: Indicate to the user that the entry was deleted somehow.
-    //  req.flash('message', `Entry ${data.name} deleted`);
-     res.redirect('/')
-    } catch (error) {
-      console.error(error);
-    }
+    let entry = await Entry.findOne({ _id: name })
+    console.log({ entry })
+
+    let public_id = entry.audioInput
+    console.log("delete", { public_id });
+    
+    console.log(await cloudinaryDestroy(public_id));
+
+    console.log(await Entry.deleteOne({ _id: name }));
+
+    res.redirect('/');
   },
+
+  // deleteEntryCallbackHell: (req, res) => {
+  //   let name = req.params.id;
+  //   Entry.findOne({ _id: name }).then(entry => {
+  //     let public_id = entry.audioInput
+  //     cloudinary.v2.uploader.destroy(public_id, (err, data) => {
+  //       if (err) {
+  //         return res.send(err);
+  //       }
+  //       Entry.deleteOne({ _id: name }).then(() => {
+  //         res.redirect('/');
+  //       })
+  //     });
+  //   })
+  // },
 };
+
+function cloudinaryDestroy(public_id) {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.destroy(public_id, {
+      resource_type: "video"
+    }, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(data);
+    })
+  })
+}
+
+function cloudinaryUpload(filepath) {
+  const uuid = new Date().toISOString();
+  // const uuid = new Date().getTime().toString();
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.upload(
+      filepath,
+      {
+        resource_type: "video",
+        public_id: `AudioUploads/${uuid}`,
+      },
+      (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(data);
+      }
+    )
+  })
+}
