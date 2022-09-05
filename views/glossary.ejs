@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glossary</title>
+
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/15578398e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <!-- Body -->
+  <body>
+    <section class="middle-section">
+      <!-- Nav bar -->
+      <nav class="blue-sections">
+        <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
+        <input type="checkbox" name="menu" id="menu" />
+        <label for="menu" class="hamburger-label">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </label>
+        <div class="menu-container">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/alphabet">Alphabet</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="content-body content-body-search">
+        <!-- Body of page -->
+        <a href="/" class="back-button">
+          <i class="fas fa-arrow-circle-left fa-3x"></i>
+        </a>
+        <section class="results">
+          <% if(entryList && entryList.length){ %>
+          <ul>
+            <% for(let entry of entryList) { %>
+            <li>
+              <a href="/word/<%= entry._id %>" class="clickHere"
+                ><strong><%= entry.wordInput %></strong></a
+              >
+              <span><%= entry.translationInput %><br /></span>
+            </li>
+            <% } %>
+          </ul>
+          <% } %>
+        </section>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <section class="footer-container">
+          <h3 id="copyright">© 2021 - Cedar Band of Paiutes</h3>
+          <h3 id="attribution">
+            Created By<a href="https://ruthreed.dev">Ruth Reed</a>
+          </h3>
+        </section>
+      </footer>
+    </section>
+  </body>
+</html>

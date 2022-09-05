@@ -10,7 +10,7 @@ router.get('/word', entryController.getSearchResults)
 router.post('/word', entryController.addEntry)
 
 // TODO: use PATCH /word/:id
-router.post('/word/:id/patch', entryController.updateEntry)
+router.post('/word/:id/update', entryController.updateEntry)
 
 // TODO: use DELETE /word/:id
 //TODO: Need to make this delete, can do so successfully if you incorporate ajax/axios and fetch

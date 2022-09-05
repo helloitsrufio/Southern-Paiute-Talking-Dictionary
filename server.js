@@ -30,7 +30,6 @@ app.use(fileUpload({
   tempFileDir: '/tmp/'
 }))
 
-
 // Setup Sessions - stored in MongoDB; Do I need this?
 app.use(
   session({

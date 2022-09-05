@@ -1,26 +1,21 @@
 const cloudinary = require("../middleware/cloudinary");
 const Entry = require("../models/Entry");
+const EntryModel = require("../models/entry-model");
 // const fileUpload = require('express-fileupload');
 // const { ObjectId } = require("mongodb");
+
 
 //equivalent of app.get('/searchResults')
 module.exports = {
   getSearchResults: async (req, res) => {
-    try {
-      let name = req.query.search;
-      await Entry.find({
-        //returning full result and using translationInput as the search parameter
-        //.* = anything. So by putting the name in the middle, you're looking for anything with that in it.
-        translationInput: { $regex: new RegExp(`.*${name}.*`, "gi") },
-      }).then((data) => {
-        res.render("searchResults.ejs", {
-          searchQueryResults: data,
-          searchQuery: name,
-        });
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    let name = req.query.search;
+
+    const results = await EntryModel.search(name);
+
+    res.render("searchResults.ejs", {
+      searchQuery: name,
+      searchQueryResults: results,
+    });
   },
   //Get specific entry/word: app.get(/word/:id)
   getID: async (req, res) => {
@@ -157,7 +152,6 @@ module.exports = {
 
     const uploadedFile = await cloudinaryUpload(file.tempFilePath)
     const { public_id } = uploadedFile;
-    console.log("add", { public_id });
 
     const entry = {
       wordInput: req.body.wordInput,
@@ -242,7 +236,6 @@ function cloudinaryDestroy(public_id) {
 
 function cloudinaryUpload(filepath) {
   const uuid = new Date().toISOString();
-  // const uuid = new Date().getTime().toString();
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(
       filepath,
