@@ -1,29 +1,29 @@
-@use 'partials/nav';
-@use 'partials/footer';
-@use 'partials/homePage';
-@use 'partials/aboutPage';
-@use 'partials/contactPage';
-@use 'partials/searchResults';
-@use 'partials/wordPage';
-@use 'partials/inputPage';
-@use 'partials/entryAddedPage';
+@use "partials/nav";
+@use "partials/footer";
+@use "partials/homePage";
+@use "partials/aboutPage";
+@use "partials/contactPage";
+@use "partials/searchResults";
+@use "partials/wordPage";
+@use "partials/inputPage";
+@use "partials/entryAddedPage";
 * {
-    box-sizing: border-box;
-    font-family: "Ubuntu", sans-serif;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    height: 100%;
+  height: 100%;
 }
 
 // main {
@@ -33,12 +33,12 @@ body {
 // }
 
 .middle-section {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .content-body {
-    flex: 1;
+  flex: 1;
 }

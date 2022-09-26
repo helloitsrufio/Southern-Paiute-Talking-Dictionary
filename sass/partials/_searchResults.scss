@@ -10,7 +10,7 @@
       cursor: pointer;
     }
   }
-  
+
   .results,
   .h1Box {
     display: flex;
@@ -18,12 +18,12 @@
     justify-content: center;
     align-self: flex-start;
   }
-  
+
   #bodyH1 {
     font-size: 2rem;
     color: #545454;
   }
-  
+
   .results {
     color: #545454;
     li {
@@ -47,12 +47,12 @@
       font-size: 1.3rem;
     }
   }
-  
+
   strong {
     font-size: 1.7rem;
     color: #1a5970;
   }
-  
+
   @media screen and (max-width: 730px) {
     .results,
     .h1Box {
@@ -65,6 +65,31 @@
     .back-button {
       padding-left: 2rem;
     }
-  }  
-}
+  }
 
+  @media screen and (max-width: 450px) {
+    .results {
+      color: #545454;
+      li {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+        line-height: 2rem;
+        width: 40rem;
+        padding-bottom: 0.7rem;
+        border-bottom: 1px solid lightgray;
+      }
+      span {
+        font-size: 1.3rem;
+      }
+      a {
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+      p {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

@@ -455,6 +455,31 @@ footer .footer-container #attribution a:hover {
     padding-left: 2rem;
   }
 }
+@media screen and (max-width: 450px) {
+  .content-body-search .results {
+    color: #545454;
+  }
+  .content-body-search .results li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    line-height: 2rem;
+    width: 40rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid lightgray;
+  }
+  .content-body-search .results span {
+    font-size: 1.3rem;
+  }
+  .content-body-search .results a {
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .content-body-search .results p {
+    font-size: 1.3rem;
+  }
+}
 
 /* Body */
 .content-body-word-page {
