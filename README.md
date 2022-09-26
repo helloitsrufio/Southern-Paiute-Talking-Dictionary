@@ -80,6 +80,7 @@ To get the values for these environment variables, you will need to
   - [x] Make site mobile-friendly
 - [x] Make contact form functional
 - [ ] Disable search history in search bar
+- [ ] Login page
 - [ ] Make a button/link to access input page
   - [ ] Set up auth for admin (in order to access input page)
 - [x] Reorganize code base into MVC format to make more readable/accessible
@@ -89,7 +90,10 @@ To get the values for these environment variables, you will need to
 - [x] Add a page in which the admin can update entries to database
 - [x] Add a button which enables the admin to delete an entry from the database
 - [ ] Fix back button on search query page/word page from going to input page to previous page.
-- [ ] Add an alphabetical list of words in the database that the user can go through.
+- [x] Add a glossary so users can see all the words in the db
+- [ ] Add glossary link to nav bar
+- [ ] Add a dark mode
+  - [ ] Dark mode switch
 
 ## Contact
 If you have questions, concerns, suggestions, or anything else, feel free to email the developer, Ruth Reed, at [ruthreed.dev@gmail.com](mailto:ruthreed.dev@gmail.com).
