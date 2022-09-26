@@ -80,6 +80,7 @@ To get the values for these environment variables, you will need to
   - [x] Make site mobile-friendly
 - [x] Make contact form functional
 - [ ] Disable search history in search bar
+- [ ] Login page
 - [ ] Make a button/link to access input page
   - [ ] Set up auth for admin (in order to access input page)
 - [x] Reorganize code base into MVC format to make more readable/accessible
