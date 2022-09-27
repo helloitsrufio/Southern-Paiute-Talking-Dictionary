@@ -2,6 +2,7 @@ require("dotenv").config({ path: "./config/.env" });
 //Brings express into the app
 const express = require("express");
 const app = express();
+const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
@@ -9,6 +10,7 @@ const connectDB = require("./config/database");
 const fileUpload = require("express-fileupload");
 const entryRoutes = require("./routes/entry.route");
 const mainRoutes = require("./routes/main.route");
+const authRoutes = require("./routes/auth.route");
 let PORT = process.env.PORT || 8000;
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
@@ -19,6 +21,8 @@ liveReloadServer.server.once("connection", () => {
     liveReloadServer.refresh("/");
   }, 100);
 });
+
+require("./config/passport")(passport);
 
 app.use(connectLiveReload());
 //Connect to DB
@@ -55,6 +59,7 @@ app.use(
 app.use("/", mainRoutes);
 //So what app.use('/searchResults', entryRoutes) does is tell express to let requests that start with /searchResults to be handled by entryRoutes
 app.use("/", entryRoutes);
+app.use("/auth", authRoutes);
 
 //Server running
 app.listen(PORT, () => {

@@ -14,9 +14,9 @@
       rel="stylesheet"
     />
     <script
-    src="https://kit.fontawesome.com/15578398e0.js"
-    crossorigin="anonymous"
-  ></script>
+      src="https://kit.fontawesome.com/15578398e0.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <!-- Body -->
@@ -52,7 +52,9 @@
           <ul>
             <% for(let result of searchQueryResults) { %>
             <li>
-              <a href="/word/<%= result._id %>" class="clickHere"><strong><%= result.wordInput %></strong></a>
+              <a href="/word/<%= result._id %>" class="clickHere"
+                ><strong><%= result.wordInput %></strong></a
+              >
               <span><%= result.translationInput %><br /></span>
             </li>
             <% } %>
@@ -71,7 +73,7 @@
         <section class="footer-container">
           <h3 id="copyright">© 2021 - Cedar Band of Paiutes</h3>
           <h3 id="attribution">
-            Created By<a href="https://ruthreed.dev">Ruth Reed</a>
+            Developed by<a href="https://github.com/helloitsrufio">Ruth Reed</a>
           </h3>
         </section>
       </footer>

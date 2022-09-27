@@ -1,71 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Result</title>
 
-    <link rel='stylesheet' href='/CSS/style.css'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap"
-    rel="stylesheet"
-  />
-  <script
-    src="https://kit.fontawesome.com/15578398e0.js"
-    crossorigin="anonymous"
-  ></script>
-</head>
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/15578398e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<!-- Body -->
-<body>
-  <section class="middle-section">
-  <!-- Nav bar -->
-    <nav class="blue-sections">
-      <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
-      <input type="checkbox" name="menu" id="menu" />
-      <label for="menu" class="hamburger-label">
-        <i class="fa-solid fa-bars hamburger"></i>
-      </label>
-      <div class="menu-container">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/alphabet">Alphabet</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
+  <!-- Body -->
+  <body>
+    <section class="middle-section">
+      <!-- Nav bar -->
+      <nav class="blue-sections">
+        <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
+        <input type="checkbox" name="menu" id="menu" />
+        <label for="menu" class="hamburger-label">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </label>
+        <div class="menu-container">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/alphabet">Alphabet</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
 
-    <section class="content-body content-body-word-page">
-      <!-- Word info section -->
+      <section class="content-body content-body-word-page">
+        <!-- Word info section -->
         <!-- Need to add functionality to back button to make it go back to the search results. Right now it goes to the search results, but doesn't remember the search query. -->
-      <a href = '/searchResults'>
-        <i class="fas fa-arrow-circle-left fa-3x arrow"></i>
-      </a>
-      <section class = 'entry'>
-        <% if(searchQueryResults){ %>   
-          <section class='wordAndAudio'>
+        <a href="/searchResults">
+          <i class="fas fa-arrow-circle-left fa-3x arrow"></i>
+        </a>
+        <section class="entry">
+          <% if(searchQueryResults){ %>
+          <section class="wordAndAudio">
             <h1 class="wordResult"><%= searchQueryResults.wordInput %></h1>
             <audio controls>
-              <% let downloadURL = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${searchQueryResults.audioInput}` %>
-              <source src='<%= downloadURL %>' type='audio/wav'>
+              <% let downloadURL =
+              `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/video/upload/v1643929264/AudioUploads/${searchQueryResults.audioInput}`
+              %>
+              <source src="<%= downloadURL %>" type="audio/wav" />
             </audio>
-            <button class="audio-button"><i class="fa-solid fa-play fa-1x"></i></button>
+            <button class="audio-button">
+              <i class="fa-solid fa-play fa-1x"></i>
+            </button>
           </section>
-          <section class='entryData'>
-            <section class='phoneticAndGrammaticalInput'>
-              <span id ='phonetic'><%= searchQueryResults.phoneticInput %></span>
-              <span id='grammar'><%= searchQueryResults.grammaticalInput %></span>
+          <section class="entryData">
+            <section class="phoneticAndGrammaticalInput">
+              <span id="phonetic"><%= searchQueryResults.phoneticInput %></span>
+              <span id="grammar"
+                ><%= searchQueryResults.grammaticalInput %></span
+              >
             </section>
-            <section class='translation entry-data-section'>
+            <section class="translation entry-data-section">
               <h2>Translation</h2>
               <span><%= searchQueryResults.translationInput %></span>
             </section>
-              <!-- Need to add option of if(!searchQueryResults.exampleInput){
+            <!-- Need to add option of if(!searchQueryResults.exampleInput){
               <span> No additional example available. </span> 
                       } 
               But I can't figure it out with EJS yet.-->
@@ -73,34 +82,39 @@
               <h2>Example</h2>
               <span><%= searchQueryResults.exampleInput %></span>
             </section>
-              <!-- Need to add functionality for looking up related terms. -->
-            <section class='more entry-data-section'>
-              <h2>See More</h2> 
-                <!-- <span><%= %></span>
+            <!-- Need to add functionality for looking up related terms. -->
+            <section class="more entry-data-section">
+              <h2>See More</h2>
+              <!-- <span><%= %></span>
                 <span><%= %></span> -->
-              <button><a href='#'>More</a></button>
-              <button><a href="/word/<%= searchQueryResults._id%>/edit">Edit entry</a></button>
-              <form action="/word/<%= searchQueryResults._id %>/delete" method="post">
+              <button><a href="#">More</a></button>
+              <button>
+                <a href="/word/<%= searchQueryResults._id%>/edit">Edit entry</a>
+              </button>
+              <form
+                action="/word/<%= searchQueryResults._id %>/delete"
+                method="post"
+              >
                 <button>Delete entry</button>
-                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_method" value="DELETE" />
               </form>
             </section>
           </section>
           <% } %>
         </section>
-      <!-- <form method="get" action="/update" id="updateButton"><button>Update Entry</button> -->
-    </section>
+        <!-- <form method="get" action="/update" id="updateButton"><button>Update Entry</button> -->
+      </section>
 
-  <!-- Footer -->
-    <footer>
+      <!-- Footer -->
+      <footer>
         <section class="footer-container">
-          <h3 id="copyright">© 2021 - Cedar Band of Paiutes</h3>
+          <h3 id="copyright">Created for the Cedar Band of Paiutes</h3>
           <h3 id="attribution">
-            Created By<a href="https://ruthreed.dev">Ruth Reed</a>
+            Developed by<a href="https://github.com/helloitsrufio">Ruth Reed</a>
           </h3>
         </section>
-    </footer>
-  </section>
-  <script src="../audioButton.js"></script>
-</body>
+      </footer>
+    </section>
+    <script src="../audioButton.js"></script>
+  </body>
 </html>
