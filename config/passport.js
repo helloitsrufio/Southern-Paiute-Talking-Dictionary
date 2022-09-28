@@ -14,13 +14,25 @@ module.exports = function (passport) {
         callbackURL: "/auth/google/callback",
       },
       async (accessToken, refreshToken, profile, done) => {
+        console.log("this is a profile", profile);
+        let userEmail = "";
+        if (Array.isArray(profile.emails)) {
+          let firstEmail = profile.emails[0];
+          if (typeof firstEmail === "object" && firstEmail !== null) {
+            let emailValue = firstEmail.value;
+            if (typeof emailValue === "string") {
+              userEmail = emailValue;
+            }
+          }
+        }
         const newUser = {
           googleId: profile.id,
           displayName: profile.displayName,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
+          email: userEmail,
         };
-
+        console.log("new user: ", newUser);
         try {
           let user = await User.findOne({ googleId: profile.id });
           if (user) {
