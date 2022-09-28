@@ -55,6 +55,10 @@ app.use(
   })
 );
 
+//Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
 //So what app.use('/searchResults', entryRoutes) does is tell express to let requests that start with /searchResults to be handled by entryRoutes

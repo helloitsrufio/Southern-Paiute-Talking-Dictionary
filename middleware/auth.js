@@ -1,5 +1,6 @@
 module.exports = {
   ensureAuth: function (req, res, next) {
+    //req.session.passport.user !== undefined
     if (req.isAuthenticated()) {
       return next();
     } else {
