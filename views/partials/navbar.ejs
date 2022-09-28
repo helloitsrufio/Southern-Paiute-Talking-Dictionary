@@ -1,0 +1,21 @@
+<nav class="blue-sections">
+  <h1 class="logo"><a href="/">Southern Paiute Dictionary</a></h1>
+  <input type="checkbox" name="menu" id="menu" />
+  <label for="menu" class="hamburger-label">
+    <i class="fa-solid fa-bars hamburger"></i>
+  </label>
+  <div class="menu-container">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/alphabet">Alphabet</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <% if(user){ %>
+      <li><a href="/auth/logout">Log out</a></li>
+      <li><a href=""><%=user.firstName%></a></li>
+      <% }else{ %>
+      <li><a href="/auth/google">Log in</a></li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
