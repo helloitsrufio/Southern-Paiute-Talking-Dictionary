@@ -1,11 +1,9 @@
 /* Body */
-.content-body {
-  display: block;
-  // width: 100%;
-}
+
 .content-body-search {
+  display: block;
   padding-top: 3rem;
-  margin-left: 3rem;
+  margin: 0 2rem 0 3rem;
   .back-button {
     align-self: flex-start;
     .fas {
@@ -13,6 +11,7 @@
       border: none;
       background-color: white;
       cursor: pointer;
+      padding-bottom: 2rem;
     }
   }
 
@@ -67,15 +66,11 @@
     .h1Box {
       padding-left: 0rem;
       align-self: center;
-      li {
-        width: 50vw;
-      }
-    }
-    .back-button {
-      padding-left: 2rem;
+      // li {
+      //   width: 50vw;
+      // }
     }
   }
-
   @media screen and (max-width: 450px) {
     .content-body-search {
       margin: 0;
