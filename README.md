@@ -80,9 +80,8 @@ To get the values for these environment variables, you will need to
   - [x] Make site mobile-friendly
 - [x] Make contact form functional
 - [ ] Disable search history in search bar
-- [ ] Login page
 - [ ] Make a button/link to access input page
-  - [ ] Set up auth for admin (in order to access input page)
+  - [x] Set up auth for admin (in order to access input page)
 - [x] Reorganize code base into MVC format to make more readable/accessible
 - [ ] Add content and styling to `Alphabet` page
 - [ ] Reprogram the front-end in React
@@ -94,6 +93,8 @@ To get the values for these environment variables, you will need to
 - [ ] Add glossary link to nav bar
 - [ ] Add a dark mode
   - [ ] Dark mode switch
+- [ ] Hamburger color is offset from the actual button in mobile
+- [ ] Make year in footer Date().getFullYear() to make it auto update.
 
 ## Contact
 If you have questions, concerns, suggestions, or anything else, feel free to email the developer, Ruth Reed, at [ruthreed.dev@gmail.com](mailto:ruthreed.dev@gmail.com).
