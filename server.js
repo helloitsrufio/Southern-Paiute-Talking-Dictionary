@@ -12,7 +12,7 @@ const entryRoutes = require("./routes/entry.route");
 const mainRoutes = require("./routes/main.route");
 const authRoutes = require("./routes/auth.route");
 let PORT = process.env.PORT || 8000;
-// const livereload = require("livereload");
+const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 
 const liveReloadServer = livereload.createServer();
