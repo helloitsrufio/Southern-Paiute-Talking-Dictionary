@@ -60,7 +60,7 @@ nav {
     height: 100%;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
+    padding: 1.85rem;
   }
   nav input:checked ~ .menu-container {
     display: flex;
@@ -76,7 +76,6 @@ nav {
     width: auto;
     cursor: pointer;
     display: block;
-    padding: 1.5rem 0rem 1.5rem 1.5rem;
     color: white;
   }
   nav ul {
