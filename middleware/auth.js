@@ -1,5 +1,4 @@
 const adminList = [
-  "stratolark@gmail.com",
   "ruthreed.dev@gmail.com",
   "speakpaiute@gmail.com",
 ];
