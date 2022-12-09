@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Entry = require("../models/Entry");
 const EntryModel = require("../models/entry-model");
+const { isAdmin } = require("../middleware/auth");
 // const fileUpload = require('express-fileupload');
 // const { ObjectId } = require("mongodb");
 
@@ -14,6 +15,7 @@ module.exports = {
     res.render("searchResults.ejs", {
       searchQuery: name,
       searchQueryResults: results,
+      admin: isAdmin(req?.user?.email),
     });
   },
   //Get specific entry/word: app.get(/word/:id)
@@ -21,7 +23,10 @@ module.exports = {
     let name = req.params.id;
     try {
       await Entry.findOne({ _id: name }).then((data) => {
-        res.render("wordPage.ejs", { searchQueryResults: data });
+        res.render("wordPage.ejs", {
+          searchQueryResults: data,
+          admin: isAdmin(req?.user?.email),
+        });
       });
     } catch (error) {
       console.error(error);
@@ -38,7 +43,10 @@ module.exports = {
     // console.log(downloadURL)
     try {
       const data = await Entry.findOne({ _id: name });
-      res.render("editWord.ejs", { result: data });
+      res.render("editWord.ejs", {
+        result: data,
+        admin: isAdmin(req?.user?.email),
+      });
     } catch (error) {
       console.error(error);
     }
@@ -129,7 +137,10 @@ module.exports = {
 
   //Input Page app.get('/input')
   getInputPage: async (req, res) => {
-    res.render("inputPage.ejs", { errorMessage: "" });
+    res.render("inputPage.ejs", {
+      errorMessage: "",
+      admin: isAdmin(req?.user?.email),
+    });
   },
 
   //Post entry app.post("/addEntry")
@@ -141,6 +152,7 @@ module.exports = {
     if (!["audio/wav", "audio/mpeg"].includes(file.mimetype)) {
       res.render("inputPage.ejs", {
         errorMessage: "The type of audio file provided is not allowed.",
+        admin: isAdmin(req?.user?.email),
       });
       return;
     }
@@ -165,7 +177,9 @@ module.exports = {
 
   //Entry added to db: app.get('/entryAdded')
   entryAdded: async (req, res) => {
-    res.render("completedEntry.ejs");
+    res.render("completedEntry.ejs", {
+      admin: isAdmin(req?.user?.email),
+    });
   },
 
   getID: async (req, res) => {
@@ -173,7 +187,10 @@ module.exports = {
     const entry = {};
     try {
       await Entry.findOne({ _id: name }).then((data) => {
-        res.render("wordPage.ejs", { searchQueryResults: data });
+        res.render("wordPage.ejs", {
+          searchQueryResults: data,
+          admin: isAdmin(req?.user?.email),
+        });
       });
     } catch (error) {
       console.error(error);
