@@ -32,7 +32,7 @@
       <section class="content-body content-body-word-page">
         <!-- Word info section -->
         <!-- Need to add functionality to back button to make it go back to the search results. Right now it goes to the search results, but doesn't remember the search query. -->
-        <a href="/searchResults">
+        <a id="go-back-to-results">
           <i class="fas fa-arrow-circle-left fa-3x arrow"></i>
         </a>
         <section class="entry">
@@ -95,5 +95,18 @@
       <%- include('partials/footer') %>
     </section>
     <script src="../audioButton.js"></script>
+    <script>
+      const goBackToResults = document.getElementById("go-back-to-results");
+
+      if (goBackToResults) {
+        goBackToResults.addEventListener("click", () => {
+          if (window.history.length > 1) {
+            window.history.back();
+          } else {
+            window.location.href = "/";
+          }
+        });
+      }
+    </script>
   </body>
 </html>
