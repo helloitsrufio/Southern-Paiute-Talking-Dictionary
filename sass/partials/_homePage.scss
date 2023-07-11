@@ -1,23 +1,46 @@
 // Home page
 .content-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow:1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  input {
+    height: 2.5rem;
+    color: #444;
+    border: 1px solid #e5e5e5;
+    background-color: #ededed;
+    padding-left: 1rem;
+  }
+  ::placeholder {
+    font-size: 0.85rem;
+    margin-left: 1rem;
+  }
+  :-ms-input-placeholder {
+    font-size: 0.85rem;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 0.85rem;
+  }
+  #logo {
+    height: 12rem;
+    margin-bottom: 2rem;
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .content-body {
     input {
-      height: 2.5rem;
-      width: 40vw;
-      color: #444;
-      border: 1px solid #e5e5e5;
-      background-color: #ededed;
-    }
-    #logo {
-      height: 12rem;
-      margin-bottom: 2rem;
-      width: auto;
+      width: 16rem;
     }
   }
-  
-  
-  
+}
+
+@media screen and (min-width: 400px) {
+  .content-body {
+    input {
+      width: 20rem;
+    }
+  }
+}
