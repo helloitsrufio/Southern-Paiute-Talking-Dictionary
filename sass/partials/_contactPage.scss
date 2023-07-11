@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color:#545454;
+  color: #545454;
   .contact-h1 {
     margin-bottom: 4rem;
     font-size: 2rem;
@@ -21,7 +21,7 @@
     align-items: center;
     margin-top: 2rem;
     overflow: hidden;
-    width: 21rem;
+    width: 14rem;
     span {
       font-weight: bold;
       text-transform: uppercase;
@@ -29,27 +29,27 @@
     .top-line {
       display: flex;
       flex-direction: row;
-      margin-bottom:2rem;
+      margin-bottom: 2rem;
       width: 100%;
       .top-line-section {
         display: flex;
         flex-direction: column;
         width: 50%;
       }
-      .top-line-section-1{
+      .top-line-section-1 {
         margin-right: 4%;
       }
       span {
         display: flex;
         flex-direction: column;
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
       }
       input {
         border-top-style: hidden;
         border-right-style: hidden;
         border-left-style: hidden;
         border-bottom: 2px solid rgba(31, 155, 103, 0.38);
-        margin-bottom:1rem;
+        margin-bottom: 1rem;
       }
     }
     .submit {
@@ -99,6 +99,21 @@
       color: #2184aa;
       text-transform: lowercase;
       text-decoration: none;
+    }
+  }
+}
+
+@media screen and (min-width: 340px) {
+  .contact-container {
+    form {
+      width: 17rem;
+    }
+  }
+}
+@media screen and (min-width: 410px) {
+  .contact-container {
+    form {
+      width: 21rem;
     }
   }
 }
