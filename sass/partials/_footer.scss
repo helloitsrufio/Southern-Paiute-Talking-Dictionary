@@ -1,49 +1,61 @@
 /* Footer */
 
 footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 5rem;
+  // position: absolute;
+  bottom: 0;
+  background: #545454;
+  border-top: 10px solid #2184aa;
+  margin-top: 5rem;
+  .footer-container {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 5rem;
-    // position: absolute;
-    bottom: 0;
-    background: #545454;
-    border-top: 10px solid #2184aa;
-    margin-top:5rem;
-    .footer-container {
-        display: flex;
-        flex-direction: column;
-        color: white;
-        background-color: #545454;
-        margin: 0.5em;
-        #copyright {
-            padding-top: 1vh;
-            margin: 0vh;
-        }
-        #attribution {
-            display: flex;
-            justify-content: center;
-            font-size: 0.8em;
-            color: white;
-            padding: 0vh;
-            margin: 0.4vh;
-            font-family: "Ubuntu", sans-serif;
-            a:before {
-                content: "\00a0 ";
-            }
-            a:link {
-                text-decoration: none;
-                color: white;
-                font-family: "Ubuntu", sans-serif;
-            }
-            a:visited {
-                text-decoration: none;
-                color: white;
-            }
-            a:hover {
-                text-decoration: none;
-                color: #e3e4e8;
-            }
-        }
+    flex-direction: column;
+    color: white;
+    background-color: #545454;
+    margin: 0.5em;
+    #copyright {
+      padding-top: 1vh;
+      margin: 0vh;
+      font-size: 0.8em;
     }
+    #attribution {
+      display: flex;
+      justify-content: center;
+      font-size: 0.8em;
+      color: white;
+      padding: 0vh;
+      margin: 0.4vh;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 300;
+      a:before {
+        content: "\00a0 ";
+      }
+      a:link {
+        text-decoration: none;
+        color: white;
+        font-family: "Ubuntu", sans-serif;
+      }
+      a:visited {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        text-decoration: none;
+        color: #e3e4e8;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 372px) {
+  footer {
+    .footer-container {
+      #copyright {
+        font-size: 1em;
+      }
+    }
+  }
 }

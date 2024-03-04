@@ -12,14 +12,15 @@ nav {
   justify-content: space-between;
   .logo {
     margin: 0rem 0rem 0rem 1rem;
-    font-size: 1.26rem;
+    font-size: 0.875rem;
   }
   ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    margin-right: 1rem;
+    margin-right: 1.875rem;
     a {
+      font-size: 0.875rem;
       margin: 0 1rem;
     }
   }
@@ -36,8 +37,12 @@ nav {
   input {
     display: none;
   }
+  .hamburger {
+    font-size: 1.5rem;
+  }
   .hamburger-label {
     display: none; //it's default
+    padding: 1.65rem;
   }
   // i mean here it's nav wrapper
   // all the rules below is inside media query
@@ -48,6 +53,27 @@ nav {
 // more specific selector is higher priority in css
 
 /* Media Queries */
+@media screen and (min-width: 372px) {
+  nav {
+    .logo {
+      font-size: 1.06rem;
+    }
+    .hamburger-label {
+      padding: 1.85rem;
+    }
+  }
+}
+
+@media screen and (min-width: 420px) {
+  nav {
+    .logo {
+      font-size: 1.16rem;
+    }
+    .hamburger-label {
+      padding: 1.85rem;
+    }
+  }
+}
 
 @media screen and (max-width: 957px) {
   nav {
@@ -60,7 +86,6 @@ nav {
     height: 100%;
     align-items: center;
     justify-content: center;
-    padding: 1.85rem;
   }
   nav input:checked ~ .menu-container {
     display: flex;
