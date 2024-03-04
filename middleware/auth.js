@@ -24,4 +24,4 @@ module.exports = {
     }
   },
 };
-const emailWhitelist = ["ruthreed.dev@gmail.com", "speakpaiute@gmail.com"];
+const emailWhitelist = ["ruthreed.dev@gmail.com", "speakpaiute@gmail.com, hatchjonathan@gmail.com"];
