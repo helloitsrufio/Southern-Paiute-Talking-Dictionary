@@ -1,7 +1,7 @@
 /* Navigation bar */
 
 .blue-sections {
-  background-color: #2184aa;
+  background-color: #185C77;
 }
 
 nav {
@@ -69,7 +69,7 @@ nav {
     display: flex;
   }
   nav input:checked ~ .hamburger-label {
-    background-color: #1b6c89;
+    background-color: #185C77;
   }
   .hamburger {
     font-size: 2rem;
@@ -90,7 +90,7 @@ nav {
     width: 9.5rem;
     top: 3rem;
     right: 0;
-    background-color: #1b6c89;
+    background-color: #185C77;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
       rgba(0, 0, 0, 0.05) 0px 5px 10px;
     border-radius: 0rem 0rem 0.3rem 0.3rem;
