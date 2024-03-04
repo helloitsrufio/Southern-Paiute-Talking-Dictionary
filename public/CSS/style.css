@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Navigation bar */
 .blue-sections {
-  background-color: #2184aa;
+  background-color: #185C77;
 }
 
 nav {
@@ -41,6 +41,16 @@ nav .hamburger-label {
   display: none;
 }
 
+#hideme{
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px  
+}
+
 /* Media Queries */
 @media screen and (max-width: 957px) {
   nav {
@@ -53,7 +63,7 @@ nav .hamburger-label {
     height: 100%;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
+    padding: 1.85rem;
   }
   nav input:checked ~ .menu-container {
     display: flex;
@@ -62,14 +72,13 @@ nav .hamburger-label {
     display: flex;
   }
   nav input:checked ~ .hamburger-label {
-    background-color: #1b6c89;
+    background-color: #185C77;
   }
   .hamburger {
     font-size: 2rem;
     width: auto;
     cursor: pointer;
     display: block;
-    padding: 1.5rem 0rem 1.5rem 1.5rem;
     color: white;
   }
   nav ul {
@@ -84,7 +93,7 @@ nav .hamburger-label {
     width: 9.5rem;
     top: 3rem;
     right: 0;
-    background-color: #1b6c89;
+    background-color: #185C77;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
     border-radius: 0rem 0rem 0.3rem 0.3rem;
   }
