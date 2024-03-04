@@ -1,3 +1,4 @@
+const { isAdmin } = require("../middleware/auth");
 const EntryModel = require("../models/entry-model");
 const { compareFunctions } = require("../utils/compareFunctions");
 
@@ -8,7 +9,8 @@ module.exports = {
 
     res.render("glossary.ejs", {
       entry: name,
-      entryList: results.sort(compareFunctions)
+      entryList: results.sort(compareFunctions),
+      admin: isAdmin(req?.user?.email),
     });
   },
 };
